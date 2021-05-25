@@ -436,6 +436,7 @@ class Test(object):
         self.__device.init()
 
         #
+        self.__available_types = self.__device.get_available_types()
         self.__enable_types = []
         self.__disable_types = []
         self.__test_target = None
@@ -454,6 +455,13 @@ class Test(object):
 
     def set_test_target(self, test_target):
         self.__test_target = test_target
+
+    def set_types(self, *types):
+        for ty in self.__available_types:
+            if ty in types:
+                self.__enable_types.append(ty)
+            else:
+                self.__disable_types.append(ty)
 
     def enable_types(self, *types):
         self.__enable_types.extend(types)
