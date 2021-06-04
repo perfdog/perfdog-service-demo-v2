@@ -45,6 +45,6 @@ run_test_app(device,
              package_name='-',
              types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.CPU_USAGE, perfdog_pb2.MEMORY])
 ```
-- types：需要启用的性能指标参数列表,值为None时，启用设备默认开启的性能指标
+- types：需要启用的性能指标参数列表，值为None时，启用设备默认开启的性能指标
 6. 修改运行test.py
 + 可以根据自己需要启用/用相关性能指标类型，同时也可在此脚本中启用自己的自动化测试逻辑
