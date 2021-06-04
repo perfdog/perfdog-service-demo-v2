@@ -40,11 +40,11 @@ python cmds.py getapps device_id
 ```python
 # 填入正确的设备ID，填入测试app的包名
 # 可以使用同目录下cmds.py获取已连接到电脑的设备列表及相应设备的App列表
+# 可以根据自己需要填写types参数，来启用的性能指标参数列表，types值为None时，使用当前设备已经开启的指标选项
 device = service.get_usb_device('-')
 run_test_app(device,
              package_name='-',
              types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.CPU_USAGE, perfdog_pb2.MEMORY])
 ```
-- types：需要启用的性能指标参数列表，值为None时，启用设备默认开启的性能指标
 6. 修改运行test.py
 + 可以根据自己需要启用/用相关性能指标类型，同时也可在此脚本中启用自己的自动化测试逻辑
