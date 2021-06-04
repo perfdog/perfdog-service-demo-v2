@@ -1,3 +1,4 @@
+
 # perfdog-service-demo-v2 
 + 该Demo帮助有诉求的同学快速上手搭建性能自动化。
 
@@ -42,8 +43,8 @@ python cmds.py getapps device_id
 device = service.get_usb_device('-')
 run_test_app(device,
              package_name='-',
-             enable_types=[perfdog_pb2.WAKEUP],
-             disable_types=[perfdog_pb2.IOS_GPU_USAGE, perfdog_pb2.SYSTEM_LOG])
+             types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.CPU_USAGE, perfdog_pb2.MEMORY])
 ```
+- types：需要启用的性能指标参数列表,值为None时，启用设备默认开启的性能指标
 6. 修改运行test.py
 + 可以根据自己需要启用/用相关性能指标类型，同时也可在此脚本中启用自己的自动化测试逻辑
