@@ -29,19 +29,38 @@ class Stream(object):
 
 
 class Service(object):
-    def __init__(self, service_token, service_path, service_wait_seconds=10):
+    def __init__(self, service_token, service_path, service_wait_seconds=60):
+        self.__stub_factory = self.__create_stub_factory()
         try:
-            self.__stub_factory = self.__create_stub_factory()
             self.__login(service_token)
+            logging.info('service proxy init success')
         except:
-            self.__startup(service_path, service_wait_seconds)
-            self.__stub_factory = self.__create_stub_factory()
-            self.__login(service_token)
+            self.__startup(service_path)
+            self.__try_n_login(service_token, service_wait_seconds)
+            logging.info('service proxy init success')
+
+    def __try_n_login(self, service_token, service_wait_seconds):
+        #
+        start_time = time.time()
+
+        #
+        while True:
+            now_time = time.time()
+            if now_time - start_time >= service_wait_seconds:
+                break
+
+            try:
+                self.__login(service_token)
+                return
+            except Exception as e:
+                logging.info('service proxy init failed, retry...')
+                time.sleep(1)
+        #
+        self.__login(service_token)
 
     @staticmethod
-    def __startup(service_path, service_wait_seconds):
+    def __startup(service_path):
         subprocess.Popen(service_path)
-        time.sleep(service_wait_seconds)
 
     @staticmethod
     def __create_stub_factory():
