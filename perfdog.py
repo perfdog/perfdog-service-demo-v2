@@ -272,6 +272,10 @@ class Device(object):
         req = perfdog_pb2.AddNoteReq(device=self.__real_device, time=note_time, note=note_name)
         self.stub().addNote(req)
 
+    def get_render_resolution(self):
+        req = perfdog_pb2.GetRenderResolutionReq(device=self.__real_device)
+        return self.stub().getRenderResolutionOfWindowUnderTest(req)
+
     def get_cache_stream(self, callback):
         req = perfdog_pb2.GetDeviceCacheDataReq(device=self.__real_device)
         return Stream(self.stub().getDeviceCacheData(req), callback)
@@ -519,6 +523,9 @@ class Test(object):
                   export_directory=''):
         return self.__device.save_data(begin_time, end_time, case_name, is_upload, is_export, export_format,
                                        export_directory)
+
+    def get_render_resolution(self):
+        return self.__device.get_render_resolution()
 
     def set_label(self, label_name):
         return self.__device.set_label(label_name)

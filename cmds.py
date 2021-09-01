@@ -20,7 +20,7 @@ def print_apps(service, device_id):
         device.init()
 
     for app in device.get_apps():
-        print(app.packageName)
+        print(app.packageName, app.label)
 
 
 def print_usage():
