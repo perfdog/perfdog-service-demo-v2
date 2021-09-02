@@ -52,23 +52,28 @@ def run_test_app(device, package_name, types=None, enable_types=None, disable_ty
     if disable_types is not None:
         test.disable_types(*disable_types)
 
-    # 启动性能数据采集
-    test.start()
+    try:
+        # 启动性能数据采集
+        test.start()
 
-    # 等待有性能数据
-    # 需要使用set_first_perf_data_callback来启用
-    evt.wait()
+        # 等待有性能数据
+        # 需要使用set_first_perf_data_callback来启用
+        evt.wait()
 
-    # TODO:
-    # 建议在此处添加自动化测试处理逻辑
+        # TODO:
+        # 建议在此处添加自动化测试处理逻辑
+        time.sleep(10)
+        test.set_label('label_x')
+        time.sleep(2)
+        test.add_note('n1', 12 * 1000)
+        time.sleep(2)
+        test.stop()
+        test.save_data()
 
-    time.sleep(10)
-    test.set_label('label_x')
-    time.sleep(2)
-    test.add_note('n1', 12 * 1000)
-    time.sleep(2)
-    test.stop()
-    test.save_data()
+    finally:
+        # 必要的资源释放
+        if test.is_start():
+            test.stop()
 
 
 if __name__ == '__main__':

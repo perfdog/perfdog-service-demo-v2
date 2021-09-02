@@ -23,9 +23,14 @@ def print_apps(service, device_id):
         print(app.packageName, app.label)
 
 
+def kill_server(service):
+    service.kill_server()
+
+
 def print_usage():
     print('usage: python cmds.py getdevices')
     print('       python cmds.py getapps device_id')
+    print('       python cmds.py killserver')
 
 
 def get_func_and_args(args):
@@ -40,6 +45,9 @@ def get_func_and_args(args):
 
     if cmd == 'getapps' and len(args) == 1:
         return print_apps, args
+
+    if cmd == 'killserver' and len(args) == 0:
+        return kill_server, args
 
     return None, ()
 

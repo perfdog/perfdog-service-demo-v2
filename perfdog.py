@@ -25,7 +25,10 @@ class Stream(object):
             logging.info(e)
 
     def stop(self):
-        self.__steam.cancel()
+        try:
+            self.__steam.cancel()
+        except Exception as e:
+            logging.info(e)
 
 
 class Service(object):
@@ -467,6 +470,9 @@ class Test(object):
         #
         self.__stream_perf_data = StreamPerfData()
 
+        #
+        self.__is_start = False
+
     def set_first_perf_data_callback(self, first_perf_data_callback):
         self.__stream_perf_data.set_first_perf_data_callback(first_perf_data_callback)
 
@@ -492,7 +498,13 @@ class Test(object):
     def disable_types(self, *types):
         self.__disable_types.extend(types)
 
+    def is_start(self):
+        return self.__is_start
+
     def start(self):
+        if self.__is_start:
+            return
+
         if self.__test_target is None:
             raise NotSetTestTarget()
 
@@ -505,13 +517,18 @@ class Test(object):
             self.__device.start_test_app(self.__test_target.req())
         else:
             self.__device.start_test_sys_process(self.__test_target.req())
+        self.__is_start = True
 
         #
         self.__stream_perf_data.start(self.__device.get_perf_data_stream)
 
     def stop(self):
+        if not self.__is_start:
+            return
+
         self.__stream_perf_data.stop()
         self.__device.stop_test()
+        self.__is_start = False
 
     def save_data(self,
                   begin_time=None,
