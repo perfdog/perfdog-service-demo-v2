@@ -63,7 +63,7 @@ class Service(object):
 
     @staticmethod
     def __startup(service_path):
-        subprocess.Popen(service_path)
+        subprocess.Popen(service_path, shell=True, creationflags=subprocess.CREATE_NEW_CONSOLE)
 
     @staticmethod
     def __create_stub_factory():
@@ -340,7 +340,10 @@ class TestAppBuilder(TestTargetBuilder):
         self.__sub_window = sub_window
 
     def build(self):
-        app = perfdog_pb2.AppInfo(packageName=self.__package_name)
+        app = self.device().get_app(self.__package_name)
+        if app is None:
+            raise NonExistTestTarget()
+
         req = perfdog_pb2.StartTestAppReq(device=self.device().real_device(),
                                           app=app,
                                           subProcess=self.__sub_process_name,
