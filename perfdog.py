@@ -340,10 +340,7 @@ class TestAppBuilder(TestTargetBuilder):
         self.__sub_window = sub_window
 
     def build(self):
-        app = self.device().get_app(self.__package_name)
-        if app is None:
-            raise NonExistTestTarget()
-
+        app = perfdog_pb2.AppInfo(packageName=self.__package_name)
         req = perfdog_pb2.StartTestAppReq(device=self.device().real_device(),
                                           app=app,
                                           subProcess=self.__sub_process_name,
