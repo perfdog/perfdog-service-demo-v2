@@ -27,6 +27,17 @@ def main():
                  types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.CPU_USAGE, perfdog_pb2.MEMORY])
 
 
+def print_perf_data(perf_data):
+    if perf_data.HasField('warningData'):
+        msg = perf_data.warningData.msg
+        logging.warning(msg)
+    elif perf_data.HasField('errorData'):
+        msg = perf_data.errorData.msg
+        logging.error(msg)
+    else:
+        logging.info(perf_data)
+
+
 def run_test_app(device, package_name, types=None, enable_types=None, disable_types=None):
     # 创建测试对象
     test = Test(device)
@@ -35,7 +46,7 @@ def run_test_app(device, package_name, types=None, enable_types=None, disable_ty
     # 不需要的话，这两个回调可以不设置
     evt = threading.Event()
     test.set_first_perf_data_callback(lambda: evt.set())
-    test.set_perf_data_callback(lambda perf_data: logging.info(perf_data))
+    test.set_perf_data_callback(print_perf_data)
 
     # 创建要测试目标App
     builder = test.create_test_target_builder(TestAppBuilder)
