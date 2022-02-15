@@ -63,7 +63,7 @@ class Service(object):
 
     @staticmethod
     def __startup(service_path):
-        subprocess.Popen(service_path, shell=True, creationflags=subprocess.CREATE_NEW_CONSOLE)
+        subprocess.Popen(service_path)
 
     @staticmethod
     def __create_stub_factory():
