@@ -15,6 +15,14 @@ def main():
     # 创建服务对象代理
     service = Service(SERVICE_TOKEN, SERVICE_PATH)
 
+    # 配置是否安装浮窗App，针对安卓设备有效
+    # 如果App已经安装到要测试的设备上，请先手工从设备卸载之后继续使用
+    # 按照自己的测试要求启用下面两个配置中的一个
+    # 禁止安装
+    # service.disable_install_apk()
+    # 启用安装
+    # service.enable_install_apk()
+
     # TODO:
     # 填入正确的设备ID，填入测试app的包名
     # 可以使用同目录下cmds.py获取已连接到电脑的设备列表及相应设备的App列表
