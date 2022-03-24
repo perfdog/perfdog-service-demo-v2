@@ -189,6 +189,11 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.GetRenderResolutionReq.SerializeToString,
                 response_deserializer=perfdog__pb2.GetRenderResolutionRet.FromString,
                 )
+        self.getCpuInfo = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/getCpuInfo',
+                request_serializer=perfdog__pb2.GetCpuInfoReq.SerializeToString,
+                response_deserializer=perfdog__pb2.GetCpuInfoRsp.FromString,
+                )
         self.killServer = channel.unary_unary(
                 '/com.perfdog.proto.PerfDogService/killServer',
                 request_serializer=perfdog__pb2.Empty.SerializeToString,
@@ -445,6 +450,13 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def getCpuInfo(self, request, context):
+        """获取CPU核心数和最大频率
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def killServer(self, request, context):
         """关闭PerfDogService
         """
@@ -629,6 +641,11 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     servicer.getRenderResolutionOfWindowUnderTest,
                     request_deserializer=perfdog__pb2.GetRenderResolutionReq.FromString,
                     response_serializer=perfdog__pb2.GetRenderResolutionRet.SerializeToString,
+            ),
+            'getCpuInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.getCpuInfo,
+                    request_deserializer=perfdog__pb2.GetCpuInfoReq.FromString,
+                    response_serializer=perfdog__pb2.GetCpuInfoRsp.SerializeToString,
             ),
             'killServer': grpc.unary_unary_rpc_method_handler(
                     servicer.killServer,
@@ -1237,6 +1254,23 @@ class PerfDogService(object):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/getRenderResolutionOfWindowUnderTest',
             perfdog__pb2.GetRenderResolutionReq.SerializeToString,
             perfdog__pb2.GetRenderResolutionRet.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def getCpuInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/getCpuInfo',
+            perfdog__pb2.GetCpuInfoReq.SerializeToString,
+            perfdog__pb2.GetCpuInfoRsp.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
