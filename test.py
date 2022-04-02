@@ -27,6 +27,7 @@ def main():
     # 填入正确的设备ID，填入测试app的包名
     # 可以使用同目录下cmds.py获取已连接到电脑的设备列表及相应设备的App列表
     # 可以根据自己需要填写types参数，来启用的性能指标参数列表，types值为None时，使用当前设备已经开启的指标选项
+    # 指标启用可以参考"指标参数映射表：https://perfdog.qq.com/article_detail?id=10210&issue_id=0&plat_id=2"
     # 如果单一脚本进程中需要启动针对多个设备性能数据收集，可以通过多线程的方式，并行运行多次run_test_app函数
 
     device = service.get_usb_device('-')
