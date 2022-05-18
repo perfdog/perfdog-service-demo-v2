@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rperfdog.proto\x12\x11\x63om.perfdog.proto\"\x1c\n\x0bOptionalInt\x12\r\n\x05value\x18\x01 \x01(\x05\"\x1e\n\rOptionalInt64\x12\r\n\x05value\x18\x01 \x01(\x03\"\x1e\n\rOptionalFloat\x12\r\n\x05value\x18\x01 \x01(\x02\"\x1f\n\x0eOptionalDouble\x12\r\n\x05value\x18\x01 \x01(\x01\"\x07\n\x05\x45mpty\"\x16\n\x05Token\x12\r\n\x05token\x18\x01 \x01(\t\"@\n\x08UserInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03pic\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\n\n\x02id\x18\x04 \x01(\t\"\x89\x01\n\x06\x44\x65vice\x12\x30\n\x06osType\x18\x01 \x01(\x0e\x32 .com.perfdog.proto.DEVICE_OSTYPE\x12\x32\n\x07\x63onType\x18\x02 \x01(\x0e\x32!.com.perfdog.proto.DEVICE_CONTYPE\x12\x0b\n\x03uid\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\"p\n\x0b\x44\x65viceEvent\x12\x36\n\teventType\x18\x01 \x01(\x0e\x32#.com.perfdog.proto.DEVICE_EVENTTYPE\x12)\n\x06\x64\x65vice\x18\x02 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"s\n\nDeviceInfo\x12\x37\n\x05value\x18\x01 \x03(\x0b\x32(.com.perfdog.proto.DeviceInfo.ValueEntry\x1a,\n\nValueEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"Q\n\x0c\x44\x65viceStatus\x12\x0f\n\x07isValid\x18\x01 \x01(\x08\x12\x11\n\tisTesting\x18\x02 \x01(\x08\x12\x1d\n\x15isPerfDogAppInstalled\x18\x03 \x01(\x08\"\x9e\x01\n\x07\x41ppInfo\x12\r\n\x05label\x18\x01 \x01(\t\x12\x13\n\x0bpackageName\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\t\x12\x13\n\x0bprocessList\x18\x04 \x03(\t\x12\x0c\n\x04icon\x18\x05 \x01(\x0c\x12\x13\n\x0bisSystemApp\x18\x06 \x01(\x08\x12\x12\n\nsubVersion\x18\x07 \x01(\t\x12\x12\n\ndebuggable\x18\x08 \x01(\x08\"2\n\x07\x41ppList\x12\'\n\x03\x61pp\x18\x01 \x03(\x0b\x32\x1a.com.perfdog.proto.AppInfo\"q\n\x15\x45nablePerfDataTypeReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12-\n\x04type\x18\x02 \x01(\x0e\x32\x1f.com.perfdog.proto.PerfDataType\"r\n\x16\x44isablePerfDataTypeReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12-\n\x04type\x18\x02 \x01(\x0e\x32\x1f.com.perfdog.proto.PerfDataType\"@\n\x0fPerfDataTypeRet\x12-\n\x04type\x18\x01 \x03(\x0e\x32\x1f.com.perfdog.proto.PerfDataType\"O\n\x12ScreenShotInterval\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x0e\n\x06second\x18\x02 \x01(\x05\"\xa8\x01\n\x0fStartTestAppReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\'\n\x03\x61pp\x18\x02 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\x12\x12\n\nsubProcess\x18\x03 \x01(\t\x12\x1a\n\x12hideFloatingWindow\x18\x04 \x01(\x08\x12\x11\n\tsubWindow\x18\x05 \x01(\t\"\x9a\x01\n\x16StartTestSysProcessReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x39\n\x0esysProcessInfo\x18\x02 \x01(\x0b\x32!.com.perfdog.proto.SysProcessInfo\x12\x1a\n\x12hideFloatingWindow\x18\x03 \x01(\x08\"\x1b\n\x0cStartTestRet\x12\x0b\n\x03ret\x18\x01 \x01(\x05\"B\n\x15OpenPerfDataStreamReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"8\n\x0bStopTestReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"S\n\tFrameTime\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x11\n\tframeTime\x18\x03 \x01(\x01\x12\x14\n\x0cisInterFrame\x18\x04 \x01(\x08\"\x89\x01\n\x07\x46psData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0b\n\x03\x66ps\x18\x03 \x01(\x01\x12\r\n\x05label\x18\x04 \x01(\t\x12\x0c\n\x04note\x18\x05 \x01(\t\x12\x35\n\nInterFrame\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\"@\n\rFrameTimeData\x12/\n\tframeTime\x18\x01 \x03(\x0b\x32\x1c.com.perfdog.proto.FrameTime\"Y\n\x08JankData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04jank\x18\x03 \x01(\x05\x12\x0f\n\x07\x62igJank\x18\x04 \x01(\x05\x12\x0f\n\x07stutter\x18\x05 \x01(\x01\"F\n\x13\x41ndroidGpuUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x10\n\x08gpuUsage\x18\x03 \x01(\x01\"n\n\x0fIosGpuUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x13\n\x0brenderUsage\x18\x03 \x01(\x02\x12\x12\n\ntilerUsage\x18\x04 \x01(\x02\x12\x13\n\x0b\x64\x65viceUsage\x18\x05 \x01(\x02\"=\n\x0bGpuFreqData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0f\n\x07gpuFreq\x18\x03 \x01(\x05\"z\n\x0e\x41ndroidMemData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0b\n\x03pss\x18\x03 \x01(\x05\x12\x0c\n\x04swap\x18\x04 \x01(\x05\x12\x15\n\rvirtualMemory\x18\x05 \x01(\x05\x12\x17\n\x0f\x61vailableMemory\x18\x06 \x01(\x05\"\xc8\x08\n\x14\x41ndroidMemDetailData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x11\n\tnativePss\x18\x03 \x01(\x05\x12\x0b\n\x03gfx\x18\x04 \x01(\x05\x12\n\n\x02gl\x18\x05 \x01(\x05\x12\x0f\n\x07unknown\x18\x06 \x01(\x05\x12\x10\n\x08javaHeap\x18\x07 \x01(\x05\x12\x12\n\ndalvikHeap\x18\x08 \x01(\x05\x12\x33\n\x0b\x64\x61lvikOther\x18\t \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12-\n\x05stack\x18\n \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12.\n\x06\x63ursor\x18\x0b \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12.\n\x06\x61shmem\x18\x0c \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08otherDev\x18\r \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12.\n\x06soMmap\x18\x0e \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07jarMmap\x18\x0f \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07\x61pkMmap\x18\x10 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07ttfMmap\x18\x11 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07\x64\x65xMmap\x18\x12 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08\x63odeMmap\x18\x13 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x31\n\timageMmap\x18\x14 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x31\n\totherMmap\x18\x15 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08graphics\x18\x16 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08memtrack\x18\x17 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07oatMmap\x18\x18 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07\x61rtMmap\x18\x19 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x31\n\teglMtrack\x18\x1a \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x33\n\x0botherMtrack\x18\x1b \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\"q\n\x0cIos10MemData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x12\n\nrealMemory\x18\x03 \x01(\x05\x12\x15\n\rvirtualMemory\x18\x04 \x01(\x05\x12\x17\n\x0f\x61vailableMemory\x18\x05 \x01(\x05\"\x96\x01\n\x0cIos11MemData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x13\n\x0bxcodeMemory\x18\x03 \x01(\x05\x12\x12\n\nrealMemory\x18\x04 \x01(\x05\x12\x0e\n\x06memory\x18\x05 \x01(\x05\x12\x15\n\rvirtualMemory\x18\x06 \x01(\x05\x12\x17\n\x0f\x61vailableMemory\x18\x07 \x01(\x05\"A\n\rCoreUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x11\n\tcoreUsage\x18\x03 \x03(\x02\"=\n\x0b\x43puFreqData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0f\n\x07\x63puFreq\x18\x03 \x03(\x05\"S\n\x0c\x43puUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x10\n\x08\x61ppUsage\x18\x03 \x01(\x01\x12\x12\n\ntotalUsage\x18\x04 \x01(\x01\":\n\x0b\x43puTempData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04temp\x18\x03 \x01(\x05\">\n\x0f\x42\x61tteryTempData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04temp\x18\x03 \x01(\x05\"A\n\rCtxSwitchData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x11\n\tctxSwitch\x18\x03 \x01(\x03\"=\n\x0bWakeupsData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0f\n\x07wakeups\x18\x03 \x01(\x03\"]\n\x0b\x42\x61tteryData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0f\n\x07\x63urrent\x18\x03 \x01(\x05\x12\x0f\n\x07voltage\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x05\"N\n\x0bNetworkData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0e\n\x06upload\x18\x03 \x01(\x05\x12\x10\n\x08\x64ownload\x18\x04 \x01(\x05\"\x19\n\nSyslogData\x12\x0b\n\x03log\x18\x01 \x01(\t\"=\n\x0eScreenShotData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\"\x1a\n\x0bWarningData\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x18\n\tErrorData\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\xab\x02\n\x13MaliGpuCounterBasic\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12@\n\x16nonFragmentUtilization\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12=\n\x13\x66ragmentUtilization\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12:\n\x10tilerUtilization\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x38\n\x0egpuActiveCycle\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\x99\x02\n\x14MaliGpuCounterShader\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x32\n\x08overDraw\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x39\n\x0fpixelThroughput\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12:\n\x10nonFragmentWarps\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\x12\x37\n\rfragmentWarps\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\"\x88\x02\n\x14MaliGpuCounterMemory\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x37\n\x0fl2LoadStoreRead\x18\x03 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x35\n\rl2TextureRead\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07\x62usRead\x18\x05 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08\x62usWrite\x18\x06 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\"\xa2\x02\n\x13QComGpuCounterBasic\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x38\n\x0egpuUtilization\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x34\n\ngpuBusBusy\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x35\n\x0bshadersBusy\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x45\n\x1bpreClippedPolygonsPerSecond\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\"\x96\x02\n\x14QComGpuCounterMemory\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x31\n\treadTotal\x18\x03 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x32\n\nwriteTotal\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x37\n\rtextureL2Miss\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12?\n\x15stalledOnSystemMemory\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\xbc\x01\n\x14QComGpuCounterShader\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x41\n\x17verticesShadedPerSecond\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\x12\x42\n\x18\x66ragmentsShadedPerSecond\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\"\x92\x02\n\x12PVRGpuCounterBasic\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x38\n\x0erendererActive\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x35\n\x0btilerActive\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x37\n\rhsrEfficiency\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x33\n\tspmActive\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\xa9\x02\n\x13PVRGpuCounterMemory\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x39\n\x11gpuMemoryReadRate\x18\x03 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12:\n\x12gpuMemoryWriteRate\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12:\n\x12gpuMemoryTotalRate\x18\x05 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12@\n\x16gpuMemoryInterfaceLoad\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\xec\x01\n\x13PVRGpuCounterShader\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x41\n\x17shadedVerticesPerSecond\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\x12?\n\x15shadedPixelsPerSecond\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\x12\x32\n\x08overDraw\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\xa6\x02\n\x13IosGPUCounterBasics\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x39\n\x0etotalOccupancy\x18\x03 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12:\n\x0fvertexOccupancy\x18\x04 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12<\n\x11\x66ragmentOccupancy\x18\x05 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12;\n\x10\x63omputeOccupancy\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\"\xb5\x03\n\x13IosGPUCounterMemory\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12<\n\x11\x62ufferReadLimiter\x18\x03 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12@\n\x15\x62ufferLoadUtilization\x18\x04 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12?\n\x14textureSampleLimiter\x18\x05 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12\x43\n\x18textureSampleUtilization\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12;\n\x10gpuReadBandwidth\x18\x07 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12<\n\x11gpuWriteBandwidth\x18\x08 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\"\x9c\x02\n\x13IosGPUCounterShader\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x35\n\naluLimiter\x18\x03 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12\x39\n\x0e\x61luUtilization\x18\x04 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12\x39\n\x0e\x66\x33\x32Utilization\x18\x05 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12\x39\n\x0e\x66\x31\x36Utilization\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\"H\n\x18IosGPUCounterSampleCount\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\r\n\x05value\x18\x03 \x01(\x05\"1\n\x0c\x42\x65ginSection\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x13\n\x0bsectionName\x18\x03 \x01(\t\"\x1a\n\nEndSection\x12\x0c\n\x04time\x18\x01 \x01(\x03\"`\n\x0b\x41TraceEvent\x12\x33\n\x08\x63\x61tegory\x18\x01 \x01(\x0e\x32!.com.perfdog.proto.ATraceCategory\x12\x0b\n\x03pid\x18\x02 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\"\x8f\x01\n\x10SchedSwitchEvent\x12\x10\n\x08prevComm\x18\x01 \x01(\t\x12\x0f\n\x07prevPid\x18\x02 \x01(\x05\x12\x10\n\x08prevPrio\x18\x03 \x01(\x05\x12\x11\n\tprevState\x18\x04 \x01(\t\x12\x10\n\x08nextComm\x18\x05 \x01(\t\x12\x0f\n\x07nextPid\x18\x06 \x01(\x05\x12\x10\n\x08nextPrio\x18\x07 \x01(\x05\"-\n\x10SchedWakeupEvent\x12\x0c\n\x04\x63omm\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\x05\"\xfb\x01\n\nTraceEvent\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12\x0b\n\x03tid\x18\x02 \x01(\x05\x12\x0b\n\x03\x63pu\x18\x03 \x01(\x05\x12\x35\n\x0b\x61TraceEvent\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.ATraceEventH\x00\x12?\n\x10schedSwitchEvent\x18\x05 \x01(\x0b\x32#.com.perfdog.proto.SchedSwitchEventH\x00\x12?\n\x10schedWakeupEvent\x18\x06 \x01(\x0b\x32#.com.perfdog.proto.SchedWakeupEventH\x00\x42\x07\n\x05value\"9\n\tTraceData\x12,\n\x05\x65vent\x18\x01 \x03(\x0b\x32\x1d.com.perfdog.proto.TraceEvent\"\xbe\r\n\x0f\x41ndroidPerfData\x12-\n\x07\x66psData\x18\x01 \x01(\x0b\x32\x1a.com.perfdog.proto.FpsDataH\x00\x12\x39\n\rframeTimeData\x18\x02 \x01(\x0b\x32 .com.perfdog.proto.FrameTimeDataH\x00\x12/\n\x08jankData\x18\x03 \x01(\x0b\x32\x1b.com.perfdog.proto.JankDataH\x00\x12\x45\n\x13\x61ndroidGpuUsageData\x18\x04 \x01(\x0b\x32&.com.perfdog.proto.AndroidGpuUsageDataH\x00\x12\x35\n\x0bgpuFreqData\x18\x05 \x01(\x0b\x32\x1e.com.perfdog.proto.GpuFreqDataH\x00\x12;\n\x0e\x61ndroidMemData\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.AndroidMemDataH\x00\x12G\n\x14\x61ndroidMemDetailData\x18\x07 \x01(\x0b\x32\'.com.perfdog.proto.AndroidMemDetailDataH\x00\x12\x39\n\rcoreUsageData\x18\x08 \x01(\x0b\x32 .com.perfdog.proto.CoreUsageDataH\x00\x12\x35\n\x0b\x63puFreqData\x18\t \x01(\x0b\x32\x1e.com.perfdog.proto.CpuFreqDataH\x00\x12\x37\n\x0c\x63puUsageData\x18\n \x01(\x0b\x32\x1f.com.perfdog.proto.CpuUsageDataH\x00\x12\x35\n\x0b\x63puTempData\x18\x0b \x01(\x0b\x32\x1e.com.perfdog.proto.CpuTempDataH\x00\x12\x35\n\x0b\x62\x61tteryData\x18\x0c \x01(\x0b\x32\x1e.com.perfdog.proto.BatteryDataH\x00\x12\x35\n\x0bnetworkData\x18\r \x01(\x0b\x32\x1e.com.perfdog.proto.NetworkDataH\x00\x12\x33\n\nsyslogData\x18\x0e \x01(\x0b\x32\x1d.com.perfdog.proto.SyslogDataH\x00\x12;\n\x0escreenShotData\x18\x0f \x01(\x0b\x32!.com.perfdog.proto.ScreenShotDataH\x00\x12\x41\n\x16normalizedCpuUsageData\x18\x10 \x01(\x0b\x32\x1f.com.perfdog.proto.CpuUsageDataH\x00\x12\x46\n\x1anormalizedCpuCoreUsageData\x18\x11 \x01(\x0b\x32 .com.perfdog.proto.CoreUsageDataH\x00\x12\x45\n\x13maliGpuCounterBasic\x18\x12 \x01(\x0b\x32&.com.perfdog.proto.MaliGpuCounterBasicH\x00\x12G\n\x14maliGpuCounterShader\x18\x13 \x01(\x0b\x32\'.com.perfdog.proto.MaliGpuCounterShaderH\x00\x12G\n\x14maliGpuCounterMemory\x18\x14 \x01(\x0b\x32\'.com.perfdog.proto.MaliGpuCounterMemoryH\x00\x12\x45\n\x13qcomGpuCounterBasic\x18\x15 \x01(\x0b\x32&.com.perfdog.proto.QComGpuCounterBasicH\x00\x12G\n\x14qcomGpuCounterMemory\x18\x16 \x01(\x0b\x32\'.com.perfdog.proto.QComGpuCounterMemoryH\x00\x12G\n\x14qcomGpuCounterShader\x18\x17 \x01(\x0b\x32\'.com.perfdog.proto.QComGpuCounterShaderH\x00\x12\x43\n\x12pvrGpuCounterBasic\x18\x18 \x01(\x0b\x32%.com.perfdog.proto.PVRGpuCounterBasicH\x00\x12\x45\n\x13pvrGpuCounterMemory\x18\x19 \x01(\x0b\x32&.com.perfdog.proto.PVRGpuCounterMemoryH\x00\x12\x45\n\x13pvrGpuCounterShader\x18\x1a \x01(\x0b\x32&.com.perfdog.proto.PVRGpuCounterShaderH\x00\x12\x31\n\ttraceData\x18\x1b \x01(\x0b\x32\x1c.com.perfdog.proto.TraceDataH\x00\x42\x07\n\x05value\"\x8c\t\n\x0bIosPerfData\x12-\n\x07\x66psData\x18\x01 \x01(\x0b\x32\x1a.com.perfdog.proto.FpsDataH\x00\x12\x39\n\rframeTimeData\x18\x02 \x01(\x0b\x32 .com.perfdog.proto.FrameTimeDataH\x00\x12/\n\x08jankData\x18\x03 \x01(\x0b\x32\x1b.com.perfdog.proto.JankDataH\x00\x12=\n\x0fiosGpuUsageData\x18\x04 \x01(\x0b\x32\".com.perfdog.proto.IosGpuUsageDataH\x00\x12\x37\n\x0cios10MemData\x18\x05 \x01(\x0b\x32\x1f.com.perfdog.proto.Ios10MemDataH\x00\x12\x37\n\x0cios11MemData\x18\x06 \x01(\x0b\x32\x1f.com.perfdog.proto.Ios11MemDataH\x00\x12\x37\n\x0c\x63puUsageData\x18\x07 \x01(\x0b\x32\x1f.com.perfdog.proto.CpuUsageDataH\x00\x12\x39\n\rctxSwitchData\x18\x08 \x01(\x0b\x32 .com.perfdog.proto.CtxSwitchDataH\x00\x12\x35\n\x0bwakeupsData\x18\t \x01(\x0b\x32\x1e.com.perfdog.proto.WakeupsDataH\x00\x12\x35\n\x0b\x62\x61tteryData\x18\n \x01(\x0b\x32\x1e.com.perfdog.proto.BatteryDataH\x00\x12\x35\n\x0bnetworkData\x18\x0b \x01(\x0b\x32\x1e.com.perfdog.proto.NetworkDataH\x00\x12\x33\n\nsyslogData\x18\x0c \x01(\x0b\x32\x1d.com.perfdog.proto.SyslogDataH\x00\x12;\n\x0escreenShotData\x18\r \x01(\x0b\x32!.com.perfdog.proto.ScreenShotDataH\x00\x12\x43\n\x12iosEnergyUsageData\x18\x0e \x01(\x0b\x32%.com.perfdog.proto.IosEnergyUsageDataH\x00\x12=\n\x0f\x62\x61tteryTempData\x18\x0f \x01(\x0b\x32\".com.perfdog.proto.BatteryTempDataH\x00\x12\x44\n\x12iosGPUCounterBasic\x18\x10 \x01(\x0b\x32&.com.perfdog.proto.IosGPUCounterBasicsH\x00\x12\x45\n\x13iosGPUCounterMemory\x18\x11 \x01(\x0b\x32&.com.perfdog.proto.IosGPUCounterMemoryH\x00\x12\x45\n\x13iosGPUCounterShader\x18\x12 \x01(\x0b\x32&.com.perfdog.proto.IosGPUCounterShaderH\x00\x12\x45\n\x0eiosSampleCount\x18\x13 \x01(\x0b\x32+.com.perfdog.proto.IosGPUCounterSampleCountH\x00\x42\x07\n\x05value\"\xac\x02\n\x08PerfData\x12\x35\n\x0bwarningData\x18\x01 \x01(\x0b\x32\x1e.com.perfdog.proto.WarningDataH\x00\x12\x31\n\terrorData\x18\x02 \x01(\x0b\x32\x1c.com.perfdog.proto.ErrorDataH\x00\x12=\n\x0f\x61ndroidPerfData\x18\x03 \x01(\x0b\x32\".com.perfdog.proto.AndroidPerfDataH\x00\x12\x35\n\x0biosPerfData\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.IosPerfDataH\x00\x12\x37\n\x0cstartTestRet\x18\x05 \x01(\x0b\x32\x1f.com.perfdog.proto.StartTestRetH\x00\x42\x07\n\x05value\"\xf2\x01\n\rCachePerfData\x12-\n\x07\x61ppInfo\x18\x01 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfoH\x00\x12=\n\x0f\x41ndroidPerfData\x18\x02 \x01(\x0b\x32\".com.perfdog.proto.AndroidPerfDataH\x00\x12\x35\n\x0bIosPerfData\x18\x03 \x01(\x0b\x32\x1e.com.perfdog.proto.IosPerfDataH\x00\x12\x33\n\nDeviceInfo\x18\x04 \x01(\x0b\x32\x1d.com.perfdog.proto.DeviceInfoH\x00\x42\x07\n\x05value\"7\n\x0eScreenshotFile\x12\x10\n\x08\x66ileName\x18\x01 \x01(\t\x12\x13\n\x0b\x66ileContent\x18\x02 \x01(\x0c\"\x7f\n\x13\x43\x61\x63hePerfDataPacked\x12\x12\n\x08perfData\x18\x01 \x01(\x0cH\x00\x12\x0e\n\x04icon\x18\x02 \x01(\x0cH\x00\x12;\n\x0escreenshotFile\x18\x03 \x01(\x0b\x32!.com.perfdog.proto.ScreenshotFileH\x00\x42\x07\n\x05value\"G\n\x0bSetLabelReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\r\n\x05label\x18\x02 \x01(\t\"\x1b\n\x0bSetLabelRet\x12\x0c\n\x04time\x18\x01 \x01(\x03\"X\n\x0eUpdateLabelReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x0c\n\x04time\x18\x02 \x01(\x03\x12\r\n\x05label\x18\x03 \x01(\t\"S\n\nAddNoteReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x0c\n\x04time\x18\x02 \x01(\x03\x12\x0c\n\x04note\x18\x03 \x01(\t\"H\n\rRemoveNoteReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x0c\n\x04time\x18\x02 \x01(\x03\"o\n\x16SetDataUploadServerReq\x12\x11\n\tserverUrl\x18\x01 \x01(\t\x12\x42\n\x10\x64\x61taUploadFormat\x18\x02 \x01(\x0e\x32(.com.perfdog.proto.DataInterchangeFormat\"\x18\n\x16SetDataUploadServerRsp\"\xf4\x01\n\x0bSaveDataReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x11\n\tbeginTime\x18\x02 \x01(\x03\x12\x0f\n\x07\x65ndTime\x18\x03 \x01(\x03\x12\x10\n\x08\x63\x61seName\x18\x04 \x01(\t\x12\x16\n\x0euploadToServer\x18\x05 \x01(\x08\x12\x14\n\x0c\x65xportToFile\x18\x06 \x01(\x08\x12\x17\n\x0foutputDirectory\x18\x07 \x01(\t\x12=\n\x10\x64\x61taExportFormat\x18\x08 \x01(\x0e\x32#.com.perfdog.proto.DataExportFormat\"7\n\x14UploadToServerResult\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0e\n\x06\x63\x61seId\x18\x02 \x01(\t\"7\n\x12\x45xportToFileResult\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x10\n\x08\x66ilePath\x18\x02 \x01(\t\"\x89\x01\n\x0bSaveDataRsp\x12=\n\x0cuploadResult\x18\x01 \x01(\x0b\x32\'.com.perfdog.proto.UploadToServerResult\x12;\n\x0c\x65xportResult\x18\x02 \x01(\x0b\x32%.com.perfdog.proto.ExportToFileResult\"m\n\x17GetAppRunningProcessReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\'\n\x03\x61pp\x18\x02 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\"i\n\x13GetAppWindowsMapReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\'\n\x03\x61pp\x18\x02 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\"7\n\x0bProcessInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05isTop\x18\x02 \x01(\x08\x12\x0b\n\x03pid\x18\x03 \x01(\x05\"N\n\x17GetAppRunningProcessRet\x12\x33\n\x0bprocessInfo\x18\x01 \x03(\x0b\x32\x1e.com.perfdog.proto.ProcessInfo\"\x19\n\tAppWindow\x12\x0c\n\x04name\x18\x01 \x03(\t\"\xbb\x01\n\x13GetAppWindowsMapRet\x12P\n\rpid2WindowMap\x18\x01 \x03(\x0b\x32\x39.com.perfdog.proto.GetAppWindowsMapRet.Pid2WindowMapEntry\x1aR\n\x12Pid2WindowMapEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12+\n\x05value\x18\x02 \x01(\x0b\x32\x1c.com.perfdog.proto.AppWindow:\x02\x38\x01\"+\n\x0eSysProcessInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\x05\"Q\n\x17GetRunningSysProcessRet\x12\x36\n\x0bprocessInfo\x18\x01 \x03(\x0b\x32!.com.perfdog.proto.SysProcessInfo\"\x93\x01\n\x12IosEnergyUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0b\n\x03\x63pu\x18\x03 \x01(\x05\x12\x0b\n\x03gpu\x18\x04 \x01(\x05\x12\x0f\n\x07network\x18\x05 \x01(\x05\x12\x10\n\x08location\x18\x06 \x01(\x05\x12\x0f\n\x07\x64isplay\x18\x07 \x01(\x05\x12\x10\n\x08overhead\x18\x08 \x01(\x05\"f\n\x10UpdateAppInfoReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\'\n\x03\x61pp\x18\x02 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\";\n\x10UpdateAppInfoRet\x12\'\n\x03\x61pp\x18\x01 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\"B\n\x15GetDeviceCacheDataReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"\x86\x01\n\x1bGetDeviceCacheDataPackedReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12<\n\ndataFormat\x18\x02 \x01(\x0e\x32(.com.perfdog.proto.DataInterchangeFormat\"!\n\rCreateTaskReq\x12\x10\n\x08taskName\x18\x01 \x01(\t\"\x1f\n\rCreateTaskRsp\x12\x0e\n\x06taskId\x18\x01 \x01(\t\"6\n\x14\x41rchiveCaseToTaskReq\x12\x0e\n\x06\x63\x61seId\x18\x01 \x01(\t\x12\x0e\n\x06taskId\x18\x02 \x01(\t\"\x16\n\x14\x41rchiveCaseToTaskRsp\"G\n\x0cShareCaseReq\x12\x0e\n\x06\x63\x61seId\x18\x01 \x01(\t\x12\x12\n\nexpireTime\x18\x02 \x01(\x05\x12\x13\n\x0bnonPassword\x18\x03 \x01(\x08\"1\n\x0cShareCaseRsp\x12\x0f\n\x07\x63\x61seUrl\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\";\n\rDeviceListRsp\x12*\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32\x19.com.perfdog.proto.Device\"-\n\x0bPreferences\x12\x1e\n\x16\x64oNotInstallPerfDogApp\x18\x01 \x01(\x08\"H\n\x11SetPreferencesReq\x12\x33\n\x0bpreferences\x18\x01 \x01(\x0b\x32\x1e.com.perfdog.proto.Preferences\"\x13\n\x11SetPreferencesRsp\"C\n\x16GetRenderResolutionReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"7\n\x16GetRenderResolutionRet\x12\r\n\x05width\x18\x01 \x01(\x05\x12\x0e\n\x06height\x18\x02 \x01(\x05\":\n\rGetCpuInfoReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"5\n\rGetCpuInfoRsp\x12\x0f\n\x07\x63oreNum\x18\x01 \x01(\x05\x12\x13\n\x0b\x63oreMaxFreq\x18\x02 \x03(\x05*\'\n\x10\x44\x45VICE_EVENTTYPE\x12\x07\n\x03\x41\x44\x44\x10\x00\x12\n\n\x06REMOVE\x10\x01*%\n\rDEVICE_OSTYPE\x12\x0b\n\x07\x41NDROID\x10\x00\x12\x07\n\x03IOS\x10\x01*#\n\x0e\x44\x45VICE_CONTYPE\x12\x07\n\x03USB\x10\x00\x12\x08\n\x04WIFI\x10\x01*\xe4\x03\n\x0cPerfDataType\x12\x0f\n\x0b\x44\x41TAID_NONE\x10\x00\x12\r\n\tCPU_USAGE\x10\x01\x12\r\n\tGPU_USAGE\x10\x02\x12\x0c\n\x08GPU_FREQ\x10\x03\x12\x07\n\x03\x46PS\x10\x04\x12\x11\n\rNETWORK_USAGE\x10\x05\x12\x19\n\x15\x41NDROID_MEMORY_DETAIL\x10\x06\x12\n\n\x06MEMORY\x10\x07\x12\x0b\n\x07\x42\x41TTERY\x10\x08\x12\x13\n\x0f\x43PU_TEMPERATURE\x10\t\x12\x0e\n\nFRAME_TIME\x10\n\x12\x0e\n\nCTX_SWITCH\x10\x0b\x12\n\n\x06WAKEUP\x10\x0c\x12\x0f\n\x0bSCREEN_SHOT\x10\r\x12\x0e\n\nSYSTEM_LOG\x10\x0e\x12\x12\n\x0e\x43ORE_FREQUENCY\x10\x0f\x12\x0e\n\nCORE_USAGE\x10\x10\x12\x11\n\rIOS_GPU_USAGE\x10\x11\x12\x14\n\x10IOS_ENERGY_USAGE\x10\x12\x12\x17\n\x13\x42\x41TTERY_TEMPERATURE\x10\x13\x12\x18\n\x14NORMALIZED_CPU_USAGE\x10\x14\x12\x1d\n\x19NORMALIZED_CPU_CORE_USAGE\x10\x15\x12\x16\n\x12GPU_COUNTER_BASICS\x10\x16\x12\x16\n\x12GPU_COUNTER_MEMORY\x10\x17\x12\x16\n\x12GPU_COUNTER_SHADER\x10\x18*^\n\x0e\x41TraceCategory\x12\x0b\n\x07INVALID\x10\x00\x12\t\n\x05\x42\x45GIN\x10\x01\x12\x07\n\x03\x45ND\x10\x02\x12\x0f\n\x0b\x41SYNC_BEGIN\x10\x03\x12\r\n\tASYNC_END\x10\x04\x12\x0b\n\x07\x43OUNTER\x10\x05*S\n\x10\x44\x61taExportFormat\x12\x13\n\x0f\x45XPORT_TO_EXCEL\x10\x00\x12\x12\n\x0e\x45XPORT_TO_JSON\x10\x01\x12\x16\n\x12\x45XPORT_TO_PROTOBUF\x10\x02*/\n\x15\x44\x61taInterchangeFormat\x12\x08\n\x04JSON\x10\x00\x12\x0c\n\x08PROTOBUF\x10\x01\x32\x83\x1a\n\x0ePerfDogService\x12I\n\x0eloginWithToken\x12\x18.com.perfdog.proto.Token\x1a\x1b.com.perfdog.proto.UserInfo\"\x00\x12M\n\rgetDeviceList\x12\x18.com.perfdog.proto.Empty\x1a .com.perfdog.proto.DeviceListRsp\"\x00\x12R\n\x12startDeviceMonitor\x12\x18.com.perfdog.proto.Empty\x1a\x1e.com.perfdog.proto.DeviceEvent\"\x00\x30\x01\x12\x43\n\ninitDevice\x12\x19.com.perfdog.proto.Device\x1a\x18.com.perfdog.proto.Empty\"\x00\x12K\n\rgetDeviceInfo\x12\x19.com.perfdog.proto.Device\x1a\x1d.com.perfdog.proto.DeviceInfo\"\x00\x12O\n\x0fgetDeviceStatus\x12\x19.com.perfdog.proto.Device\x1a\x1f.com.perfdog.proto.DeviceStatus\"\x00\x12\x45\n\ngetAppList\x12\x19.com.perfdog.proto.Device\x1a\x1a.com.perfdog.proto.AppList\"\x00\x12Z\n\x12\x65nablePerfDataType\x12(.com.perfdog.proto.EnablePerfDataTypeReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12\\\n\x13\x64isablePerfDataType\x12).com.perfdog.proto.DisablePerfDataTypeReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12R\n\x0fgetPerfDataType\x12\x19.com.perfdog.proto.Device\x1a\".com.perfdog.proto.PerfDataTypeRet\"\x00\x12W\n\x14getAvailableDataType\x12\x19.com.perfdog.proto.Device\x1a\".com.perfdog.proto.PerfDataTypeRet\"\x00\x12Z\n\x15setScreenShotInterval\x12%.com.perfdog.proto.ScreenShotInterval\x1a\x18.com.perfdog.proto.Empty\"\x00\x12[\n\x14StartTestAppInternal\x12\".com.perfdog.proto.StartTestAppReq\x1a\x1b.com.perfdog.proto.PerfData\"\x00\x30\x01\x12i\n\x1bStartTestSysProcessInternal\x12).com.perfdog.proto.StartTestSysProcessReq\x1a\x1b.com.perfdog.proto.PerfData\"\x00\x30\x01\x12U\n\x0cstartTestApp\x12\".com.perfdog.proto.StartTestAppReq\x1a\x1f.com.perfdog.proto.StartTestRet\"\x00\x12\x63\n\x13startTestSysProcess\x12).com.perfdog.proto.StartTestSysProcessReq\x1a\x1f.com.perfdog.proto.StartTestRet\"\x00\x12_\n\x12openPerfDataStream\x12(.com.perfdog.proto.OpenPerfDataStreamReq\x1a\x1b.com.perfdog.proto.PerfData\"\x00\x30\x01\x12\x46\n\x08stopTest\x12\x1e.com.perfdog.proto.StopTestReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12L\n\x08setLabel\x12\x1e.com.perfdog.proto.SetLabelReq\x1a\x1e.com.perfdog.proto.SetLabelRet\"\x00\x12L\n\x0bupdateLabel\x12!.com.perfdog.proto.UpdateLabelReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12\x44\n\x07\x61\x64\x64Note\x12\x1d.com.perfdog.proto.AddNoteReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12J\n\nremoveNote\x12 .com.perfdog.proto.RemoveNoteReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12s\n\x19setGlobalDataUploadServer\x12).com.perfdog.proto.SetDataUploadServerReq\x1a).com.perfdog.proto.SetDataUploadServerRsp\"\x00\x12L\n\x08saveData\x12\x1e.com.perfdog.proto.SaveDataReq\x1a\x1e.com.perfdog.proto.SaveDataRsp\"\x00\x12\x64\n\x12getDeviceCacheData\x12(.com.perfdog.proto.GetDeviceCacheDataReq\x1a .com.perfdog.proto.CachePerfData\"\x00\x30\x01\x12v\n\x18getDeviceCacheDataPacked\x12..com.perfdog.proto.GetDeviceCacheDataPackedReq\x1a&.com.perfdog.proto.CachePerfDataPacked\"\x00\x30\x01\x12p\n\x14getAppRunningProcess\x12*.com.perfdog.proto.GetAppRunningProcessReq\x1a*.com.perfdog.proto.GetAppRunningProcessRet\"\x00\x12\x64\n\x10getAppWindowsMap\x12&.com.perfdog.proto.GetAppWindowsMapReq\x1a&.com.perfdog.proto.GetAppWindowsMapRet\"\x00\x12_\n\x14getRunningSysProcess\x12\x19.com.perfdog.proto.Device\x1a*.com.perfdog.proto.GetRunningSysProcessRet\"\x00\x12[\n\rupdateAppInfo\x12#.com.perfdog.proto.UpdateAppInfoReq\x1a#.com.perfdog.proto.UpdateAppInfoRet\"\x00\x12R\n\ncreateTask\x12 .com.perfdog.proto.CreateTaskReq\x1a .com.perfdog.proto.CreateTaskRsp\"\x00\x12g\n\x11\x61rchiveCaseToTask\x12\'.com.perfdog.proto.ArchiveCaseToTaskReq\x1a\'.com.perfdog.proto.ArchiveCaseToTaskRsp\"\x00\x12O\n\tshareCase\x12\x1f.com.perfdog.proto.ShareCaseReq\x1a\x1f.com.perfdog.proto.ShareCaseRsp\"\x00\x12^\n\x0esetPreferences\x12$.com.perfdog.proto.SetPreferencesReq\x1a$.com.perfdog.proto.SetPreferencesRsp\"\x00\x12~\n$getRenderResolutionOfWindowUnderTest\x12).com.perfdog.proto.GetRenderResolutionReq\x1a).com.perfdog.proto.GetRenderResolutionRet\"\x00\x12R\n\ngetCpuInfo\x12 .com.perfdog.proto.GetCpuInfoReq\x1a .com.perfdog.proto.GetCpuInfoRsp\"\x00\x12\x42\n\nkillServer\x12\x18.com.perfdog.proto.Empty\x1a\x18.com.perfdog.proto.Empty\"\x00\x42\x02P\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rperfdog.proto\x12\x11\x63om.perfdog.proto\"\x1c\n\x0bOptionalInt\x12\r\n\x05value\x18\x01 \x01(\x05\"\x1e\n\rOptionalInt64\x12\r\n\x05value\x18\x01 \x01(\x03\"\x1e\n\rOptionalFloat\x12\r\n\x05value\x18\x01 \x01(\x02\"\x1f\n\x0eOptionalDouble\x12\r\n\x05value\x18\x01 \x01(\x01\"\x07\n\x05\x45mpty\"\x16\n\x05Token\x12\r\n\x05token\x18\x01 \x01(\t\"@\n\x08UserInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03pic\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\n\n\x02id\x18\x04 \x01(\t\"\x89\x01\n\x06\x44\x65vice\x12\x30\n\x06osType\x18\x01 \x01(\x0e\x32 .com.perfdog.proto.DEVICE_OSTYPE\x12\x32\n\x07\x63onType\x18\x02 \x01(\x0e\x32!.com.perfdog.proto.DEVICE_CONTYPE\x12\x0b\n\x03uid\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\"p\n\x0b\x44\x65viceEvent\x12\x36\n\teventType\x18\x01 \x01(\x0e\x32#.com.perfdog.proto.DEVICE_EVENTTYPE\x12)\n\x06\x64\x65vice\x18\x02 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"s\n\nDeviceInfo\x12\x37\n\x05value\x18\x01 \x03(\x0b\x32(.com.perfdog.proto.DeviceInfo.ValueEntry\x1a,\n\nValueEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"Q\n\x0c\x44\x65viceStatus\x12\x0f\n\x07isValid\x18\x01 \x01(\x08\x12\x11\n\tisTesting\x18\x02 \x01(\x08\x12\x1d\n\x15isPerfDogAppInstalled\x18\x03 \x01(\x08\"\x9e\x01\n\x07\x41ppInfo\x12\r\n\x05label\x18\x01 \x01(\t\x12\x13\n\x0bpackageName\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\t\x12\x13\n\x0bprocessList\x18\x04 \x03(\t\x12\x0c\n\x04icon\x18\x05 \x01(\x0c\x12\x13\n\x0bisSystemApp\x18\x06 \x01(\x08\x12\x12\n\nsubVersion\x18\x07 \x01(\t\x12\x12\n\ndebuggable\x18\x08 \x01(\x08\"2\n\x07\x41ppList\x12\'\n\x03\x61pp\x18\x01 \x03(\x0b\x32\x1a.com.perfdog.proto.AppInfo\"q\n\x15\x45nablePerfDataTypeReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12-\n\x04type\x18\x02 \x01(\x0e\x32\x1f.com.perfdog.proto.PerfDataType\"r\n\x16\x44isablePerfDataTypeReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12-\n\x04type\x18\x02 \x01(\x0e\x32\x1f.com.perfdog.proto.PerfDataType\"@\n\x0fPerfDataTypeRet\x12-\n\x04type\x18\x01 \x03(\x0e\x32\x1f.com.perfdog.proto.PerfDataType\"O\n\x12ScreenShotInterval\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x0e\n\x06second\x18\x02 \x01(\x05\"\xa8\x01\n\x0fStartTestAppReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\'\n\x03\x61pp\x18\x02 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\x12\x12\n\nsubProcess\x18\x03 \x01(\t\x12\x1a\n\x12hideFloatingWindow\x18\x04 \x01(\x08\x12\x11\n\tsubWindow\x18\x05 \x01(\t\"\x9a\x01\n\x16StartTestSysProcessReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x39\n\x0esysProcessInfo\x18\x02 \x01(\x0b\x32!.com.perfdog.proto.SysProcessInfo\x12\x1a\n\x12hideFloatingWindow\x18\x03 \x01(\x08\"\x1b\n\x0cStartTestRet\x12\x0b\n\x03ret\x18\x01 \x01(\x05\"B\n\x15OpenPerfDataStreamReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"8\n\x0bStopTestReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"S\n\tFrameTime\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x11\n\tframeTime\x18\x03 \x01(\x01\x12\x14\n\x0cisInterFrame\x18\x04 \x01(\x08\"\x89\x01\n\x07\x46psData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0b\n\x03\x66ps\x18\x03 \x01(\x01\x12\r\n\x05label\x18\x04 \x01(\t\x12\x0c\n\x04note\x18\x05 \x01(\t\x12\x35\n\nInterFrame\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\"@\n\rFrameTimeData\x12/\n\tframeTime\x18\x01 \x03(\x0b\x32\x1c.com.perfdog.proto.FrameTime\"\x84\x01\n\x08JankData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04jank\x18\x03 \x01(\x05\x12\x0f\n\x07\x62igJank\x18\x04 \x01(\x05\x12\x0f\n\x07stutter\x18\x05 \x01(\x01\x12\x11\n\tsmallJank\x18\x06 \x01(\x05\x12\x16\n\x0e\x66rameStability\x18\x07 \x01(\x01\"F\n\x13\x41ndroidGpuUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x10\n\x08gpuUsage\x18\x03 \x01(\x01\"n\n\x0fIosGpuUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x13\n\x0brenderUsage\x18\x03 \x01(\x02\x12\x12\n\ntilerUsage\x18\x04 \x01(\x02\x12\x13\n\x0b\x64\x65viceUsage\x18\x05 \x01(\x02\"=\n\x0bGpuFreqData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0f\n\x07gpuFreq\x18\x03 \x01(\x05\"z\n\x0e\x41ndroidMemData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0b\n\x03pss\x18\x03 \x01(\x05\x12\x0c\n\x04swap\x18\x04 \x01(\x05\x12\x15\n\rvirtualMemory\x18\x05 \x01(\x05\x12\x17\n\x0f\x61vailableMemory\x18\x06 \x01(\x05\"\xc8\x08\n\x14\x41ndroidMemDetailData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x11\n\tnativePss\x18\x03 \x01(\x05\x12\x0b\n\x03gfx\x18\x04 \x01(\x05\x12\n\n\x02gl\x18\x05 \x01(\x05\x12\x0f\n\x07unknown\x18\x06 \x01(\x05\x12\x10\n\x08javaHeap\x18\x07 \x01(\x05\x12\x12\n\ndalvikHeap\x18\x08 \x01(\x05\x12\x33\n\x0b\x64\x61lvikOther\x18\t \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12-\n\x05stack\x18\n \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12.\n\x06\x63ursor\x18\x0b \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12.\n\x06\x61shmem\x18\x0c \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08otherDev\x18\r \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12.\n\x06soMmap\x18\x0e \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07jarMmap\x18\x0f \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07\x61pkMmap\x18\x10 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07ttfMmap\x18\x11 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07\x64\x65xMmap\x18\x12 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08\x63odeMmap\x18\x13 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x31\n\timageMmap\x18\x14 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x31\n\totherMmap\x18\x15 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08graphics\x18\x16 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08memtrack\x18\x17 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07oatMmap\x18\x18 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07\x61rtMmap\x18\x19 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x31\n\teglMtrack\x18\x1a \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x33\n\x0botherMtrack\x18\x1b \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\"q\n\x0cIos10MemData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x12\n\nrealMemory\x18\x03 \x01(\x05\x12\x15\n\rvirtualMemory\x18\x04 \x01(\x05\x12\x17\n\x0f\x61vailableMemory\x18\x05 \x01(\x05\"\x96\x01\n\x0cIos11MemData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x13\n\x0bxcodeMemory\x18\x03 \x01(\x05\x12\x12\n\nrealMemory\x18\x04 \x01(\x05\x12\x0e\n\x06memory\x18\x05 \x01(\x05\x12\x15\n\rvirtualMemory\x18\x06 \x01(\x05\x12\x17\n\x0f\x61vailableMemory\x18\x07 \x01(\x05\"A\n\rCoreUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x11\n\tcoreUsage\x18\x03 \x03(\x02\"=\n\x0b\x43puFreqData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0f\n\x07\x63puFreq\x18\x03 \x03(\x05\"S\n\x0c\x43puUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x10\n\x08\x61ppUsage\x18\x03 \x01(\x01\x12\x12\n\ntotalUsage\x18\x04 \x01(\x01\":\n\x0b\x43puTempData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04temp\x18\x03 \x01(\x05\">\n\x0f\x42\x61tteryTempData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04temp\x18\x03 \x01(\x05\":\n\x0bGpuTempData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04temp\x18\x03 \x01(\x05\":\n\x0bNpuTempData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04temp\x18\x03 \x01(\x05\"A\n\rCtxSwitchData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x11\n\tctxSwitch\x18\x03 \x01(\x03\"=\n\x0bWakeupsData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0f\n\x07wakeups\x18\x03 \x01(\x03\"]\n\x0b\x42\x61tteryData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0f\n\x07\x63urrent\x18\x03 \x01(\x05\x12\x0f\n\x07voltage\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x05\"N\n\x0bNetworkData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0e\n\x06upload\x18\x03 \x01(\x05\x12\x10\n\x08\x64ownload\x18\x04 \x01(\x05\"\x19\n\nSyslogData\x12\x0b\n\x03log\x18\x01 \x01(\t\"=\n\x0eScreenShotData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\"\x1a\n\x0bWarningData\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x18\n\tErrorData\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\xab\x02\n\x13MaliGpuCounterBasic\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12@\n\x16nonFragmentUtilization\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12=\n\x13\x66ragmentUtilization\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12:\n\x10tilerUtilization\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x38\n\x0egpuActiveCycle\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\x99\x02\n\x14MaliGpuCounterShader\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x32\n\x08overDraw\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x39\n\x0fpixelThroughput\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12:\n\x10nonFragmentWarps\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\x12\x37\n\rfragmentWarps\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\"\x88\x02\n\x14MaliGpuCounterMemory\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x37\n\x0fl2LoadStoreRead\x18\x03 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x35\n\rl2TextureRead\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12/\n\x07\x62usRead\x18\x05 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x30\n\x08\x62usWrite\x18\x06 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\"\xa2\x02\n\x13QComGpuCounterBasic\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x38\n\x0egpuUtilization\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x34\n\ngpuBusBusy\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x35\n\x0bshadersBusy\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x45\n\x1bpreClippedPolygonsPerSecond\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\"\x96\x02\n\x14QComGpuCounterMemory\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x31\n\treadTotal\x18\x03 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x32\n\nwriteTotal\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12\x37\n\rtextureL2Miss\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12?\n\x15stalledOnSystemMemory\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\xbc\x01\n\x14QComGpuCounterShader\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x41\n\x17verticesShadedPerSecond\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\x12\x42\n\x18\x66ragmentsShadedPerSecond\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\"\x92\x02\n\x12PVRGpuCounterBasic\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x38\n\x0erendererActive\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x35\n\x0btilerActive\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x37\n\rhsrEfficiency\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\x12\x33\n\tspmActive\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\xa9\x02\n\x13PVRGpuCounterMemory\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x39\n\x11gpuMemoryReadRate\x18\x03 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12:\n\x12gpuMemoryWriteRate\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12:\n\x12gpuMemoryTotalRate\x18\x05 \x01(\x0b\x32\x1e.com.perfdog.proto.OptionalInt\x12@\n\x16gpuMemoryInterfaceLoad\x18\x06 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\xec\x01\n\x13PVRGpuCounterShader\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x41\n\x17shadedVerticesPerSecond\x18\x03 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\x12?\n\x15shadedPixelsPerSecond\x18\x04 \x01(\x0b\x32 .com.perfdog.proto.OptionalInt64\x12\x32\n\x08overDraw\x18\x05 \x01(\x0b\x32 .com.perfdog.proto.OptionalFloat\"\xa6\x02\n\x13IosGPUCounterBasics\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x39\n\x0etotalOccupancy\x18\x03 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12:\n\x0fvertexOccupancy\x18\x04 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12<\n\x11\x66ragmentOccupancy\x18\x05 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12;\n\x10\x63omputeOccupancy\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\"\xb5\x03\n\x13IosGPUCounterMemory\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12<\n\x11\x62ufferReadLimiter\x18\x03 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12@\n\x15\x62ufferLoadUtilization\x18\x04 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12?\n\x14textureSampleLimiter\x18\x05 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12\x43\n\x18textureSampleUtilization\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12;\n\x10gpuReadBandwidth\x18\x07 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12<\n\x11gpuWriteBandwidth\x18\x08 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\"\x9c\x02\n\x13IosGPUCounterShader\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x35\n\naluLimiter\x18\x03 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12\x39\n\x0e\x61luUtilization\x18\x04 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12\x39\n\x0e\x66\x33\x32Utilization\x18\x05 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\x12\x39\n\x0e\x66\x31\x36Utilization\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.OptionalDouble\"H\n\x18IosGPUCounterSampleCount\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\r\n\x05value\x18\x03 \x01(\x05\"^\n\x18PerFramePowerConsumption\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12#\n\x1b\x61vgPerFramePowerConsumption\x18\x03 \x01(\x01\"\x89\x0f\n\x0f\x41ndroidPerfData\x12-\n\x07\x66psData\x18\x01 \x01(\x0b\x32\x1a.com.perfdog.proto.FpsDataH\x00\x12\x39\n\rframeTimeData\x18\x02 \x01(\x0b\x32 .com.perfdog.proto.FrameTimeDataH\x00\x12/\n\x08jankData\x18\x03 \x01(\x0b\x32\x1b.com.perfdog.proto.JankDataH\x00\x12\x45\n\x13\x61ndroidGpuUsageData\x18\x04 \x01(\x0b\x32&.com.perfdog.proto.AndroidGpuUsageDataH\x00\x12\x35\n\x0bgpuFreqData\x18\x05 \x01(\x0b\x32\x1e.com.perfdog.proto.GpuFreqDataH\x00\x12;\n\x0e\x61ndroidMemData\x18\x06 \x01(\x0b\x32!.com.perfdog.proto.AndroidMemDataH\x00\x12G\n\x14\x61ndroidMemDetailData\x18\x07 \x01(\x0b\x32\'.com.perfdog.proto.AndroidMemDetailDataH\x00\x12\x39\n\rcoreUsageData\x18\x08 \x01(\x0b\x32 .com.perfdog.proto.CoreUsageDataH\x00\x12\x35\n\x0b\x63puFreqData\x18\t \x01(\x0b\x32\x1e.com.perfdog.proto.CpuFreqDataH\x00\x12\x37\n\x0c\x63puUsageData\x18\n \x01(\x0b\x32\x1f.com.perfdog.proto.CpuUsageDataH\x00\x12\x35\n\x0b\x63puTempData\x18\x0b \x01(\x0b\x32\x1e.com.perfdog.proto.CpuTempDataH\x00\x12\x35\n\x0b\x62\x61tteryData\x18\x0c \x01(\x0b\x32\x1e.com.perfdog.proto.BatteryDataH\x00\x12\x35\n\x0bnetworkData\x18\r \x01(\x0b\x32\x1e.com.perfdog.proto.NetworkDataH\x00\x12\x33\n\nsyslogData\x18\x0e \x01(\x0b\x32\x1d.com.perfdog.proto.SyslogDataH\x00\x12;\n\x0escreenShotData\x18\x0f \x01(\x0b\x32!.com.perfdog.proto.ScreenShotDataH\x00\x12\x41\n\x16normalizedCpuUsageData\x18\x10 \x01(\x0b\x32\x1f.com.perfdog.proto.CpuUsageDataH\x00\x12\x46\n\x1anormalizedCpuCoreUsageData\x18\x11 \x01(\x0b\x32 .com.perfdog.proto.CoreUsageDataH\x00\x12\x45\n\x13maliGpuCounterBasic\x18\x12 \x01(\x0b\x32&.com.perfdog.proto.MaliGpuCounterBasicH\x00\x12G\n\x14maliGpuCounterShader\x18\x13 \x01(\x0b\x32\'.com.perfdog.proto.MaliGpuCounterShaderH\x00\x12G\n\x14maliGpuCounterMemory\x18\x14 \x01(\x0b\x32\'.com.perfdog.proto.MaliGpuCounterMemoryH\x00\x12\x45\n\x13qcomGpuCounterBasic\x18\x15 \x01(\x0b\x32&.com.perfdog.proto.QComGpuCounterBasicH\x00\x12G\n\x14qcomGpuCounterMemory\x18\x16 \x01(\x0b\x32\'.com.perfdog.proto.QComGpuCounterMemoryH\x00\x12G\n\x14qcomGpuCounterShader\x18\x17 \x01(\x0b\x32\'.com.perfdog.proto.QComGpuCounterShaderH\x00\x12\x43\n\x12pvrGpuCounterBasic\x18\x18 \x01(\x0b\x32%.com.perfdog.proto.PVRGpuCounterBasicH\x00\x12\x45\n\x13pvrGpuCounterMemory\x18\x19 \x01(\x0b\x32&.com.perfdog.proto.PVRGpuCounterMemoryH\x00\x12\x45\n\x13pvrGpuCounterShader\x18\x1a \x01(\x0b\x32&.com.perfdog.proto.PVRGpuCounterShaderH\x00\x12O\n\x18perFramePowerConsumption\x18\x1c \x01(\x0b\x32+.com.perfdog.proto.PerFramePowerConsumptionH\x00\x12=\n\x0f\x62\x61tteryTempData\x18\x1d \x01(\x0b\x32\".com.perfdog.proto.BatteryTempDataH\x00\x12\x35\n\x0bgpuTempData\x18\x1e \x01(\x0b\x32\x1e.com.perfdog.proto.GpuTempDataH\x00\x12\x35\n\x0bnpuTempData\x18\x1f \x01(\x0b\x32\x1e.com.perfdog.proto.NpuTempDataH\x00\x42\x07\n\x05value\"\x9a\n\n\x0bIosPerfData\x12-\n\x07\x66psData\x18\x01 \x01(\x0b\x32\x1a.com.perfdog.proto.FpsDataH\x00\x12\x39\n\rframeTimeData\x18\x02 \x01(\x0b\x32 .com.perfdog.proto.FrameTimeDataH\x00\x12/\n\x08jankData\x18\x03 \x01(\x0b\x32\x1b.com.perfdog.proto.JankDataH\x00\x12=\n\x0fiosGpuUsageData\x18\x04 \x01(\x0b\x32\".com.perfdog.proto.IosGpuUsageDataH\x00\x12\x37\n\x0cios10MemData\x18\x05 \x01(\x0b\x32\x1f.com.perfdog.proto.Ios10MemDataH\x00\x12\x37\n\x0cios11MemData\x18\x06 \x01(\x0b\x32\x1f.com.perfdog.proto.Ios11MemDataH\x00\x12\x37\n\x0c\x63puUsageData\x18\x07 \x01(\x0b\x32\x1f.com.perfdog.proto.CpuUsageDataH\x00\x12\x39\n\rctxSwitchData\x18\x08 \x01(\x0b\x32 .com.perfdog.proto.CtxSwitchDataH\x00\x12\x35\n\x0bwakeupsData\x18\t \x01(\x0b\x32\x1e.com.perfdog.proto.WakeupsDataH\x00\x12\x35\n\x0b\x62\x61tteryData\x18\n \x01(\x0b\x32\x1e.com.perfdog.proto.BatteryDataH\x00\x12\x35\n\x0bnetworkData\x18\x0b \x01(\x0b\x32\x1e.com.perfdog.proto.NetworkDataH\x00\x12\x33\n\nsyslogData\x18\x0c \x01(\x0b\x32\x1d.com.perfdog.proto.SyslogDataH\x00\x12;\n\x0escreenShotData\x18\r \x01(\x0b\x32!.com.perfdog.proto.ScreenShotDataH\x00\x12\x43\n\x12iosEnergyUsageData\x18\x0e \x01(\x0b\x32%.com.perfdog.proto.IosEnergyUsageDataH\x00\x12=\n\x0f\x62\x61tteryTempData\x18\x0f \x01(\x0b\x32\".com.perfdog.proto.BatteryTempDataH\x00\x12\x44\n\x12iosGPUCounterBasic\x18\x10 \x01(\x0b\x32&.com.perfdog.proto.IosGPUCounterBasicsH\x00\x12\x45\n\x13iosGPUCounterMemory\x18\x11 \x01(\x0b\x32&.com.perfdog.proto.IosGPUCounterMemoryH\x00\x12\x45\n\x13iosGPUCounterShader\x18\x12 \x01(\x0b\x32&.com.perfdog.proto.IosGPUCounterShaderH\x00\x12\x45\n\x0eiosSampleCount\x18\x13 \x01(\x0b\x32+.com.perfdog.proto.IosGPUCounterSampleCountH\x00\x12;\n\x11\x64\x65viceNetworkData\x18\x14 \x01(\x0b\x32\x1e.com.perfdog.proto.NetworkDataH\x00\x12O\n\x18perFramePowerConsumption\x18\x15 \x01(\x0b\x32+.com.perfdog.proto.PerFramePowerConsumptionH\x00\x42\x07\n\x05value\"\xac\x02\n\x08PerfData\x12\x35\n\x0bwarningData\x18\x01 \x01(\x0b\x32\x1e.com.perfdog.proto.WarningDataH\x00\x12\x31\n\terrorData\x18\x02 \x01(\x0b\x32\x1c.com.perfdog.proto.ErrorDataH\x00\x12=\n\x0f\x61ndroidPerfData\x18\x03 \x01(\x0b\x32\".com.perfdog.proto.AndroidPerfDataH\x00\x12\x35\n\x0biosPerfData\x18\x04 \x01(\x0b\x32\x1e.com.perfdog.proto.IosPerfDataH\x00\x12\x37\n\x0cstartTestRet\x18\x05 \x01(\x0b\x32\x1f.com.perfdog.proto.StartTestRetH\x00\x42\x07\n\x05value\"\xf2\x01\n\rCachePerfData\x12-\n\x07\x61ppInfo\x18\x01 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfoH\x00\x12=\n\x0f\x41ndroidPerfData\x18\x02 \x01(\x0b\x32\".com.perfdog.proto.AndroidPerfDataH\x00\x12\x35\n\x0bIosPerfData\x18\x03 \x01(\x0b\x32\x1e.com.perfdog.proto.IosPerfDataH\x00\x12\x33\n\nDeviceInfo\x18\x04 \x01(\x0b\x32\x1d.com.perfdog.proto.DeviceInfoH\x00\x42\x07\n\x05value\"7\n\x0eScreenshotFile\x12\x10\n\x08\x66ileName\x18\x01 \x01(\t\x12\x13\n\x0b\x66ileContent\x18\x02 \x01(\x0c\"\x7f\n\x13\x43\x61\x63hePerfDataPacked\x12\x12\n\x08perfData\x18\x01 \x01(\x0cH\x00\x12\x0e\n\x04icon\x18\x02 \x01(\x0cH\x00\x12;\n\x0escreenshotFile\x18\x03 \x01(\x0b\x32!.com.perfdog.proto.ScreenshotFileH\x00\x42\x07\n\x05value\"G\n\x0bSetLabelReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\r\n\x05label\x18\x02 \x01(\t\"\x1b\n\x0bSetLabelRet\x12\x0c\n\x04time\x18\x01 \x01(\x03\"X\n\x0eUpdateLabelReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x0c\n\x04time\x18\x02 \x01(\x03\x12\r\n\x05label\x18\x03 \x01(\t\"S\n\nAddNoteReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x0c\n\x04time\x18\x02 \x01(\x03\x12\x0c\n\x04note\x18\x03 \x01(\t\"H\n\rRemoveNoteReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x0c\n\x04time\x18\x02 \x01(\x03\"o\n\x16SetDataUploadServerReq\x12\x11\n\tserverUrl\x18\x01 \x01(\t\x12\x42\n\x10\x64\x61taUploadFormat\x18\x02 \x01(\x0e\x32(.com.perfdog.proto.DataInterchangeFormat\"\x18\n\x16SetDataUploadServerRsp\"\xf4\x01\n\x0bSaveDataReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\x11\n\tbeginTime\x18\x02 \x01(\x03\x12\x0f\n\x07\x65ndTime\x18\x03 \x01(\x03\x12\x10\n\x08\x63\x61seName\x18\x04 \x01(\t\x12\x16\n\x0euploadToServer\x18\x05 \x01(\x08\x12\x14\n\x0c\x65xportToFile\x18\x06 \x01(\x08\x12\x17\n\x0foutputDirectory\x18\x07 \x01(\t\x12=\n\x10\x64\x61taExportFormat\x18\x08 \x01(\x0e\x32#.com.perfdog.proto.DataExportFormat\"7\n\x14UploadToServerResult\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0e\n\x06\x63\x61seId\x18\x02 \x01(\t\"7\n\x12\x45xportToFileResult\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x10\n\x08\x66ilePath\x18\x02 \x01(\t\"\x89\x01\n\x0bSaveDataRsp\x12=\n\x0cuploadResult\x18\x01 \x01(\x0b\x32\'.com.perfdog.proto.UploadToServerResult\x12;\n\x0c\x65xportResult\x18\x02 \x01(\x0b\x32%.com.perfdog.proto.ExportToFileResult\"m\n\x17GetAppRunningProcessReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\'\n\x03\x61pp\x18\x02 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\"i\n\x13GetAppWindowsMapReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\'\n\x03\x61pp\x18\x02 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\"7\n\x0bProcessInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05isTop\x18\x02 \x01(\x08\x12\x0b\n\x03pid\x18\x03 \x01(\x05\"N\n\x17GetAppRunningProcessRet\x12\x33\n\x0bprocessInfo\x18\x01 \x03(\x0b\x32\x1e.com.perfdog.proto.ProcessInfo\"\x19\n\tAppWindow\x12\x0c\n\x04name\x18\x01 \x03(\t\"\xbb\x01\n\x13GetAppWindowsMapRet\x12P\n\rpid2WindowMap\x18\x01 \x03(\x0b\x32\x39.com.perfdog.proto.GetAppWindowsMapRet.Pid2WindowMapEntry\x1aR\n\x12Pid2WindowMapEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12+\n\x05value\x18\x02 \x01(\x0b\x32\x1c.com.perfdog.proto.AppWindow:\x02\x38\x01\"+\n\x0eSysProcessInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\x05\"Q\n\x17GetRunningSysProcessRet\x12\x36\n\x0bprocessInfo\x18\x01 \x03(\x0b\x32!.com.perfdog.proto.SysProcessInfo\"\x93\x01\n\x12IosEnergyUsageData\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0f\n\x07\x61\x62sTime\x18\x02 \x01(\x03\x12\x0b\n\x03\x63pu\x18\x03 \x01(\x05\x12\x0b\n\x03gpu\x18\x04 \x01(\x05\x12\x0f\n\x07network\x18\x05 \x01(\x05\x12\x10\n\x08location\x18\x06 \x01(\x05\x12\x0f\n\x07\x64isplay\x18\x07 \x01(\x05\x12\x10\n\x08overhead\x18\x08 \x01(\x05\"f\n\x10UpdateAppInfoReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12\'\n\x03\x61pp\x18\x02 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\";\n\x10UpdateAppInfoRet\x12\'\n\x03\x61pp\x18\x01 \x01(\x0b\x32\x1a.com.perfdog.proto.AppInfo\"B\n\x15GetDeviceCacheDataReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"\x86\x01\n\x1bGetDeviceCacheDataPackedReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\x12<\n\ndataFormat\x18\x02 \x01(\x0e\x32(.com.perfdog.proto.DataInterchangeFormat\"!\n\rCreateTaskReq\x12\x10\n\x08taskName\x18\x01 \x01(\t\"\x1f\n\rCreateTaskRsp\x12\x0e\n\x06taskId\x18\x01 \x01(\t\"6\n\x14\x41rchiveCaseToTaskReq\x12\x0e\n\x06\x63\x61seId\x18\x01 \x01(\t\x12\x0e\n\x06taskId\x18\x02 \x01(\t\"\x16\n\x14\x41rchiveCaseToTaskRsp\"G\n\x0cShareCaseReq\x12\x0e\n\x06\x63\x61seId\x18\x01 \x01(\t\x12\x12\n\nexpireTime\x18\x02 \x01(\x05\x12\x13\n\x0bnonPassword\x18\x03 \x01(\x08\"1\n\x0cShareCaseRsp\x12\x0f\n\x07\x63\x61seUrl\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\";\n\rDeviceListRsp\x12*\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32\x19.com.perfdog.proto.Device\"-\n\x0bPreferences\x12\x1e\n\x16\x64oNotInstallPerfDogApp\x18\x01 \x01(\x08\"H\n\x11SetPreferencesReq\x12\x33\n\x0bpreferences\x18\x01 \x01(\x0b\x32\x1e.com.perfdog.proto.Preferences\"\x13\n\x11SetPreferencesRsp\"C\n\x16GetRenderResolutionReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"7\n\x16GetRenderResolutionRet\x12\r\n\x05width\x18\x01 \x01(\x05\x12\x0e\n\x06height\x18\x02 \x01(\x05\":\n\rGetCpuInfoReq\x12)\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x19.com.perfdog.proto.Device\"5\n\rGetCpuInfoRsp\x12\x0f\n\x07\x63oreNum\x18\x01 \x01(\x05\x12\x13\n\x0b\x63oreMaxFreq\x18\x02 \x03(\x05*\'\n\x10\x44\x45VICE_EVENTTYPE\x12\x07\n\x03\x41\x44\x44\x10\x00\x12\n\n\x06REMOVE\x10\x01*%\n\rDEVICE_OSTYPE\x12\x0b\n\x07\x41NDROID\x10\x00\x12\x07\n\x03IOS\x10\x01*#\n\x0e\x44\x45VICE_CONTYPE\x12\x07\n\x03USB\x10\x00\x12\x08\n\x04WIFI\x10\x01*\xfe\x03\n\x0cPerfDataType\x12\x0f\n\x0b\x44\x41TAID_NONE\x10\x00\x12\r\n\tCPU_USAGE\x10\x01\x12\r\n\tGPU_USAGE\x10\x02\x12\x0c\n\x08GPU_FREQ\x10\x03\x12\x07\n\x03\x46PS\x10\x04\x12\x11\n\rNETWORK_USAGE\x10\x05\x12\x19\n\x15\x41NDROID_MEMORY_DETAIL\x10\x06\x12\n\n\x06MEMORY\x10\x07\x12\x0b\n\x07\x42\x41TTERY\x10\x08\x12\x13\n\x0f\x43PU_TEMPERATURE\x10\t\x12\x0e\n\nFRAME_TIME\x10\n\x12\x0e\n\nCTX_SWITCH\x10\x0b\x12\n\n\x06WAKEUP\x10\x0c\x12\x0f\n\x0bSCREEN_SHOT\x10\r\x12\x0e\n\nSYSTEM_LOG\x10\x0e\x12\x12\n\x0e\x43ORE_FREQUENCY\x10\x0f\x12\x0e\n\nCORE_USAGE\x10\x10\x12\x11\n\rIOS_GPU_USAGE\x10\x11\x12\x14\n\x10IOS_ENERGY_USAGE\x10\x12\x12\x17\n\x13\x42\x41TTERY_TEMPERATURE\x10\x13\x12\x18\n\x14NORMALIZED_CPU_USAGE\x10\x14\x12\x1d\n\x19NORMALIZED_CPU_CORE_USAGE\x10\x15\x12\x16\n\x12GPU_COUNTER_BASICS\x10\x16\x12\x16\n\x12GPU_COUNTER_MEMORY\x10\x17\x12\x16\n\x12GPU_COUNTER_SHADER\x10\x18\x12\x18\n\x14\x44\x45VICE_NETWORK_USAGE\x10\x19*S\n\x10\x44\x61taExportFormat\x12\x13\n\x0f\x45XPORT_TO_EXCEL\x10\x00\x12\x12\n\x0e\x45XPORT_TO_JSON\x10\x01\x12\x16\n\x12\x45XPORT_TO_PROTOBUF\x10\x02*/\n\x15\x44\x61taInterchangeFormat\x12\x08\n\x04JSON\x10\x00\x12\x0c\n\x08PROTOBUF\x10\x01\x32\x83\x1a\n\x0ePerfDogService\x12I\n\x0eloginWithToken\x12\x18.com.perfdog.proto.Token\x1a\x1b.com.perfdog.proto.UserInfo\"\x00\x12M\n\rgetDeviceList\x12\x18.com.perfdog.proto.Empty\x1a .com.perfdog.proto.DeviceListRsp\"\x00\x12R\n\x12startDeviceMonitor\x12\x18.com.perfdog.proto.Empty\x1a\x1e.com.perfdog.proto.DeviceEvent\"\x00\x30\x01\x12\x43\n\ninitDevice\x12\x19.com.perfdog.proto.Device\x1a\x18.com.perfdog.proto.Empty\"\x00\x12K\n\rgetDeviceInfo\x12\x19.com.perfdog.proto.Device\x1a\x1d.com.perfdog.proto.DeviceInfo\"\x00\x12O\n\x0fgetDeviceStatus\x12\x19.com.perfdog.proto.Device\x1a\x1f.com.perfdog.proto.DeviceStatus\"\x00\x12\x45\n\ngetAppList\x12\x19.com.perfdog.proto.Device\x1a\x1a.com.perfdog.proto.AppList\"\x00\x12Z\n\x12\x65nablePerfDataType\x12(.com.perfdog.proto.EnablePerfDataTypeReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12\\\n\x13\x64isablePerfDataType\x12).com.perfdog.proto.DisablePerfDataTypeReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12R\n\x0fgetPerfDataType\x12\x19.com.perfdog.proto.Device\x1a\".com.perfdog.proto.PerfDataTypeRet\"\x00\x12W\n\x14getAvailableDataType\x12\x19.com.perfdog.proto.Device\x1a\".com.perfdog.proto.PerfDataTypeRet\"\x00\x12Z\n\x15setScreenShotInterval\x12%.com.perfdog.proto.ScreenShotInterval\x1a\x18.com.perfdog.proto.Empty\"\x00\x12[\n\x14StartTestAppInternal\x12\".com.perfdog.proto.StartTestAppReq\x1a\x1b.com.perfdog.proto.PerfData\"\x00\x30\x01\x12i\n\x1bStartTestSysProcessInternal\x12).com.perfdog.proto.StartTestSysProcessReq\x1a\x1b.com.perfdog.proto.PerfData\"\x00\x30\x01\x12U\n\x0cstartTestApp\x12\".com.perfdog.proto.StartTestAppReq\x1a\x1f.com.perfdog.proto.StartTestRet\"\x00\x12\x63\n\x13startTestSysProcess\x12).com.perfdog.proto.StartTestSysProcessReq\x1a\x1f.com.perfdog.proto.StartTestRet\"\x00\x12_\n\x12openPerfDataStream\x12(.com.perfdog.proto.OpenPerfDataStreamReq\x1a\x1b.com.perfdog.proto.PerfData\"\x00\x30\x01\x12\x46\n\x08stopTest\x12\x1e.com.perfdog.proto.StopTestReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12L\n\x08setLabel\x12\x1e.com.perfdog.proto.SetLabelReq\x1a\x1e.com.perfdog.proto.SetLabelRet\"\x00\x12L\n\x0bupdateLabel\x12!.com.perfdog.proto.UpdateLabelReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12\x44\n\x07\x61\x64\x64Note\x12\x1d.com.perfdog.proto.AddNoteReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12J\n\nremoveNote\x12 .com.perfdog.proto.RemoveNoteReq\x1a\x18.com.perfdog.proto.Empty\"\x00\x12s\n\x19setGlobalDataUploadServer\x12).com.perfdog.proto.SetDataUploadServerReq\x1a).com.perfdog.proto.SetDataUploadServerRsp\"\x00\x12L\n\x08saveData\x12\x1e.com.perfdog.proto.SaveDataReq\x1a\x1e.com.perfdog.proto.SaveDataRsp\"\x00\x12\x64\n\x12getDeviceCacheData\x12(.com.perfdog.proto.GetDeviceCacheDataReq\x1a .com.perfdog.proto.CachePerfData\"\x00\x30\x01\x12v\n\x18getDeviceCacheDataPacked\x12..com.perfdog.proto.GetDeviceCacheDataPackedReq\x1a&.com.perfdog.proto.CachePerfDataPacked\"\x00\x30\x01\x12p\n\x14getAppRunningProcess\x12*.com.perfdog.proto.GetAppRunningProcessReq\x1a*.com.perfdog.proto.GetAppRunningProcessRet\"\x00\x12\x64\n\x10getAppWindowsMap\x12&.com.perfdog.proto.GetAppWindowsMapReq\x1a&.com.perfdog.proto.GetAppWindowsMapRet\"\x00\x12_\n\x14getRunningSysProcess\x12\x19.com.perfdog.proto.Device\x1a*.com.perfdog.proto.GetRunningSysProcessRet\"\x00\x12[\n\rupdateAppInfo\x12#.com.perfdog.proto.UpdateAppInfoReq\x1a#.com.perfdog.proto.UpdateAppInfoRet\"\x00\x12R\n\ncreateTask\x12 .com.perfdog.proto.CreateTaskReq\x1a .com.perfdog.proto.CreateTaskRsp\"\x00\x12g\n\x11\x61rchiveCaseToTask\x12\'.com.perfdog.proto.ArchiveCaseToTaskReq\x1a\'.com.perfdog.proto.ArchiveCaseToTaskRsp\"\x00\x12O\n\tshareCase\x12\x1f.com.perfdog.proto.ShareCaseReq\x1a\x1f.com.perfdog.proto.ShareCaseRsp\"\x00\x12^\n\x0esetPreferences\x12$.com.perfdog.proto.SetPreferencesReq\x1a$.com.perfdog.proto.SetPreferencesRsp\"\x00\x12~\n$getRenderResolutionOfWindowUnderTest\x12).com.perfdog.proto.GetRenderResolutionReq\x1a).com.perfdog.proto.GetRenderResolutionRet\"\x00\x12R\n\ngetCpuInfo\x12 .com.perfdog.proto.GetCpuInfoReq\x1a .com.perfdog.proto.GetCpuInfoRsp\"\x00\x12\x42\n\nkillServer\x12\x18.com.perfdog.proto.Empty\x1a\x18.com.perfdog.proto.Empty\"\x00\x42\x02P\x01\x62\x06proto3')
 
 _DEVICE_EVENTTYPE = DESCRIPTOR.enum_types_by_name['DEVICE_EVENTTYPE']
 DEVICE_EVENTTYPE = enum_type_wrapper.EnumTypeWrapper(_DEVICE_EVENTTYPE)
@@ -25,8 +25,6 @@ _DEVICE_CONTYPE = DESCRIPTOR.enum_types_by_name['DEVICE_CONTYPE']
 DEVICE_CONTYPE = enum_type_wrapper.EnumTypeWrapper(_DEVICE_CONTYPE)
 _PERFDATATYPE = DESCRIPTOR.enum_types_by_name['PerfDataType']
 PerfDataType = enum_type_wrapper.EnumTypeWrapper(_PERFDATATYPE)
-_ATRACECATEGORY = DESCRIPTOR.enum_types_by_name['ATraceCategory']
-ATraceCategory = enum_type_wrapper.EnumTypeWrapper(_ATRACECATEGORY)
 _DATAEXPORTFORMAT = DESCRIPTOR.enum_types_by_name['DataExportFormat']
 DataExportFormat = enum_type_wrapper.EnumTypeWrapper(_DATAEXPORTFORMAT)
 _DATAINTERCHANGEFORMAT = DESCRIPTOR.enum_types_by_name['DataInterchangeFormat']
@@ -62,12 +60,7 @@ NORMALIZED_CPU_CORE_USAGE = 21
 GPU_COUNTER_BASICS = 22
 GPU_COUNTER_MEMORY = 23
 GPU_COUNTER_SHADER = 24
-INVALID = 0
-BEGIN = 1
-END = 2
-ASYNC_BEGIN = 3
-ASYNC_END = 4
-COUNTER = 5
+DEVICE_NETWORK_USAGE = 25
 EXPORT_TO_EXCEL = 0
 EXPORT_TO_JSON = 1
 EXPORT_TO_PROTOBUF = 2
@@ -114,6 +107,8 @@ _CPUFREQDATA = DESCRIPTOR.message_types_by_name['CpuFreqData']
 _CPUUSAGEDATA = DESCRIPTOR.message_types_by_name['CpuUsageData']
 _CPUTEMPDATA = DESCRIPTOR.message_types_by_name['CpuTempData']
 _BATTERYTEMPDATA = DESCRIPTOR.message_types_by_name['BatteryTempData']
+_GPUTEMPDATA = DESCRIPTOR.message_types_by_name['GpuTempData']
+_NPUTEMPDATA = DESCRIPTOR.message_types_by_name['NpuTempData']
 _CTXSWITCHDATA = DESCRIPTOR.message_types_by_name['CtxSwitchData']
 _WAKEUPSDATA = DESCRIPTOR.message_types_by_name['WakeupsData']
 _BATTERYDATA = DESCRIPTOR.message_types_by_name['BatteryData']
@@ -135,13 +130,7 @@ _IOSGPUCOUNTERBASICS = DESCRIPTOR.message_types_by_name['IosGPUCounterBasics']
 _IOSGPUCOUNTERMEMORY = DESCRIPTOR.message_types_by_name['IosGPUCounterMemory']
 _IOSGPUCOUNTERSHADER = DESCRIPTOR.message_types_by_name['IosGPUCounterShader']
 _IOSGPUCOUNTERSAMPLECOUNT = DESCRIPTOR.message_types_by_name['IosGPUCounterSampleCount']
-_BEGINSECTION = DESCRIPTOR.message_types_by_name['BeginSection']
-_ENDSECTION = DESCRIPTOR.message_types_by_name['EndSection']
-_ATRACEEVENT = DESCRIPTOR.message_types_by_name['ATraceEvent']
-_SCHEDSWITCHEVENT = DESCRIPTOR.message_types_by_name['SchedSwitchEvent']
-_SCHEDWAKEUPEVENT = DESCRIPTOR.message_types_by_name['SchedWakeupEvent']
-_TRACEEVENT = DESCRIPTOR.message_types_by_name['TraceEvent']
-_TRACEDATA = DESCRIPTOR.message_types_by_name['TraceData']
+_PERFRAMEPOWERCONSUMPTION = DESCRIPTOR.message_types_by_name['PerFramePowerConsumption']
 _ANDROIDPERFDATA = DESCRIPTOR.message_types_by_name['AndroidPerfData']
 _IOSPERFDATA = DESCRIPTOR.message_types_by_name['IosPerfData']
 _PERFDATA = DESCRIPTOR.message_types_by_name['PerfData']
@@ -461,6 +450,20 @@ BatteryTempData = _reflection.GeneratedProtocolMessageType('BatteryTempData', (_
   })
 _sym_db.RegisterMessage(BatteryTempData)
 
+GpuTempData = _reflection.GeneratedProtocolMessageType('GpuTempData', (_message.Message,), {
+  'DESCRIPTOR' : _GPUTEMPDATA,
+  '__module__' : 'perfdog_pb2'
+  # @@protoc_insertion_point(class_scope:com.perfdog.proto.GpuTempData)
+  })
+_sym_db.RegisterMessage(GpuTempData)
+
+NpuTempData = _reflection.GeneratedProtocolMessageType('NpuTempData', (_message.Message,), {
+  'DESCRIPTOR' : _NPUTEMPDATA,
+  '__module__' : 'perfdog_pb2'
+  # @@protoc_insertion_point(class_scope:com.perfdog.proto.NpuTempData)
+  })
+_sym_db.RegisterMessage(NpuTempData)
+
 CtxSwitchData = _reflection.GeneratedProtocolMessageType('CtxSwitchData', (_message.Message,), {
   'DESCRIPTOR' : _CTXSWITCHDATA,
   '__module__' : 'perfdog_pb2'
@@ -608,54 +611,12 @@ IosGPUCounterSampleCount = _reflection.GeneratedProtocolMessageType('IosGPUCount
   })
 _sym_db.RegisterMessage(IosGPUCounterSampleCount)
 
-BeginSection = _reflection.GeneratedProtocolMessageType('BeginSection', (_message.Message,), {
-  'DESCRIPTOR' : _BEGINSECTION,
+PerFramePowerConsumption = _reflection.GeneratedProtocolMessageType('PerFramePowerConsumption', (_message.Message,), {
+  'DESCRIPTOR' : _PERFRAMEPOWERCONSUMPTION,
   '__module__' : 'perfdog_pb2'
-  # @@protoc_insertion_point(class_scope:com.perfdog.proto.BeginSection)
+  # @@protoc_insertion_point(class_scope:com.perfdog.proto.PerFramePowerConsumption)
   })
-_sym_db.RegisterMessage(BeginSection)
-
-EndSection = _reflection.GeneratedProtocolMessageType('EndSection', (_message.Message,), {
-  'DESCRIPTOR' : _ENDSECTION,
-  '__module__' : 'perfdog_pb2'
-  # @@protoc_insertion_point(class_scope:com.perfdog.proto.EndSection)
-  })
-_sym_db.RegisterMessage(EndSection)
-
-ATraceEvent = _reflection.GeneratedProtocolMessageType('ATraceEvent', (_message.Message,), {
-  'DESCRIPTOR' : _ATRACEEVENT,
-  '__module__' : 'perfdog_pb2'
-  # @@protoc_insertion_point(class_scope:com.perfdog.proto.ATraceEvent)
-  })
-_sym_db.RegisterMessage(ATraceEvent)
-
-SchedSwitchEvent = _reflection.GeneratedProtocolMessageType('SchedSwitchEvent', (_message.Message,), {
-  'DESCRIPTOR' : _SCHEDSWITCHEVENT,
-  '__module__' : 'perfdog_pb2'
-  # @@protoc_insertion_point(class_scope:com.perfdog.proto.SchedSwitchEvent)
-  })
-_sym_db.RegisterMessage(SchedSwitchEvent)
-
-SchedWakeupEvent = _reflection.GeneratedProtocolMessageType('SchedWakeupEvent', (_message.Message,), {
-  'DESCRIPTOR' : _SCHEDWAKEUPEVENT,
-  '__module__' : 'perfdog_pb2'
-  # @@protoc_insertion_point(class_scope:com.perfdog.proto.SchedWakeupEvent)
-  })
-_sym_db.RegisterMessage(SchedWakeupEvent)
-
-TraceEvent = _reflection.GeneratedProtocolMessageType('TraceEvent', (_message.Message,), {
-  'DESCRIPTOR' : _TRACEEVENT,
-  '__module__' : 'perfdog_pb2'
-  # @@protoc_insertion_point(class_scope:com.perfdog.proto.TraceEvent)
-  })
-_sym_db.RegisterMessage(TraceEvent)
-
-TraceData = _reflection.GeneratedProtocolMessageType('TraceData', (_message.Message,), {
-  'DESCRIPTOR' : _TRACEDATA,
-  '__module__' : 'perfdog_pb2'
-  # @@protoc_insertion_point(class_scope:com.perfdog.proto.TraceData)
-  })
-_sym_db.RegisterMessage(TraceData)
+_sym_db.RegisterMessage(PerFramePowerConsumption)
 
 AndroidPerfData = _reflection.GeneratedProtocolMessageType('AndroidPerfData', (_message.Message,), {
   'DESCRIPTOR' : _ANDROIDPERFDATA,
@@ -982,20 +943,18 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _DEVICEINFO_VALUEENTRY._serialized_options = b'8\001'
   _GETAPPWINDOWSMAPRET_PID2WINDOWMAPENTRY._options = None
   _GETAPPWINDOWSMAPRET_PID2WINDOWMAPENTRY._serialized_options = b'8\001'
-  _DEVICE_EVENTTYPE._serialized_start=15470
-  _DEVICE_EVENTTYPE._serialized_end=15509
-  _DEVICE_OSTYPE._serialized_start=15511
-  _DEVICE_OSTYPE._serialized_end=15548
-  _DEVICE_CONTYPE._serialized_start=15550
-  _DEVICE_CONTYPE._serialized_end=15585
-  _PERFDATATYPE._serialized_start=15588
-  _PERFDATATYPE._serialized_end=16072
-  _ATRACECATEGORY._serialized_start=16074
-  _ATRACECATEGORY._serialized_end=16168
-  _DATAEXPORTFORMAT._serialized_start=16170
-  _DATAEXPORTFORMAT._serialized_end=16253
-  _DATAINTERCHANGEFORMAT._serialized_start=16255
-  _DATAINTERCHANGEFORMAT._serialized_end=16302
+  _DEVICE_EVENTTYPE._serialized_start=15392
+  _DEVICE_EVENTTYPE._serialized_end=15431
+  _DEVICE_OSTYPE._serialized_start=15433
+  _DEVICE_OSTYPE._serialized_end=15470
+  _DEVICE_CONTYPE._serialized_start=15472
+  _DEVICE_CONTYPE._serialized_end=15507
+  _PERFDATATYPE._serialized_start=15510
+  _PERFDATATYPE._serialized_end=16020
+  _DATAEXPORTFORMAT._serialized_start=16022
+  _DATAEXPORTFORMAT._serialized_end=16105
+  _DATAINTERCHANGEFORMAT._serialized_start=16107
+  _DATAINTERCHANGEFORMAT._serialized_end=16154
   _OPTIONALINT._serialized_start=36
   _OPTIONALINT._serialized_end=64
   _OPTIONALINT64._serialized_start=66
@@ -1048,178 +1007,170 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _FPSDATA._serialized_end=2013
   _FRAMETIMEDATA._serialized_start=2015
   _FRAMETIMEDATA._serialized_end=2079
-  _JANKDATA._serialized_start=2081
-  _JANKDATA._serialized_end=2170
-  _ANDROIDGPUUSAGEDATA._serialized_start=2172
-  _ANDROIDGPUUSAGEDATA._serialized_end=2242
-  _IOSGPUUSAGEDATA._serialized_start=2244
-  _IOSGPUUSAGEDATA._serialized_end=2354
-  _GPUFREQDATA._serialized_start=2356
-  _GPUFREQDATA._serialized_end=2417
-  _ANDROIDMEMDATA._serialized_start=2419
-  _ANDROIDMEMDATA._serialized_end=2541
-  _ANDROIDMEMDETAILDATA._serialized_start=2544
-  _ANDROIDMEMDETAILDATA._serialized_end=3640
-  _IOS10MEMDATA._serialized_start=3642
-  _IOS10MEMDATA._serialized_end=3755
-  _IOS11MEMDATA._serialized_start=3758
-  _IOS11MEMDATA._serialized_end=3908
-  _COREUSAGEDATA._serialized_start=3910
-  _COREUSAGEDATA._serialized_end=3975
-  _CPUFREQDATA._serialized_start=3977
-  _CPUFREQDATA._serialized_end=4038
-  _CPUUSAGEDATA._serialized_start=4040
-  _CPUUSAGEDATA._serialized_end=4123
-  _CPUTEMPDATA._serialized_start=4125
-  _CPUTEMPDATA._serialized_end=4183
-  _BATTERYTEMPDATA._serialized_start=4185
-  _BATTERYTEMPDATA._serialized_end=4247
-  _CTXSWITCHDATA._serialized_start=4249
-  _CTXSWITCHDATA._serialized_end=4314
-  _WAKEUPSDATA._serialized_start=4316
-  _WAKEUPSDATA._serialized_end=4377
-  _BATTERYDATA._serialized_start=4379
-  _BATTERYDATA._serialized_end=4472
-  _NETWORKDATA._serialized_start=4474
-  _NETWORKDATA._serialized_end=4552
-  _SYSLOGDATA._serialized_start=4554
-  _SYSLOGDATA._serialized_end=4579
-  _SCREENSHOTDATA._serialized_start=4581
-  _SCREENSHOTDATA._serialized_end=4642
-  _WARNINGDATA._serialized_start=4644
-  _WARNINGDATA._serialized_end=4670
-  _ERRORDATA._serialized_start=4672
-  _ERRORDATA._serialized_end=4696
-  _MALIGPUCOUNTERBASIC._serialized_start=4699
-  _MALIGPUCOUNTERBASIC._serialized_end=4998
-  _MALIGPUCOUNTERSHADER._serialized_start=5001
-  _MALIGPUCOUNTERSHADER._serialized_end=5282
-  _MALIGPUCOUNTERMEMORY._serialized_start=5285
-  _MALIGPUCOUNTERMEMORY._serialized_end=5549
-  _QCOMGPUCOUNTERBASIC._serialized_start=5552
-  _QCOMGPUCOUNTERBASIC._serialized_end=5842
-  _QCOMGPUCOUNTERMEMORY._serialized_start=5845
-  _QCOMGPUCOUNTERMEMORY._serialized_end=6123
-  _QCOMGPUCOUNTERSHADER._serialized_start=6126
-  _QCOMGPUCOUNTERSHADER._serialized_end=6314
-  _PVRGPUCOUNTERBASIC._serialized_start=6317
-  _PVRGPUCOUNTERBASIC._serialized_end=6591
-  _PVRGPUCOUNTERMEMORY._serialized_start=6594
-  _PVRGPUCOUNTERMEMORY._serialized_end=6891
-  _PVRGPUCOUNTERSHADER._serialized_start=6894
-  _PVRGPUCOUNTERSHADER._serialized_end=7130
-  _IOSGPUCOUNTERBASICS._serialized_start=7133
-  _IOSGPUCOUNTERBASICS._serialized_end=7427
-  _IOSGPUCOUNTERMEMORY._serialized_start=7430
-  _IOSGPUCOUNTERMEMORY._serialized_end=7867
-  _IOSGPUCOUNTERSHADER._serialized_start=7870
-  _IOSGPUCOUNTERSHADER._serialized_end=8154
-  _IOSGPUCOUNTERSAMPLECOUNT._serialized_start=8156
-  _IOSGPUCOUNTERSAMPLECOUNT._serialized_end=8228
-  _BEGINSECTION._serialized_start=8230
-  _BEGINSECTION._serialized_end=8279
-  _ENDSECTION._serialized_start=8281
-  _ENDSECTION._serialized_end=8307
-  _ATRACEEVENT._serialized_start=8309
-  _ATRACEEVENT._serialized_end=8405
-  _SCHEDSWITCHEVENT._serialized_start=8408
-  _SCHEDSWITCHEVENT._serialized_end=8551
-  _SCHEDWAKEUPEVENT._serialized_start=8553
-  _SCHEDWAKEUPEVENT._serialized_end=8598
-  _TRACEEVENT._serialized_start=8601
-  _TRACEEVENT._serialized_end=8852
-  _TRACEDATA._serialized_start=8854
-  _TRACEDATA._serialized_end=8911
-  _ANDROIDPERFDATA._serialized_start=8914
-  _ANDROIDPERFDATA._serialized_end=10640
-  _IOSPERFDATA._serialized_start=10643
-  _IOSPERFDATA._serialized_end=11807
-  _PERFDATA._serialized_start=11810
-  _PERFDATA._serialized_end=12110
-  _CACHEPERFDATA._serialized_start=12113
-  _CACHEPERFDATA._serialized_end=12355
-  _SCREENSHOTFILE._serialized_start=12357
-  _SCREENSHOTFILE._serialized_end=12412
-  _CACHEPERFDATAPACKED._serialized_start=12414
-  _CACHEPERFDATAPACKED._serialized_end=12541
-  _SETLABELREQ._serialized_start=12543
-  _SETLABELREQ._serialized_end=12614
-  _SETLABELRET._serialized_start=12616
-  _SETLABELRET._serialized_end=12643
-  _UPDATELABELREQ._serialized_start=12645
-  _UPDATELABELREQ._serialized_end=12733
-  _ADDNOTEREQ._serialized_start=12735
-  _ADDNOTEREQ._serialized_end=12818
-  _REMOVENOTEREQ._serialized_start=12820
-  _REMOVENOTEREQ._serialized_end=12892
-  _SETDATAUPLOADSERVERREQ._serialized_start=12894
-  _SETDATAUPLOADSERVERREQ._serialized_end=13005
-  _SETDATAUPLOADSERVERRSP._serialized_start=13007
-  _SETDATAUPLOADSERVERRSP._serialized_end=13031
-  _SAVEDATAREQ._serialized_start=13034
-  _SAVEDATAREQ._serialized_end=13278
-  _UPLOADTOSERVERRESULT._serialized_start=13280
-  _UPLOADTOSERVERRESULT._serialized_end=13335
-  _EXPORTTOFILERESULT._serialized_start=13337
-  _EXPORTTOFILERESULT._serialized_end=13392
-  _SAVEDATARSP._serialized_start=13395
-  _SAVEDATARSP._serialized_end=13532
-  _GETAPPRUNNINGPROCESSREQ._serialized_start=13534
-  _GETAPPRUNNINGPROCESSREQ._serialized_end=13643
-  _GETAPPWINDOWSMAPREQ._serialized_start=13645
-  _GETAPPWINDOWSMAPREQ._serialized_end=13750
-  _PROCESSINFO._serialized_start=13752
-  _PROCESSINFO._serialized_end=13807
-  _GETAPPRUNNINGPROCESSRET._serialized_start=13809
-  _GETAPPRUNNINGPROCESSRET._serialized_end=13887
-  _APPWINDOW._serialized_start=13889
-  _APPWINDOW._serialized_end=13914
-  _GETAPPWINDOWSMAPRET._serialized_start=13917
-  _GETAPPWINDOWSMAPRET._serialized_end=14104
-  _GETAPPWINDOWSMAPRET_PID2WINDOWMAPENTRY._serialized_start=14022
-  _GETAPPWINDOWSMAPRET_PID2WINDOWMAPENTRY._serialized_end=14104
-  _SYSPROCESSINFO._serialized_start=14106
-  _SYSPROCESSINFO._serialized_end=14149
-  _GETRUNNINGSYSPROCESSRET._serialized_start=14151
-  _GETRUNNINGSYSPROCESSRET._serialized_end=14232
-  _IOSENERGYUSAGEDATA._serialized_start=14235
-  _IOSENERGYUSAGEDATA._serialized_end=14382
-  _UPDATEAPPINFOREQ._serialized_start=14384
-  _UPDATEAPPINFOREQ._serialized_end=14486
-  _UPDATEAPPINFORET._serialized_start=14488
-  _UPDATEAPPINFORET._serialized_end=14547
-  _GETDEVICECACHEDATAREQ._serialized_start=14549
-  _GETDEVICECACHEDATAREQ._serialized_end=14615
-  _GETDEVICECACHEDATAPACKEDREQ._serialized_start=14618
-  _GETDEVICECACHEDATAPACKEDREQ._serialized_end=14752
-  _CREATETASKREQ._serialized_start=14754
-  _CREATETASKREQ._serialized_end=14787
-  _CREATETASKRSP._serialized_start=14789
-  _CREATETASKRSP._serialized_end=14820
-  _ARCHIVECASETOTASKREQ._serialized_start=14822
-  _ARCHIVECASETOTASKREQ._serialized_end=14876
-  _ARCHIVECASETOTASKRSP._serialized_start=14878
-  _ARCHIVECASETOTASKRSP._serialized_end=14900
-  _SHARECASEREQ._serialized_start=14902
-  _SHARECASEREQ._serialized_end=14973
-  _SHARECASERSP._serialized_start=14975
-  _SHARECASERSP._serialized_end=15024
-  _DEVICELISTRSP._serialized_start=15026
-  _DEVICELISTRSP._serialized_end=15085
-  _PREFERENCES._serialized_start=15087
-  _PREFERENCES._serialized_end=15132
-  _SETPREFERENCESREQ._serialized_start=15134
-  _SETPREFERENCESREQ._serialized_end=15206
-  _SETPREFERENCESRSP._serialized_start=15208
-  _SETPREFERENCESRSP._serialized_end=15227
-  _GETRENDERRESOLUTIONREQ._serialized_start=15229
-  _GETRENDERRESOLUTIONREQ._serialized_end=15296
-  _GETRENDERRESOLUTIONRET._serialized_start=15298
-  _GETRENDERRESOLUTIONRET._serialized_end=15353
-  _GETCPUINFOREQ._serialized_start=15355
-  _GETCPUINFOREQ._serialized_end=15413
-  _GETCPUINFORSP._serialized_start=15415
-  _GETCPUINFORSP._serialized_end=15468
-  _PERFDOGSERVICE._serialized_start=16305
-  _PERFDOGSERVICE._serialized_end=19636
+  _JANKDATA._serialized_start=2082
+  _JANKDATA._serialized_end=2214
+  _ANDROIDGPUUSAGEDATA._serialized_start=2216
+  _ANDROIDGPUUSAGEDATA._serialized_end=2286
+  _IOSGPUUSAGEDATA._serialized_start=2288
+  _IOSGPUUSAGEDATA._serialized_end=2398
+  _GPUFREQDATA._serialized_start=2400
+  _GPUFREQDATA._serialized_end=2461
+  _ANDROIDMEMDATA._serialized_start=2463
+  _ANDROIDMEMDATA._serialized_end=2585
+  _ANDROIDMEMDETAILDATA._serialized_start=2588
+  _ANDROIDMEMDETAILDATA._serialized_end=3684
+  _IOS10MEMDATA._serialized_start=3686
+  _IOS10MEMDATA._serialized_end=3799
+  _IOS11MEMDATA._serialized_start=3802
+  _IOS11MEMDATA._serialized_end=3952
+  _COREUSAGEDATA._serialized_start=3954
+  _COREUSAGEDATA._serialized_end=4019
+  _CPUFREQDATA._serialized_start=4021
+  _CPUFREQDATA._serialized_end=4082
+  _CPUUSAGEDATA._serialized_start=4084
+  _CPUUSAGEDATA._serialized_end=4167
+  _CPUTEMPDATA._serialized_start=4169
+  _CPUTEMPDATA._serialized_end=4227
+  _BATTERYTEMPDATA._serialized_start=4229
+  _BATTERYTEMPDATA._serialized_end=4291
+  _GPUTEMPDATA._serialized_start=4293
+  _GPUTEMPDATA._serialized_end=4351
+  _NPUTEMPDATA._serialized_start=4353
+  _NPUTEMPDATA._serialized_end=4411
+  _CTXSWITCHDATA._serialized_start=4413
+  _CTXSWITCHDATA._serialized_end=4478
+  _WAKEUPSDATA._serialized_start=4480
+  _WAKEUPSDATA._serialized_end=4541
+  _BATTERYDATA._serialized_start=4543
+  _BATTERYDATA._serialized_end=4636
+  _NETWORKDATA._serialized_start=4638
+  _NETWORKDATA._serialized_end=4716
+  _SYSLOGDATA._serialized_start=4718
+  _SYSLOGDATA._serialized_end=4743
+  _SCREENSHOTDATA._serialized_start=4745
+  _SCREENSHOTDATA._serialized_end=4806
+  _WARNINGDATA._serialized_start=4808
+  _WARNINGDATA._serialized_end=4834
+  _ERRORDATA._serialized_start=4836
+  _ERRORDATA._serialized_end=4860
+  _MALIGPUCOUNTERBASIC._serialized_start=4863
+  _MALIGPUCOUNTERBASIC._serialized_end=5162
+  _MALIGPUCOUNTERSHADER._serialized_start=5165
+  _MALIGPUCOUNTERSHADER._serialized_end=5446
+  _MALIGPUCOUNTERMEMORY._serialized_start=5449
+  _MALIGPUCOUNTERMEMORY._serialized_end=5713
+  _QCOMGPUCOUNTERBASIC._serialized_start=5716
+  _QCOMGPUCOUNTERBASIC._serialized_end=6006
+  _QCOMGPUCOUNTERMEMORY._serialized_start=6009
+  _QCOMGPUCOUNTERMEMORY._serialized_end=6287
+  _QCOMGPUCOUNTERSHADER._serialized_start=6290
+  _QCOMGPUCOUNTERSHADER._serialized_end=6478
+  _PVRGPUCOUNTERBASIC._serialized_start=6481
+  _PVRGPUCOUNTERBASIC._serialized_end=6755
+  _PVRGPUCOUNTERMEMORY._serialized_start=6758
+  _PVRGPUCOUNTERMEMORY._serialized_end=7055
+  _PVRGPUCOUNTERSHADER._serialized_start=7058
+  _PVRGPUCOUNTERSHADER._serialized_end=7294
+  _IOSGPUCOUNTERBASICS._serialized_start=7297
+  _IOSGPUCOUNTERBASICS._serialized_end=7591
+  _IOSGPUCOUNTERMEMORY._serialized_start=7594
+  _IOSGPUCOUNTERMEMORY._serialized_end=8031
+  _IOSGPUCOUNTERSHADER._serialized_start=8034
+  _IOSGPUCOUNTERSHADER._serialized_end=8318
+  _IOSGPUCOUNTERSAMPLECOUNT._serialized_start=8320
+  _IOSGPUCOUNTERSAMPLECOUNT._serialized_end=8392
+  _PERFRAMEPOWERCONSUMPTION._serialized_start=8394
+  _PERFRAMEPOWERCONSUMPTION._serialized_end=8488
+  _ANDROIDPERFDATA._serialized_start=8491
+  _ANDROIDPERFDATA._serialized_end=10420
+  _IOSPERFDATA._serialized_start=10423
+  _IOSPERFDATA._serialized_end=11729
+  _PERFDATA._serialized_start=11732
+  _PERFDATA._serialized_end=12032
+  _CACHEPERFDATA._serialized_start=12035
+  _CACHEPERFDATA._serialized_end=12277
+  _SCREENSHOTFILE._serialized_start=12279
+  _SCREENSHOTFILE._serialized_end=12334
+  _CACHEPERFDATAPACKED._serialized_start=12336
+  _CACHEPERFDATAPACKED._serialized_end=12463
+  _SETLABELREQ._serialized_start=12465
+  _SETLABELREQ._serialized_end=12536
+  _SETLABELRET._serialized_start=12538
+  _SETLABELRET._serialized_end=12565
+  _UPDATELABELREQ._serialized_start=12567
+  _UPDATELABELREQ._serialized_end=12655
+  _ADDNOTEREQ._serialized_start=12657
+  _ADDNOTEREQ._serialized_end=12740
+  _REMOVENOTEREQ._serialized_start=12742
+  _REMOVENOTEREQ._serialized_end=12814
+  _SETDATAUPLOADSERVERREQ._serialized_start=12816
+  _SETDATAUPLOADSERVERREQ._serialized_end=12927
+  _SETDATAUPLOADSERVERRSP._serialized_start=12929
+  _SETDATAUPLOADSERVERRSP._serialized_end=12953
+  _SAVEDATAREQ._serialized_start=12956
+  _SAVEDATAREQ._serialized_end=13200
+  _UPLOADTOSERVERRESULT._serialized_start=13202
+  _UPLOADTOSERVERRESULT._serialized_end=13257
+  _EXPORTTOFILERESULT._serialized_start=13259
+  _EXPORTTOFILERESULT._serialized_end=13314
+  _SAVEDATARSP._serialized_start=13317
+  _SAVEDATARSP._serialized_end=13454
+  _GETAPPRUNNINGPROCESSREQ._serialized_start=13456
+  _GETAPPRUNNINGPROCESSREQ._serialized_end=13565
+  _GETAPPWINDOWSMAPREQ._serialized_start=13567
+  _GETAPPWINDOWSMAPREQ._serialized_end=13672
+  _PROCESSINFO._serialized_start=13674
+  _PROCESSINFO._serialized_end=13729
+  _GETAPPRUNNINGPROCESSRET._serialized_start=13731
+  _GETAPPRUNNINGPROCESSRET._serialized_end=13809
+  _APPWINDOW._serialized_start=13811
+  _APPWINDOW._serialized_end=13836
+  _GETAPPWINDOWSMAPRET._serialized_start=13839
+  _GETAPPWINDOWSMAPRET._serialized_end=14026
+  _GETAPPWINDOWSMAPRET_PID2WINDOWMAPENTRY._serialized_start=13944
+  _GETAPPWINDOWSMAPRET_PID2WINDOWMAPENTRY._serialized_end=14026
+  _SYSPROCESSINFO._serialized_start=14028
+  _SYSPROCESSINFO._serialized_end=14071
+  _GETRUNNINGSYSPROCESSRET._serialized_start=14073
+  _GETRUNNINGSYSPROCESSRET._serialized_end=14154
+  _IOSENERGYUSAGEDATA._serialized_start=14157
+  _IOSENERGYUSAGEDATA._serialized_end=14304
+  _UPDATEAPPINFOREQ._serialized_start=14306
+  _UPDATEAPPINFOREQ._serialized_end=14408
+  _UPDATEAPPINFORET._serialized_start=14410
+  _UPDATEAPPINFORET._serialized_end=14469
+  _GETDEVICECACHEDATAREQ._serialized_start=14471
+  _GETDEVICECACHEDATAREQ._serialized_end=14537
+  _GETDEVICECACHEDATAPACKEDREQ._serialized_start=14540
+  _GETDEVICECACHEDATAPACKEDREQ._serialized_end=14674
+  _CREATETASKREQ._serialized_start=14676
+  _CREATETASKREQ._serialized_end=14709
+  _CREATETASKRSP._serialized_start=14711
+  _CREATETASKRSP._serialized_end=14742
+  _ARCHIVECASETOTASKREQ._serialized_start=14744
+  _ARCHIVECASETOTASKREQ._serialized_end=14798
+  _ARCHIVECASETOTASKRSP._serialized_start=14800
+  _ARCHIVECASETOTASKRSP._serialized_end=14822
+  _SHARECASEREQ._serialized_start=14824
+  _SHARECASEREQ._serialized_end=14895
+  _SHARECASERSP._serialized_start=14897
+  _SHARECASERSP._serialized_end=14946
+  _DEVICELISTRSP._serialized_start=14948
+  _DEVICELISTRSP._serialized_end=15007
+  _PREFERENCES._serialized_start=15009
+  _PREFERENCES._serialized_end=15054
+  _SETPREFERENCESREQ._serialized_start=15056
+  _SETPREFERENCESREQ._serialized_end=15128
+  _SETPREFERENCESRSP._serialized_start=15130
+  _SETPREFERENCESRSP._serialized_end=15149
+  _GETRENDERRESOLUTIONREQ._serialized_start=15151
+  _GETRENDERRESOLUTIONREQ._serialized_end=15218
+  _GETRENDERRESOLUTIONRET._serialized_start=15220
+  _GETRENDERRESOLUTIONRET._serialized_end=15275
+  _GETCPUINFOREQ._serialized_start=15277
+  _GETCPUINFOREQ._serialized_end=15335
+  _GETCPUINFORSP._serialized_start=15337
+  _GETCPUINFORSP._serialized_end=15390
+  _PERFDOGSERVICE._serialized_start=16157
+  _PERFDOGSERVICE._serialized_end=19488
 # @@protoc_insertion_point(module_scope)
