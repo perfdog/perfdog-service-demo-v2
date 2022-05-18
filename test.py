@@ -18,10 +18,10 @@ def main():
     # 配置是否安装浮窗App，针对安卓设备有效
     # 如果App已经安装到要测试的设备上，请先手工从设备卸载之后继续使用
     # 按照自己的测试要求启用下面两个配置中的一个
-    # 禁止安装,可设置不安装PerfDog APK，跑自定化时减少不必要的暂停打断
-    # service.disable_install_apk()
     # 启用安装
     # service.enable_install_apk()
+    # 禁止安装,可设置不安装PerfDog APK，跑自定化时减少不必要的暂停打断
+    service.disable_install_apk()
 
     # TODO:
     # 填入正确的设备ID，填入测试app的包名
