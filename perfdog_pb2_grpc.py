@@ -194,6 +194,11 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.GetCpuInfoReq.SerializeToString,
                 response_deserializer=perfdog__pb2.GetCpuInfoRsp.FromString,
                 )
+        self.setMemorySamplingFrequency = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/setMemorySamplingFrequency',
+                request_serializer=perfdog__pb2.SetMemorySamplingFrequencyReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
         self.killServer = channel.unary_unary(
                 '/com.perfdog.proto.PerfDogService/killServer',
                 request_serializer=perfdog__pb2.Empty.SerializeToString,
@@ -457,6 +462,13 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def setMemorySamplingFrequency(self, request, context):
+        """设置内存采样频率,仅用于android
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def killServer(self, request, context):
         """关闭PerfDogService
         """
@@ -646,6 +658,11 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     servicer.getCpuInfo,
                     request_deserializer=perfdog__pb2.GetCpuInfoReq.FromString,
                     response_serializer=perfdog__pb2.GetCpuInfoRsp.SerializeToString,
+            ),
+            'setMemorySamplingFrequency': grpc.unary_unary_rpc_method_handler(
+                    servicer.setMemorySamplingFrequency,
+                    request_deserializer=perfdog__pb2.SetMemorySamplingFrequencyReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
             ),
             'killServer': grpc.unary_unary_rpc_method_handler(
                     servicer.killServer,
@@ -1271,6 +1288,23 @@ class PerfDogService(object):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/getCpuInfo',
             perfdog__pb2.GetCpuInfoReq.SerializeToString,
             perfdog__pb2.GetCpuInfoRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def setMemorySamplingFrequency(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/setMemorySamplingFrequency',
+            perfdog__pb2.SetMemorySamplingFrequencyReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

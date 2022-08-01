@@ -254,7 +254,16 @@ class Device(object):
                   is_upload=True,
                   is_export=False,
                   export_format=perfdog_pb2.EXPORT_TO_EXCEL,
-                  export_directory=''):
+                  export_directory='',
+                  extra_info=None,
+                  ):
+        if extra_info:
+            extraInfo = perfdog_pb2.ExtraInfo()
+            for key, value in extra_info.items():
+                extraInfo.infoMap[key] = value
+        else:
+            extraInfo = None
+
         req = perfdog_pb2.SaveDataReq(
             device=self.__real_device,
             beginTime=begin_time,
@@ -264,6 +273,7 @@ class Device(object):
             exportToFile=is_export,
             dataExportFormat=export_format,
             outputDirectory=export_directory,
+            extraInfo=extraInfo,
         )
         return self.stub().saveData(req)
 
@@ -537,9 +547,11 @@ class Test(object):
                   is_upload=True,
                   is_export=False,
                   export_format=perfdog_pb2.EXPORT_TO_EXCEL,
-                  export_directory=''):
+                  export_directory='',
+                  extra_info=None,
+                  ):
         return self.__device.save_data(begin_time, end_time, case_name, is_upload, is_export, export_format,
-                                       export_directory)
+                                       export_directory, extra_info)
 
     def get_render_resolution(self):
         return self.__device.get_render_resolution()
