@@ -5,11 +5,14 @@
       <w>cmds</w>
       <w>getapps</w>
       <w>getdevices</w>
+      <w>gettypes</w>
       <w>grpc</w>
+      <w>killserver</w>
       <w>levelname</w>
       <w>mobilesafari</w>
       <w>perfdog</w>
       <w>pubgmhd</w>
+      <w>sgame</w>
       <w>tencent</w>
       <w>tmgp</w>
     </words>

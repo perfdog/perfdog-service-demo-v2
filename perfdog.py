@@ -213,7 +213,7 @@ class Device(object):
 
     def get_available_types(self):
         res = self.stub().getAvailableDataType(self.__real_device)
-        return res.type
+        return res.type, res.dynamicDataDesc
 
     def get_types(self):
         res = self.stub().getPerfDataType(self.__real_device)
@@ -228,6 +228,20 @@ class Device(object):
         for ty in types:
             req = perfdog_pb2.DisablePerfDataTypeReq(device=self.__real_device, type=ty)
             self.stub().disablePerfDataType(req)
+
+    def enable_dynamic_types(self, *types):
+        for ty in types:
+            req = perfdog_pb2.EnablePerfDataTypeReq(device=self.__real_device, dynamicData=ty)
+            self.stub().enablePerfDataType(req)
+
+    def disable_dynamic_types(self, *types):
+        for ty in types:
+            req = perfdog_pb2.DisablePerfDataTypeReq(device=self.__real_device, dynamicData=ty)
+            self.stub().disablePerfDataType(req)
+
+    def set_memory_sampling_frequency(self, freq):
+        req = perfdog_pb2.SetMemorySamplingFrequencyReq(device=self.__real_device, freq=freq)
+        self.stub().setMemorySamplingFrequency(req)
 
     def set_screenshot_interval(self, seconds):
         req = perfdog_pb2.ScreenShotInterval(device=self.__real_device, second=seconds)
@@ -472,9 +486,11 @@ class Test(object):
         self.__device.init()
 
         #
-        self.__available_types = self.__device.get_available_types()
+        self.__available_types, self.__available_dynamic_types = self.__device.get_available_types()
         self.__enable_types = []
         self.__disable_types = []
+        self.__enable_dynamic_types = []
+        self.__disable_dynamic_types = []
         self.__test_target = None
 
         #
@@ -502,11 +518,18 @@ class Test(object):
             else:
                 self.__disable_types.append(ty)
 
-    def enable_types(self, *types):
-        self.__enable_types.extend(types)
+    def set_dynamic_types(self, *dynamic_types):
+        def is_enable(dynamic_type):
+            for (typ, category) in dynamic_types:
+                if dynamic_type.type == typ and dynamic_type.category == category:
+                    return True
+            return False
 
-    def disable_types(self, *types):
-        self.__disable_types.extend(types)
+        for ty in self.__available_dynamic_types:
+            if is_enable(ty):
+                self.__enable_dynamic_types.append(ty)
+            else:
+                self.__disable_dynamic_types.append(ty)
 
     def is_start(self):
         return self.__is_start
@@ -521,6 +544,8 @@ class Test(object):
         # 启用和禁用相关性能指标
         self.__device.enable_types(*self.__enable_types)
         self.__device.disable_types(*self.__disable_types)
+        self.__device.enable_dynamic_types(*self.__enable_dynamic_types)
+        self.__device.disable_dynamic_types(*self.__disable_dynamic_types)
 
         # 开始测试
         if self.__test_target.is_app():

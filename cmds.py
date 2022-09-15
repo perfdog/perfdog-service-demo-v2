@@ -1,6 +1,8 @@
 # coding: utf-8
 
 import sys
+
+import perfdog_pb2
 from perfdog import Service
 from config import SERVICE_TOKEN, SERVICE_PATH
 
@@ -23,6 +25,32 @@ def print_apps(service, device_id):
         print(app.packageName, app.label)
 
 
+def print_types(service, device_id):
+    device = service.get_usb_device(device_id)
+    if device is None:
+        return
+
+    status = device.get_status()
+    if not status.isValid:
+        device.init()
+
+    types, dynamicTypes = device.get_available_types()
+    for index, ty in enumerate(types):
+        try:
+            print('type[{}]: perfdog_pb2.{}'.format(index, perfdog_pb2.PerfDataType.Name(ty)))
+        except ValueError:
+            pass
+
+    for index, dynamicType in enumerate(dynamicTypes):
+        try:
+            print('dynamicType[{}]: perfdog_pb2.{}, {}'.format(
+                index,
+                perfdog_pb2.DynamicPerfDataType.Name(dynamicType.type),
+                dynamicType.category))
+        except ValueError:
+            pass
+
+
 def kill_server(service):
     service.kill_server()
 
@@ -30,6 +58,7 @@ def kill_server(service):
 def print_usage():
     print('usage: python cmds.py getdevices')
     print('       python cmds.py getapps device_id')
+    print('       python cmds.py gettypes device_id')
     print('       python cmds.py killserver')
 
 
@@ -45,6 +74,9 @@ def get_func_and_args(args):
 
     if cmd == 'getapps' and len(args) == 1:
         return print_apps, args
+
+    if cmd == 'gettypes' and len(args) == 1:
+        return print_types, args
 
     if cmd == 'killserver' and len(args) == 0:
         return kill_server, args

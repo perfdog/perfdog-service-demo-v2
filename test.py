@@ -33,7 +33,11 @@ def main():
     device = service.get_usb_device('-')
     run_test_app(device,
                  package_name='-',
-                 types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.CPU_USAGE, perfdog_pb2.MEMORY])
+                 types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.CPU_USAGE, perfdog_pb2.MEMORY],
+                 dynamic_types=[
+                     (perfdog_pb2.GPU_COUNTER, 'GPU General'),
+                     (perfdog_pb2.GPU_COUNTER, 'GPU Stalls'),
+                 ])
 
 
 def print_perf_data(perf_data):
@@ -47,9 +51,13 @@ def print_perf_data(perf_data):
         logging.info(perf_data)
 
 
-def run_test_app(device, package_name, types=None, enable_types=None, disable_types=None):
+def run_test_app(device, package_name, types=None, dynamic_types=None):
     # 创建测试对象
     test = Test(device)
+
+    # 设置内存指标采样频率，单位秒，安卓设备有效
+    # 一般无需设置，使用缺省值即可
+    # device.set_memory_sampling_frequency(4)
 
     # 设置有性能数据回调和性能数据回调处理函数
     # 不需要的话，这两个回调可以不设置
@@ -66,11 +74,8 @@ def run_test_app(device, package_name, types=None, enable_types=None, disable_ty
     if types is not None:
         test.set_types(*types)
 
-    if enable_types is not None:
-        test.enable_types(*enable_types)
-
-    if disable_types is not None:
-        test.disable_types(*disable_types)
+    if dynamic_types is not None:
+        test.set_dynamic_types(*dynamic_types)
 
     try:
         # 启动性能数据采集
