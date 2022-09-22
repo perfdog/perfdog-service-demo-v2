@@ -51,7 +51,12 @@ def print_perf_data(perf_data):
         logging.info(perf_data)
 
 
-def run_test_app(device, package_name, types=None, dynamic_types=None):
+def get_all_types(device):
+    types, dynamicTypes = device.get_available_types()
+    return [ty for ty in types], [(dynamicType.type, dynamicType.category) for dynamicType in dynamicTypes]
+
+
+def run_test_app(device, package_name, types=None, dynamic_types=None, enable_all_types=False):
     # 创建测试对象
     test = Test(device)
 
@@ -71,6 +76,9 @@ def run_test_app(device, package_name, types=None, dynamic_types=None):
     test.set_test_target(builder.build())
 
     # 启用和禁用相关性能指标类型
+    if enable_all_types:
+        types, dynamic_types = get_all_types(device)
+
     if types is not None:
         test.set_types(*types)
 
