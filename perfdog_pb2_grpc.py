@@ -199,9 +199,19 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.SetMemorySamplingFrequencyReq.SerializeToString,
                 response_deserializer=perfdog__pb2.Empty.FromString,
                 )
+        self.transferFloatingWindowMessage = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/transferFloatingWindowMessage',
+                request_serializer=perfdog__pb2.TransferFloatingWindowMessageReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
         self.killServer = channel.unary_unary(
                 '/com.perfdog.proto.PerfDogService/killServer',
                 request_serializer=perfdog__pb2.Empty.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
+        self.setFloatingWindowPreferences = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/setFloatingWindowPreferences',
+                request_serializer=perfdog__pb2.SetFloatingWindowPreferencesReq.SerializeToString,
                 response_deserializer=perfdog__pb2.Empty.FromString,
                 )
 
@@ -469,8 +479,22 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def transferFloatingWindowMessage(self, request, context):
+        """发送悬浮窗的显示内容，仅用于windows
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def killServer(self, request, context):
         """关闭PerfDogService
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def setFloatingWindowPreferences(self, request, context):
+        """设置悬浮窗位置和字体颜色，用于android和windows
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -664,9 +688,19 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     request_deserializer=perfdog__pb2.SetMemorySamplingFrequencyReq.FromString,
                     response_serializer=perfdog__pb2.Empty.SerializeToString,
             ),
+            'transferFloatingWindowMessage': grpc.unary_unary_rpc_method_handler(
+                    servicer.transferFloatingWindowMessage,
+                    request_deserializer=perfdog__pb2.TransferFloatingWindowMessageReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
             'killServer': grpc.unary_unary_rpc_method_handler(
                     servicer.killServer,
                     request_deserializer=perfdog__pb2.Empty.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'setFloatingWindowPreferences': grpc.unary_unary_rpc_method_handler(
+                    servicer.setFloatingWindowPreferences,
+                    request_deserializer=perfdog__pb2.SetFloatingWindowPreferencesReq.FromString,
                     response_serializer=perfdog__pb2.Empty.SerializeToString,
             ),
     }
@@ -1309,6 +1343,23 @@ class PerfDogService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def transferFloatingWindowMessage(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/transferFloatingWindowMessage',
+            perfdog__pb2.TransferFloatingWindowMessageReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def killServer(request,
             target,
             options=(),
@@ -1321,6 +1372,23 @@ class PerfDogService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/killServer',
             perfdog__pb2.Empty.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def setFloatingWindowPreferences(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/setFloatingWindowPreferences',
+            perfdog__pb2.SetFloatingWindowPreferencesReq.SerializeToString,
             perfdog__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

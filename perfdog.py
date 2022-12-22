@@ -169,8 +169,18 @@ class Device(object):
         return self.__display_str()
 
     def __display_str(self):
+        def get_os_type(device):
+            if device.osType == perfdog_pb2.IOS:
+                return "iOS"
+            elif device.osType == perfdog_pb2.SWITCH:
+                return "Switch"
+            elif device.osType == perfdog_pb2.WINDOWS:
+                return "Windows"
+            else:
+                return "Android"
+
         conn_type = 'USB' if self.__real_device.conType == perfdog_pb2.USB else 'WIFI'
-        os_type = 'iOS' if self.__real_device.osType == perfdog_pb2.IOS else 'Android'
+        os_type = get_os_type(self.__real_device)
         return '{{uid: {}, name: {}, conn_type: {}, os_type: {}}}'.format(self.__real_device.uid,
                                                                           self.__real_device.name,
                                                                           conn_type,
@@ -246,6 +256,16 @@ class Device(object):
     def set_screenshot_interval(self, seconds):
         req = perfdog_pb2.ScreenShotInterval(device=self.__real_device, second=seconds)
         self.stub().setScreenShotInterval(req)
+
+    def set_floating_window_preferences(self, position, font_color, record_hotkey, add_label_hotkey):
+        req = perfdog_pb2.SetFloatingWindowPreferencesReq(device=self.__real_device, position=position,
+                                                          fontColor=font_color, recordHotKey=record_hotkey,
+                                                          addLabelHotKey=add_label_hotkey)
+        self.stub().setFloatingWindowPreferences(req)
+
+    def set_windows_dx_version(self, dx_version):
+        req = perfdog_pb2.TransferWindowsDXVersionReq(device=self.__real_device, dxVersion=dx_version)
+        self.stub().transferWindowsDXVersion(req)
 
     def start_test_app(self, req):
         self.stub().startTestApp(req)
@@ -450,7 +470,7 @@ class StreamPerfData(object):
         if self.__has_first_perf_data:
             return False
 
-        if self.__is_fps_data(perf_data):
+        if self.__is_perf_data(perf_data):
             self.__has_first_perf_data = True
             if self.__first_perf_data_callback is not None:
                 self.__first_perf_data_callback()
@@ -460,15 +480,13 @@ class StreamPerfData(object):
             return True
 
     @staticmethod
-    def __is_fps_data(perf_data):
+    def __is_perf_data(perf_data):
         if perf_data.HasField('iosPerfData'):
-            perf_data = perf_data.iosPerfData
+            return True
         elif perf_data.HasField('androidPerfData'):
             perf_data = perf_data.androidPerfData
-        else:
-            return False
-
-        if perf_data.HasField('fpsData'):
+            return True
+        elif perf_data.HasField('windowsPerfData'):
             return True
         else:
             return False
