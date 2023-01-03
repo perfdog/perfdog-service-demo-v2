@@ -400,8 +400,13 @@ class TestAppBuilder(TestTargetBuilder):
 class TestSysProcessBuilder(TestTargetBuilder):
     def __init__(self, device):
         super().__init__(device)
+        self.__pid = None
         self.__process_name = None
         self.__hide_floating_window = False
+        self.__dx_version = perfdog_pb2.AUTO
+
+    def set_pid(self, pid):
+        self.__pid = pid
 
     def set_process_name(self, process_name):
         self.__process_name = process_name
@@ -412,20 +417,29 @@ class TestSysProcessBuilder(TestTargetBuilder):
     def show_floating_window(self):
         self.__hide_floating_window = False
 
+    def set_dx_version(self, dx_version):
+        self.__dx_version = dx_version
+
     def build(self):
         processes = self.device().get_sys_processes()
         process = None
         for v in processes:
-            if v.name == self.__process_name:
-                process = v
-                break
+            if self.__pid is not None:
+                if self.__pid == v.pid:
+                    process = v
+                    break
+            elif self.__process_name is not None:
+                if self.__process_name == v.name:
+                    process = v
+                    break
 
         if process is None:
             raise NonExistTestTarget()
 
         req = perfdog_pb2.StartTestSysProcessReq(device=self.device().real_device(),
                                                  sysProcessInfo=process,
-                                                 hideFloatingWindow=self.__hide_floating_window)
+                                                 hideFloatingWindow=self.__hide_floating_window,
+                                                 dxVersion=self.__dx_version)
         return TestTarget(False, req)
 
 

@@ -3,7 +3,7 @@
 import logging
 import time
 import threading
-from perfdog import Service, Test, TestTarget
+from perfdog import Service, Test, TestSysProcessBuilder
 import perfdog_pb2
 from config import SERVICE_TOKEN, SERVICE_PATH
 
@@ -13,21 +13,6 @@ def get_windows_device(service):
         if device.os_type() == perfdog_pb2.WINDOWS:
             return device
     return None
-
-
-def get_sys_process(device, pid):
-    for process in device.get_sys_processes():
-        if process.pid == pid:
-            return process
-    return None
-
-
-def create_test_target(device, pid, dx_version):
-    sys_process = get_sys_process(device, pid)
-    return TestTarget(False, perfdog_pb2.StartTestSysProcessReq(device=device.real_device(),
-                                                                sysProcessInfo=sys_process,
-                                                                hideFloatingWindow=True,
-                                                                dxVersion=dx_version))
 
 
 def set_floating_window(device):
@@ -54,7 +39,7 @@ def main():
     # 可以根据自己需要填写types参数，来启用的性能指标参数列表，types值为None时，使用当前设备已经开启的指标选项
     # 指标启用可以参考"指标参数映射表：https://perfdog.qq.com/article_detail?id=10210&issue_id=0&plat_id=2"
     # 如果单一脚本进程中需要启动针对多个设备性能数据收集，可以通过多线程的方式，并行运行多次run_test函数
-    pid = 23836
+    pid = 6824
     dx_version = perfdog_pb2.AUTO
     run_test(device, pid=pid, dx_version=dx_version,
              types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.WINDOWS_CPU, perfdog_pb2.WINDOWS_MEMORY]
@@ -90,8 +75,11 @@ def run_test(device, pid, dx_version, types=None, enable_all_types=False):
     # 自动化一般配置隐藏浮窗
     set_floating_window(device)
 
-    # 设置测试目标
-    test.set_test_target(create_test_target(device, pid, dx_version))
+    # 创建要测试目标App
+    builder = test.create_test_target_builder(TestSysProcessBuilder)
+    builder.set_pid(pid)
+    builder.set_dx_version(dx_version)
+    test.set_test_target(builder.build())
 
     # 启用和禁用相关性能指标类型
     if enable_all_types:
