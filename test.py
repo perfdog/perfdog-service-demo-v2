@@ -8,6 +8,14 @@ import perfdog_pb2
 from config import SERVICE_TOKEN, SERVICE_PATH
 
 
+def set_floating_window(device):
+    position = perfdog_pb2.HIDE
+    font_color = perfdog_pb2.Color(red=1.0, green=1.0, blue=0.0, alpha=1.0)
+    record_hotkey = ''
+    add_label_hotkey = ''
+    device.set_floating_window_preferences(position, font_color, record_hotkey, add_label_hotkey)
+
+
 def main():
     # 日志输出配置，如果有特别的需要可自行配置
     logging.basicConfig(format="%(asctime)s-%(levelname)s: %(message)s", level=logging.INFO)
@@ -69,6 +77,9 @@ def run_test_app(device, package_name, types=None, dynamic_types=None, enable_al
     evt = threading.Event()
     test.set_first_perf_data_callback(lambda: evt.set())
     test.set_perf_data_callback(print_perf_data)
+
+    # 自动化一般配置隐藏浮窗
+    set_floating_window(device)
 
     # 创建要测试目标App
     builder = test.create_test_target_builder(TestAppBuilder)
