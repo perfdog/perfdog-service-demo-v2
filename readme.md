@@ -44,6 +44,9 @@ python cmds.py gettypes device_id
 # 停止PerfDogService
 python cmds.py killserver
 ```
+
+> 如果后续需要测试的是windows应用，上面命令的执行在管理员方式启动的终端中执行
+
 5. 配置测试参数
 + 移动设备性能测试
 ```python
@@ -86,6 +89,8 @@ run_test(device, pid=pid, dx_version=dx_version,
 
 6. 修改运行test.py 或者 test_windows.py
 + 可以根据自己需要启用/用相关性能指标类型，同时也可在此脚本中启用自己的自动化测试逻辑
+
+> test_windows.py测试windows应用需要以管理员方式启动
 
 ## 注意事项
 如果不需要收集数据了，一定要停止测试，会影响计费，service是支持后台自动收集数据的，即便脚本不运行了；可以使用cmds.py脚本停止service的运行，就不用担心计费的问题了；
