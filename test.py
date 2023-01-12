@@ -28,7 +28,7 @@ def main():
     # 按照自己的测试要求启用下面两个配置中的一个
     # 启用安装
     # service.enable_install_apk()
-    # 禁止安装,可设置不安装PerfDog APK，跑自定化时减少不必要的暂停打断
+    # 禁止安装,可设置不安装PerfDog APK，跑自动化时减少不必要的暂停打断
     service.disable_install_apk()
 
     # TODO:
