@@ -1,19 +1,12 @@
 # coding: utf-8
 
 import logging
-import time
 import threading
-from perfdog import Service, Test, TestAppBuilder, TestSysProcessBuilder
+import time
+
 import perfdog_pb2
-from config import SERVICE_TOKEN, SERVICE_PATH
-
-
-def set_floating_window(device):
-    position = perfdog_pb2.HIDE
-    font_color = perfdog_pb2.Color(red=1.0, green=1.0, blue=0.0, alpha=1.0)
-    record_hotkey = ''
-    add_label_hotkey = ''
-    device.set_floating_window_preferences(position, font_color, record_hotkey, add_label_hotkey)
+from perfdog import Test, TestAppBuilder
+from test_base import create_service, print_perf_data, get_all_types, set_floating_window
 
 
 def main():
@@ -21,7 +14,7 @@ def main():
     logging.basicConfig(format="%(asctime)s-%(levelname)s: %(message)s", level=logging.INFO)
 
     # 创建服务对象代理
-    service = Service(SERVICE_TOKEN, SERVICE_PATH)
+    service = create_service()
 
     # 配置是否安装浮窗App，针对安卓设备有效
     # 如果App已经安装到要测试的设备上，请先手工从设备卸载之后继续使用
@@ -39,29 +32,18 @@ def main():
     # 如果单一脚本进程中需要启动针对多个设备性能数据收集，可以通过多线程的方式，并行运行多次run_test_app函数
 
     device = service.get_usb_device('-')
+    if device is None:
+        logging.error("device not found")
+        return
+
     run_test_app(device,
                  package_name='-',
                  types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.CPU_USAGE, perfdog_pb2.MEMORY],
                  dynamic_types=[
                      (perfdog_pb2.GPU_COUNTER, 'GPU General'),
                      (perfdog_pb2.GPU_COUNTER, 'GPU Stalls'),
-                 ])
-
-
-def print_perf_data(perf_data):
-    if perf_data.HasField('warningData'):
-        msg = perf_data.warningData.msg
-        logging.warning(msg)
-    elif perf_data.HasField('errorData'):
-        msg = perf_data.errorData.msg
-        logging.error(msg)
-    else:
-        logging.info(perf_data)
-
-
-def get_all_types(device):
-    types, dynamicTypes = device.get_available_types()
-    return [ty for ty in types], [(dynamicType.type, dynamicType.category) for dynamicType in dynamicTypes]
+                 ],
+                 )
 
 
 def run_test_app(device, package_name, types=None, dynamic_types=None, enable_all_types=False):
