@@ -6,7 +6,7 @@ import time
 
 import perfdog_pb2
 from perfdog import Test, TestAppBuilder
-from test_base import create_service, print_perf_data, get_all_types, set_floating_window
+from test_base import create_service, get_all_types, set_floating_window
 
 
 def main():
@@ -54,11 +54,16 @@ def run_test_app(device, package_name, types=None, dynamic_types=None, enable_al
     # 一般无需设置，使用缺省值即可
     # device.set_memory_sampling_frequency(4)
 
-    # 设置有性能数据回调和性能数据回调处理函数
-    # 不需要的话，这两个回调可以不设置
+    # 设置有性能数据回调
     evt = threading.Event()
     test.set_first_perf_data_callback(lambda: evt.set())
-    test.set_perf_data_callback(print_perf_data)
+
+    # 输出性能数据，调试过程中建议开启
+    test.set_perf_data_callback(lambda perf_data: logging.info(perf_data))
+
+    # 输出测试过程中告警和错误信息，建议保留，出问题便于查日志
+    test.set_error_perf_data_callback(lambda perf_data: logging.info("PerfDog: %s", perf_data.errorData.msg))
+    test.set_warning_perf_data_callback(lambda perf_data: logging.warning("PerfDog: %s", perf_data.warningData.msg))
 
     # 自动化一般配置隐藏浮窗
     set_floating_window(device)

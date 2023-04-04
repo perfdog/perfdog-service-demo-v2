@@ -9,6 +9,33 @@ import perfdog_pb2
 import perfdog_pb2_grpc
 
 
+class PerfData(object):
+    @staticmethod
+    def is_perf_data(perf_data):
+        if perf_data.HasField('iosPerfData'):
+            return True
+        elif perf_data.HasField('androidPerfData'):
+            return True
+        elif perf_data.HasField('windowsPerfData'):
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def is_warning_perf_data(perf_data):
+        if perf_data.HasField('warningData'):
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def is_error_perf_data(perf_data):
+        if perf_data.HasField('errorData'):
+            return True
+        else:
+            return False
+
+
 class Stream(object):
     def __init__(self, stream, callback):
         self.__steam = stream
@@ -450,19 +477,19 @@ class StreamPerfData(object):
 
         #
         self.__has_first_perf_data = False
-        self.__first_perf_data_callback = None
+        self.__first_perf_data_callbacks = []
 
         #
-        self.__perf_data_callback = None
+        self.__perf_data_callbacks = []
 
-    def set_first_perf_data_callback(self, first_perf_data_callback):
-        self.__first_perf_data_callback = first_perf_data_callback
+    def add_first_perf_data_callback(self, callback):
+        self.__first_perf_data_callbacks.append(callback)
 
-    def set_perf_data_callback(self, perf_data_callback):
-        self.__perf_data_callback = perf_data_callback
+    def add_perf_data_callback(self, predicate, callback):
+        self.__perf_data_callbacks.append((predicate, callback))
 
     def start(self, create_stream):
-        if self.__first_perf_data_callback is not None or self.__perf_data_callback is not None:
+        if self.__first_perf_data_callbacks or self.__perf_data_callbacks:
             self.__stream = create_stream(self.__handle_perf_data)
 
     def stop(self):
@@ -471,39 +498,24 @@ class StreamPerfData(object):
             self.__stream = None
 
     def __handle_perf_data(self, perf_data):
-        use_stream_count = 0
-        use_stream_count += 1 if self.__handle_first_perf_data(perf_data) else 0
-        if self.__perf_data_callback is not None:
-            self.__perf_data_callback(perf_data)
-            use_stream_count += 1
+        #
+        self.__handle_first_perf_data(perf_data)
 
-        if use_stream_count == 0:
-            self.stop()
+        #
+        for predicate, callback in self.__perf_data_callbacks:
+            if predicate(perf_data):
+                callback(perf_data)
 
     def __handle_first_perf_data(self, perf_data):
         if self.__has_first_perf_data:
             return False
 
-        if self.__is_perf_data(perf_data):
-            self.__has_first_perf_data = True
-            if self.__first_perf_data_callback is not None:
-                self.__first_perf_data_callback()
-            return False
+        if not PerfData.is_perf_data(perf_data):
+            return
 
-        else:
-            return True
-
-    @staticmethod
-    def __is_perf_data(perf_data):
-        if perf_data.HasField('iosPerfData'):
-            return True
-        elif perf_data.HasField('androidPerfData'):
-            perf_data = perf_data.androidPerfData
-            return True
-        elif perf_data.HasField('windowsPerfData'):
-            return True
-        else:
-            return False
+        self.__has_first_perf_data = True
+        for callback in self.__first_perf_data_callbacks:
+            callback()
 
 
 class Test(object):
@@ -531,11 +543,17 @@ class Test(object):
         #
         self.__is_start = False
 
-    def set_first_perf_data_callback(self, first_perf_data_callback):
-        self.__stream_perf_data.set_first_perf_data_callback(first_perf_data_callback)
+    def set_first_perf_data_callback(self, callback):
+        self.__stream_perf_data.add_first_perf_data_callback(callback)
 
-    def set_perf_data_callback(self, perf_data_callback):
-        self.__stream_perf_data.set_perf_data_callback(perf_data_callback)
+    def set_perf_data_callback(self, callback):
+        self.__stream_perf_data.add_perf_data_callback(PerfData.is_perf_data, callback)
+
+    def set_error_perf_data_callback(self, callback):
+        self.__stream_perf_data.add_perf_data_callback(PerfData.is_error_perf_data, callback)
+
+    def set_warning_perf_data_callback(self, callback):
+        self.__stream_perf_data.add_perf_data_callback(PerfData.is_warning_perf_data, callback)
 
     def create_test_target_builder(self, factory):
         return factory(self.__device)

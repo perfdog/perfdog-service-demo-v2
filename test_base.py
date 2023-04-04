@@ -31,14 +31,3 @@ def print_device(event):
         logging.info("AddDevice: \n%s", event.device)
     elif event.eventType == perfdog_pb2.REMOVE:
         logging.info("RemoveDevice: \n%s", event.device)
-
-
-def print_perf_data(perf_data):
-    if perf_data.HasField('warningData'):
-        msg = perf_data.warningData.msg
-        logging.warning(msg)
-    elif perf_data.HasField('errorData'):
-        msg = perf_data.errorData.msg
-        logging.error(msg)
-    else:
-        logging.info(perf_data)
