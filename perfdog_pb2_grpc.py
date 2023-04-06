@@ -204,6 +204,16 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.TransferFloatingWindowMessageReq.SerializeToString,
                 response_deserializer=perfdog__pb2.Empty.FromString,
                 )
+        self.generateUnrealMemoryReport = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/generateUnrealMemoryReport',
+                request_serializer=perfdog__pb2.UnrealMemoryReportReq.SerializeToString,
+                response_deserializer=perfdog__pb2.MemoryReportData.FromString,
+                )
+        self.updateMemoryReportInfo = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/updateMemoryReportInfo',
+                request_serializer=perfdog__pb2.UpdateMemoryReportReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
         self.killServer = channel.unary_unary(
                 '/com.perfdog.proto.PerfDogService/killServer',
                 request_serializer=perfdog__pb2.Empty.SerializeToString,
@@ -486,6 +496,20 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def generateUnrealMemoryReport(self, request, context):
+        """获取 unreal memory report
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def updateMemoryReportInfo(self, request, context):
+        """修改 memory report 标签名
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def killServer(self, request, context):
         """关闭PerfDogService
         """
@@ -691,6 +715,16 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
             'transferFloatingWindowMessage': grpc.unary_unary_rpc_method_handler(
                     servicer.transferFloatingWindowMessage,
                     request_deserializer=perfdog__pb2.TransferFloatingWindowMessageReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'generateUnrealMemoryReport': grpc.unary_unary_rpc_method_handler(
+                    servicer.generateUnrealMemoryReport,
+                    request_deserializer=perfdog__pb2.UnrealMemoryReportReq.FromString,
+                    response_serializer=perfdog__pb2.MemoryReportData.SerializeToString,
+            ),
+            'updateMemoryReportInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.updateMemoryReportInfo,
+                    request_deserializer=perfdog__pb2.UpdateMemoryReportReq.FromString,
                     response_serializer=perfdog__pb2.Empty.SerializeToString,
             ),
             'killServer': grpc.unary_unary_rpc_method_handler(
@@ -1355,6 +1389,40 @@ class PerfDogService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/transferFloatingWindowMessage',
             perfdog__pb2.TransferFloatingWindowMessageReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def generateUnrealMemoryReport(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/generateUnrealMemoryReport',
+            perfdog__pb2.UnrealMemoryReportReq.SerializeToString,
+            perfdog__pb2.MemoryReportData.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def updateMemoryReportInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/updateMemoryReportInfo',
+            perfdog__pb2.UpdateMemoryReportReq.SerializeToString,
             perfdog__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

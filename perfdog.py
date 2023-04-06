@@ -346,6 +346,10 @@ class Device(object):
         req = perfdog_pb2.AddNoteReq(device=self.__real_device, time=note_time, note=note_name)
         self.stub().addNote(req)
 
+    def generate_unreal_memory_report(self, tag_name):
+        req = perfdog_pb2.UnrealMemoryReportReq(device=self.__real_device, tagName=tag_name)
+        return self.stub().generateUnrealMemoryReport(req)
+
     def get_render_resolution(self):
         req = perfdog_pb2.GetRenderResolutionReq(device=self.__real_device)
         return self.stub().getRenderResolutionOfWindowUnderTest(req)
@@ -636,3 +640,6 @@ class Test(object):
 
     def add_note(self, note_name, note_time):
         return self.__device.add_note(note_name, note_time)
+
+    def generate_unreal_memory_report(self, tag_name):
+        return self.__device.generate_unreal_memory_report(tag_name)
