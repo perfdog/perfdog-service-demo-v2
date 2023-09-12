@@ -162,6 +162,14 @@ class Service(object):
         req = perfdog_pb2.Empty()
         self.stub().killServer(req)
 
+    def get_preset_network_template(self):
+        req = perfdog_pb2.GetPresetNetworkProfilingTemplateReq()
+        return self.stub().getPresetNetworkProfilingTemplate(req).templates
+
+    def submit_user_network_template(self, template):
+        req = perfdog_pb2.SubmitUserNetworkProfilingTemplateReq(template=template)
+        return self.stub().submitUserNetworkProfilingTemplate(req)
+
 
 class Device(object):
     def __init__(self, real_device, stub_factory):
@@ -362,6 +370,10 @@ class Device(object):
         req = perfdog_pb2.GetDeviceCacheDataPackedReq(device=self.__real_device, dataFormat=data_format)
         return Stream(self.stub().getDeviceCacheDataPacked(req), callback)
 
+    def change_network_template(self, template):
+        req = perfdog_pb2.ChangeNetworkTemplateReq(device=self.__real_device, template=template)
+        self.stub().changeNetworkTemplate(req)
+
 
 class NotSetTestTarget(Exception):
     pass
@@ -398,6 +410,8 @@ class TestAppBuilder(TestTargetBuilder):
         self.__sub_process_name = None
         self.__hide_floating_window = False
         self.__sub_window = None
+        self.__profiling_mode = perfdog_pb2.DEFAULT
+        self.__network_template = None
 
     def set_package_name(self, package_name):
         self.__package_name = package_name
@@ -414,6 +428,12 @@ class TestAppBuilder(TestTargetBuilder):
     def set_sub_window(self, sub_window):
         self.__sub_window = sub_window
 
+    def set_profiling_mode(self, profiling_mode):
+        self.__profiling_mode = profiling_mode
+
+    def set_network_template(self, network_template):
+        self.__network_template = network_template
+
     def build(self):
         app = self.device().get_app(self.__package_name)
         if app is None:
@@ -424,6 +444,8 @@ class TestAppBuilder(TestTargetBuilder):
                                           subProcess=self.__sub_process_name,
                                           hideFloatingWindow=self.__hide_floating_window,
                                           subWindow=self.__sub_window,
+                                          profilingMode=self.__profiling_mode,
+                                          networkProfilingTemplate=self.__network_template,
                                           )
         return TestTarget(True, req)
 

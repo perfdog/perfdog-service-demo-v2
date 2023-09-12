@@ -224,6 +224,31 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.SetFloatingWindowPreferencesReq.SerializeToString,
                 response_deserializer=perfdog__pb2.Empty.FromString,
                 )
+        self.getPresetNetworkProfilingTemplate = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/getPresetNetworkProfilingTemplate',
+                request_serializer=perfdog__pb2.GetPresetNetworkProfilingTemplateReq.SerializeToString,
+                response_deserializer=perfdog__pb2.GetPresetNetworkProfilingTemplateRsp.FromString,
+                )
+        self.submitUserNetworkProfilingTemplate = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/submitUserNetworkProfilingTemplate',
+                request_serializer=perfdog__pb2.SubmitUserNetworkProfilingTemplateReq.SerializeToString,
+                response_deserializer=perfdog__pb2.SubmitUserNetworkProfilingTemplateRsp.FromString,
+                )
+        self.updateUserNetworkProfilingTemplate = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/updateUserNetworkProfilingTemplate',
+                request_serializer=perfdog__pb2.UpdateUserNetworkProfilingTemplateReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
+        self.deleteUserNetworkProfilingTemplate = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/deleteUserNetworkProfilingTemplate',
+                request_serializer=perfdog__pb2.DeleteUserNetworkProfilingTemplateReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
+        self.changeNetworkTemplate = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/changeNetworkTemplate',
+                request_serializer=perfdog__pb2.ChangeNetworkTemplateReq.SerializeToString,
+                response_deserializer=perfdog__pb2.ChangeNetworkTemplateRsp.FromString,
+                )
 
 
 class PerfDogServiceServicer(object):
@@ -524,6 +549,41 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def getPresetNetworkProfilingTemplate(self, request, context):
+        """拉取默认的和用户创建的网络模版
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def submitUserNetworkProfilingTemplate(self, request, context):
+        """提交用户的网络模板
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def updateUserNetworkProfilingTemplate(self, request, context):
+        """更新用户的网络模板
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def deleteUserNetworkProfilingTemplate(self, request, context):
+        """删除用户的网络模板
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def changeNetworkTemplate(self, request, context):
+        """用于在测试过程中修改弱网模拟参数
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PerfDogServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -736,6 +796,31 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     servicer.setFloatingWindowPreferences,
                     request_deserializer=perfdog__pb2.SetFloatingWindowPreferencesReq.FromString,
                     response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'getPresetNetworkProfilingTemplate': grpc.unary_unary_rpc_method_handler(
+                    servicer.getPresetNetworkProfilingTemplate,
+                    request_deserializer=perfdog__pb2.GetPresetNetworkProfilingTemplateReq.FromString,
+                    response_serializer=perfdog__pb2.GetPresetNetworkProfilingTemplateRsp.SerializeToString,
+            ),
+            'submitUserNetworkProfilingTemplate': grpc.unary_unary_rpc_method_handler(
+                    servicer.submitUserNetworkProfilingTemplate,
+                    request_deserializer=perfdog__pb2.SubmitUserNetworkProfilingTemplateReq.FromString,
+                    response_serializer=perfdog__pb2.SubmitUserNetworkProfilingTemplateRsp.SerializeToString,
+            ),
+            'updateUserNetworkProfilingTemplate': grpc.unary_unary_rpc_method_handler(
+                    servicer.updateUserNetworkProfilingTemplate,
+                    request_deserializer=perfdog__pb2.UpdateUserNetworkProfilingTemplateReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'deleteUserNetworkProfilingTemplate': grpc.unary_unary_rpc_method_handler(
+                    servicer.deleteUserNetworkProfilingTemplate,
+                    request_deserializer=perfdog__pb2.DeleteUserNetworkProfilingTemplateReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'changeNetworkTemplate': grpc.unary_unary_rpc_method_handler(
+                    servicer.changeNetworkTemplate,
+                    request_deserializer=perfdog__pb2.ChangeNetworkTemplateReq.FromString,
+                    response_serializer=perfdog__pb2.ChangeNetworkTemplateRsp.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -1458,5 +1543,90 @@ class PerfDogService(object):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/setFloatingWindowPreferences',
             perfdog__pb2.SetFloatingWindowPreferencesReq.SerializeToString,
             perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def getPresetNetworkProfilingTemplate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/getPresetNetworkProfilingTemplate',
+            perfdog__pb2.GetPresetNetworkProfilingTemplateReq.SerializeToString,
+            perfdog__pb2.GetPresetNetworkProfilingTemplateRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def submitUserNetworkProfilingTemplate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/submitUserNetworkProfilingTemplate',
+            perfdog__pb2.SubmitUserNetworkProfilingTemplateReq.SerializeToString,
+            perfdog__pb2.SubmitUserNetworkProfilingTemplateRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def updateUserNetworkProfilingTemplate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/updateUserNetworkProfilingTemplate',
+            perfdog__pb2.UpdateUserNetworkProfilingTemplateReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def deleteUserNetworkProfilingTemplate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/deleteUserNetworkProfilingTemplate',
+            perfdog__pb2.DeleteUserNetworkProfilingTemplateReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def changeNetworkTemplate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/changeNetworkTemplate',
+            perfdog__pb2.ChangeNetworkTemplateReq.SerializeToString,
+            perfdog__pb2.ChangeNetworkTemplateRsp.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
