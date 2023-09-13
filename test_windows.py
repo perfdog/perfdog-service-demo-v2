@@ -73,6 +73,9 @@ def run_test(device, pid, dx_version, types=None, enable_all_types=False):
     if types is not None:
         test.set_types(*types)
 
+    if dynamic_types is not None:
+        test.set_dynamic_types(*dynamic_types)
+
     try:
         # 启动性能数据采集
         test.start()
