@@ -20,7 +20,7 @@ def get_all_types(device):
 
 def set_floating_window(device):
     position = perfdog_pb2.HIDE
-    font_color = perfdog_pb2.Color(red=1.0, green=1.0, blue=0.0, alpha=1.0)
+    font_color = perfdog_pb2.Color(red=0.49, green=0.93, blue=0.89, alpha=1.0)
     record_hotkey = ''
     add_label_hotkey = ''
     device.set_floating_window_preferences(position, font_color, record_hotkey, add_label_hotkey)

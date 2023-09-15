@@ -68,12 +68,19 @@ def kill_server(service):
     service.kill_server()
 
 
+def print_preset_network_template(service):
+    templates = service.get_preset_network_template()
+    for template in templates:
+        print('id:{},name:{},description:{}'.format(template.id, template.name, template.description))
+
+
 def print_usage():
     print('usage: python cmds.py getdevices')
     print('       python cmds.py getapps device_id')
     print('       python cmds.py getsysprocesses device_id')
     print('       python cmds.py gettypes device_id')
     print('       python cmds.py killserver')
+    print('       python cmds.py getpresetnetworktemplate')
 
 
 def get_func_and_args(args):
@@ -97,6 +104,9 @@ def get_func_and_args(args):
 
     if cmd == 'killserver' and len(args) == 0:
         return kill_server, args
+
+    if cmd == 'getpresetnetworktemplate' and len(args) == 0:
+        return print_preset_network_template, args
 
     return None, ()
 
