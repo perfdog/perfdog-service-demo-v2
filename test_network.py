@@ -22,7 +22,7 @@ def create_customized_template():
     outDelayBias.delayBiasMin = 0  # 延时抖动范围的下区间,单位毫秒
     outDelayBias.delayBiasMax = 1000  # 延时抖动范围的上区间,单位毫秒
     outDelayBias.delayBiasPercent = 50  # 延时抖动的概率1-100%
-    option.outRate.value = 1000  # 上行随机丢包,1-100整型
+    option.outRate.value = 100  # 上行随机丢包,1-100整型
     option.outPass.value = 1000  # 上行周期性设置（正常放行）,单位毫秒
     option.outLoss.value = 1000  # 上行周期性设置（完全丢包）,单位毫秒
     option.outBurst.value = 1000  # 上行周期性设置（时间点放行）,单位毫秒
@@ -33,7 +33,7 @@ def create_customized_template():
     outDelayBias.delayBiasMin = 0  # 延时抖动范围的下区间,单位毫秒
     outDelayBias.delayBiasMax = 1000  # 延时抖动范围的上区间,单位毫秒
     outDelayBias.delayBiasPercent = 50  # 延时抖动的概率1-100%
-    option.outRate.value = 1000  # 下行随机丢包,1-100整型
+    option.outRate.value = 100  # 下行随机丢包,1-100整型
     option.outPass.value = 1000  # 下行周期性设置（正常放行）,单位毫秒
     option.outLoss.value = 1000  # 下行周期性设置（完全丢包）,单位毫秒
     option.outBurst.value = 1000  # 下行周期性设置（时间点放行）,单位毫秒
