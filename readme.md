@@ -94,7 +94,7 @@ run_test(device, pid=pid, dx_version=dx_version,
 # 可以使用同目录下cmds.py获取已连接到电脑的设备列表、相应设备的App列表、预设和已保存的网络模板
 # 用户自定义模板可以参照脚本内create_customized_template()方法
 # 填入测试进程的网络模板列表
-# 如果单一脚本进程中需要启动针对多个设备性能数据收集，可以通过多线程的方式，并行运行多次run_test_app函数
+# 如果单一脚本进程中需要启动针对多个设备进行网络测试，可以通过多线程的方式，并行运行多次run_test_app函数
 templates = create_templates()
 run_test_app(device, package_name='-', templates=tempates)
 ```
