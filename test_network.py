@@ -15,13 +15,14 @@ def create_customized_template():
 
     option = template.networkProfilingOptions.add()
 
+    # 以下配置可选择设置
     option.outBandwidth.value = 1000  # 上行带宽,单位kbps
     option.outDelay.value = 1000  # 上行延时,单位毫秒
     outDelayBias = option.outDelayBias.add()  # 上行延时抖动
     outDelayBias.delayBiasMin = 0  # 延时抖动范围的下区间,单位毫秒
     outDelayBias.delayBiasMax = 1000  # 延时抖动范围的上区间,单位毫秒
     outDelayBias.delayBiasPercent = 50  # 延时抖动的概率1-100%
-    option.outRate.value = 1000  # 上行随机丢包,1-100整型
+    option.outRate.value = 100  # 上行随机丢包,1-100整型
     option.outPass.value = 1000  # 上行周期性设置（正常放行）,单位毫秒
     option.outLoss.value = 1000  # 上行周期性设置（完全丢包）,单位毫秒
     option.outBurst.value = 1000  # 上行周期性设置（时间点放行）,单位毫秒
@@ -32,7 +33,7 @@ def create_customized_template():
     outDelayBias.delayBiasMin = 0  # 延时抖动范围的下区间,单位毫秒
     outDelayBias.delayBiasMax = 1000  # 延时抖动范围的上区间,单位毫秒
     outDelayBias.delayBiasPercent = 50  # 延时抖动的概率1-100%
-    option.outRate.value = 1000  # 下行随机丢包,1-100整型
+    option.outRate.value = 100  # 下行随机丢包,1-100整型
     option.outPass.value = 1000  # 下行周期性设置（正常放行）,单位毫秒
     option.outLoss.value = 1000  # 下行周期性设置（完全丢包）,单位毫秒
     option.outBurst.value = 1000  # 下行周期性设置（时间点放行）,单位毫秒
@@ -47,18 +48,22 @@ def create_customized_template():
     return template
 
 
+# todo
+# 创建测试用的网络模板列表
 def create_templates(service):
     # 获取用户的网络模板，包含预设的和用户自定义添加的
     templates = service.get_preset_network_template()
     for template in templates:
         logging.info("id:%d,name:%s,description:%s", template.id, template.name, template.description)
 
-    # 自定义网络模板
+    # todo
+    # 可以创建自定义网络模板
     user_template = create_customized_template()
 
     # 自定义网络模板可以上传到服务器，下次调用get_preset_network_template可以获取到
     # service.submit_user_network_template(user_template)
 
+    # todo
     # 选择进行测试的网络模板
     test_templates = templates[3:7]
     test_templates.append(user_template)
@@ -104,6 +109,9 @@ def run_test_app(device, package_name, templates):
         # 启动性能数据采集
         test.start()
 
+        # 打印开始测试网络模板
+        logging.info("start with network template: %s", templates[0].name)
+
         # TODO:
         # 建议在此处添加自动化测试处理逻辑
         # 测试过程中可以多次切换网络模板
@@ -111,6 +119,7 @@ def run_test_app(device, package_name, templates):
             time.sleep(10)
             test.set_label(template.name)
             device.change_network_template(template)
+            logging.info("change network template: %s", template.name)
 
         time.sleep(2)
         test.stop()

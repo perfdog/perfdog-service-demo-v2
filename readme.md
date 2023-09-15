@@ -41,6 +41,8 @@ python cmds.py getapps device_id
 python cmds.py getsysprocesses device_id
 # 获取当前设备支持获取的性能指标
 python cmds.py gettypes device_id
+# 获取当前用户的预设和已保存的网络模板
+python cmds.py getpresetnetworktemplate
 # 停止PerfDogService
 python cmds.py killserver
 ```
@@ -84,8 +86,21 @@ run_test(device, pid=pid, dx_version=dx_version,
 ```
 
 > 参见test_windows.py脚本样例
-> 
+>
 
++ 网络测试
+```python
+# 填入正确的设备ID，填入测试app的包名
+# 可以使用同目录下cmds.py获取已连接到电脑的设备列表、相应设备的App列表、预设和已保存的网络模板
+# 用户自定义模板可以参照脚本内create_customized_template()方法，指标含义可以参考 https://perfdog.qq.com/article_detail?id=10240&issue_id=0&plat_id=1
+# 填入测试进程的网络模板列表
+# 如果单一脚本进程中需要启动针对多个设备进行网络测试，可以通过多线程的方式，并行运行多次run_test_app函数
+templates = create_templates()
+run_test_app(device, package_name='-', templates=tempates)
+```
+
+> 参见test_network.py脚本样例
+> 
 
 6. 修改运行test.py 或者 test_windows.py
 + 可以根据自己需要启用/用相关性能指标类型，同时也可在此脚本中启用自己的自动化测试逻辑
