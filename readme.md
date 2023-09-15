@@ -95,6 +95,7 @@ run_test(device, pid=pid, dx_version=dx_version,
 # 用户自定义模板可以参照脚本内create_customized_template()方法，指标含义可以参考 https://perfdog.qq.com/article_detail?id=10240&issue_id=0&plat_id=1
 # 填入测试进程的网络模板列表
 # 如果单一脚本进程中需要启动针对多个设备进行网络测试，可以通过多线程的方式，并行运行多次run_test_app函数
+device = service.get_usb_device('-')
 templates = create_templates()
 run_test_app(device, package_name='-', templates=tempates)
 ```
