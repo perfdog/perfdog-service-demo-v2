@@ -42,7 +42,7 @@ def main():
              )
 
 
-def run_test(device, pid, dx_version, types=None, enable_all_types=False):
+def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all_types=False):
     # 创建测试对象
     test = Test(device)
 
