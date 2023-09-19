@@ -16,7 +16,9 @@ perfdog-service-demo-v2
 ├── perfdog_pb2_grpc.py
 ├── perfdog_references.py
 ├── readme.md
-└── test.py
+├── test.py
+├── test_windows.py
+└── test_network.py
 ```
 - test.py 收集性能数据脚本模板，可在此基础上修改
 - cmds.py 获取设备列表和app列表
