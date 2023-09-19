@@ -27,16 +27,16 @@ def create_customized_template():
     option.outLoss.value = 1000  # 上行周期性设置（完全丢包）,单位毫秒
     option.outBurst.value = 1000  # 上行周期性设置（时间点放行）,单位毫秒
 
-    option.outBandwidth.value = 1000  # 下行带宽,单位kbps
-    option.outDelay.value = 1000  # 下行延时,单位毫秒
-    outDelayBias = option.outDelayBias.add()  # 下行延时抖动
-    outDelayBias.delayBiasMin = 0  # 延时抖动范围的下区间,单位毫秒
-    outDelayBias.delayBiasMax = 1000  # 延时抖动范围的上区间,单位毫秒
-    outDelayBias.delayBiasPercent = 50  # 延时抖动的概率1-100%
-    option.outRate.value = 100  # 下行随机丢包,1-100整型
-    option.outPass.value = 1000  # 下行周期性设置（正常放行）,单位毫秒
-    option.outLoss.value = 1000  # 下行周期性设置（完全丢包）,单位毫秒
-    option.outBurst.value = 1000  # 下行周期性设置（时间点放行）,单位毫秒
+    option.inBandwidth.value = 1000  # 下行带宽,单位kbps
+    option.inDelay.value = 1000  # 下行延时,单位毫秒
+    inDelayBias = option.inDelayBias.add()  # 下行延时抖动
+    inDelayBias.delayBiasMin = 0  # 延时抖动范围的下区间,单位毫秒
+    inDelayBias.delayBiasMax = 1000  # 延时抖动范围的上区间,单位毫秒
+    inDelayBias.delayBiasPercent = 50  # 延时抖动的概率1-100%
+    option.inRate.value = 100  # 下行随机丢包,1-100整型
+    option.inPass.value = 1000  # 下行周期性设置（正常放行）,单位毫秒
+    option.inLoss.value = 1000  # 下行周期性设置（完全丢包）,单位毫秒
+    option.inBurst.value = 1000  # 下行周期性设置（时间点放行）,单位毫秒
 
     option.affectedProtocol.append(perfdog_pb2.TCP)  # 应用弱网模拟的协议,不在列表里的协议会直接通过
     option.affectedProtocol.append(perfdog_pb2.UDP)
