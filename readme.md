@@ -105,7 +105,7 @@ run_test_app(device, package_name='-', templates=tempates)
 > 参见test_network.py脚本样例
 > 
 
-6. 修改运行test.py 或者 test_windows.py
+6. 修改运行test.py 或者 test_windows.py 或者 test_network.py
 + 可以根据自己需要启用/用相关性能指标类型，同时也可在此脚本中启用自己的自动化测试逻辑
 
 > test_windows.py测试windows应用需要以管理员方式启动
