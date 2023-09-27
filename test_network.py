@@ -23,6 +23,9 @@ def create_customized_template():
     outDelayBias.delayBiasMax = 1000  # 延时抖动范围的上区间,单位毫秒
     outDelayBias.delayBiasPercent = 50  # 延时抖动的概率1-100%
     option.outRate.value = 100  # 上行随机丢包,1-100整型
+    # 上行周期性设置
+    # 如果是完全丢包就填 outPass 和 outLoss ，分别对应正常时间和完全丢包时间
+    # 如果是burst就填 outPass 和 outBurst，分别对应正常时间和延迟生效时间（对应时间段内的包会等到正常时间到来时才发出去）
     option.outPass.value = 1000  # 上行周期性设置（正常放行）,单位毫秒
     option.outLoss.value = 1000  # 上行周期性设置（完全丢包）,单位毫秒
     option.outBurst.value = 1000  # 上行周期性设置（时间点放行）,单位毫秒
@@ -34,6 +37,7 @@ def create_customized_template():
     inDelayBias.delayBiasMax = 1000  # 延时抖动范围的上区间,单位毫秒
     inDelayBias.delayBiasPercent = 50  # 延时抖动的概率1-100%
     option.inRate.value = 100  # 下行随机丢包,1-100整型
+    # 下行周期性设置 规则同上行
     option.inPass.value = 1000  # 下行周期性设置（正常放行）,单位毫秒
     option.inLoss.value = 1000  # 下行周期性设置（完全丢包）,单位毫秒
     option.inBurst.value = 1000  # 下行周期性设置（时间点放行）,单位毫秒
