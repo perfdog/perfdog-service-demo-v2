@@ -1,3 +1,6 @@
+# Language
+- [English](readme.md)
+- [中文](readme_zh.md)
 
 # perfdog-service-demo-v2
 + 该Demo帮助有诉求的同学快速上手搭建性能自动化。
