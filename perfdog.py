@@ -617,12 +617,14 @@ class Test(object):
         if self.__test_target is None:
             raise NotSetTestTarget()
 
+        # Enabling and disabling related performance measures
         # 启用和禁用相关性能指标
         self.__device.enable_types(*self.__enable_types)
         self.__device.disable_types(*self.__disable_types)
         self.__device.enable_dynamic_types(*self.__enable_dynamic_types)
         self.__device.disable_dynamic_types(*self.__disable_dynamic_types)
 
+        # Start test
         # 开始测试
         if self.__test_target.is_app():
             self.__device.start_test_app(self.__test_target.req())

@@ -255,105 +255,123 @@ class PerfDogServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def loginWithToken(self, request, context):
-        """通过申请的token登录
+        """Log in with the requested token
+        通过申请的token登录
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getDeviceList(self, request, context):
-        """获取在线设备列表
+        """Get a list of online devices
+        获取在线设备列表
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def startDeviceMonitor(self, request, context):
-        """启动设备监听器
+        """Start a device monitor
+        启动设备监听器
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def initDevice(self, request, context):
-        """初始化设备
+        """Initialize the device
+        初始化设备
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getDeviceInfo(self, request, context):
-        """获取设备信息
+        """Get device information
+        获取设备信息
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getDeviceStatus(self, request, context):
-        """获取设备状态
+        """Get device status
+        获取设备状态
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getAppList(self, request, context):
-        """获取设备APP列表
+        """Get a list of device applications
+        获取设备APP列表
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def enablePerfDataType(self, request, context):
-        """开启数据类型
+        """Enable data type
+        开启数据类型
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def disablePerfDataType(self, request, context):
-        """关闭数据类型
+        """Disable data type
+        关闭数据类型
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getPerfDataType(self, request, context):
-        """获取已开启数据类型的列表
+        """Get a list of enabled data types
+        获取已开启数据类型的列表
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getAvailableDataType(self, request, context):
-        """获取设备可以开启的数据项
+        """Get a list of available data types
+        获取设备可以开启的数据项
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def setScreenShotInterval(self, request, context):
-        """设置截屏时间间隔
+        """Set the screenshot interval
+        设置截屏时间间隔
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def StartTestAppInternal(self, request, context):
-        """兼容旧版本，不建议使用
+        """Compatible with older versions, not recommended
+        兼容旧版本，不建议使用
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def StartTestSysProcessInternal(self, request, context):
-        """兼容旧版本，不建议使用
+        """Compatible with older versions, not recommended
+        兼容旧版本，不建议使用
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def startTestApp(self, request, context):
-        """开始测试
+        """Start test
+        The data types enabled by Android by default are FPS, CPU_USAGE, MEMORY, CPU_TEMPERATURE, NETWORK_USAGE, FRAME_TIME, and BATTERY (wifi mode)
+        The data types enabled by iOS by default are FPS, CPU_USAGE, MEMORY, IOS_GPU_USAGE, NETWORK_USAGE, CTX_SWITCH, FRAME_TIME (usb mode) and BATTERY (wifi mode)
+        If you need to enable other data types or disable them, use the enablePerfDataType and disablePerfDataType interfaces
+        开始测试
         Android默认开启的数据类型有FPS、CPU_USAGE、MEMORY、CPU_TEMPERATURE、NETWORK_USAGE、FRAME_TIME和BATTERY(wifi模式)
         iOS默认开启的数据类型有FPS、CPU_USAGE、MEMORY、IOS_GPU_USAGE、NETWORK_USAGE、CTX_SWITCH、FRAME_TIME(usb模式)和BATTERY(wifi模式)
         如果需要开启或者关闭其他数据类型，请使用enablePerfDataType和disablePerfDataType接口
@@ -369,84 +387,96 @@ class PerfDogServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def openPerfDataStream(self, request, context):
-        """获取设备实时的测试数据流
+        """Get real-time test data streams from devices
+        获取设备实时的测试数据流
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def stopTest(self, request, context):
-        """结束测试
+        """Stop test
+        结束测试
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def setLabel(self, request, context):
-        """设置Label
+        """set Label
+        设置Label
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def updateLabel(self, request, context):
-        """修改label的名字
+        """Modify the name of the label
+        修改label的名字
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def addNote(self, request, context):
-        """添加批注
+        """add note
+        添加批注
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def removeNote(self, request, context):
-        """删除批注
+        """delete note
+        删除批注
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def setGlobalDataUploadServer(self, request, context):
-        """设置全局的数据上传服务器,不设置的情况下默认上传到PerfDog云平台
+        """Set the global data upload server, if you don't set it, it will be uploaded to PerfDog cloud platform by default.
+        设置全局的数据上传服务器,不设置的情况下默认上传到PerfDog云平台
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def saveData(self, request, context):
-        """上传数据(默认上传到PerfDog云平台,可通过setGlobalDataUploadServer接口修改),同时保存到本地Excel文件
+        """Upload data (default upload to PerfDog cloud platform, can be modified through the setGlobalDataUploadServer interface), while saving to a local Excel file.
+        上传数据(默认上传到PerfDog云平台,可通过setGlobalDataUploadServer接口修改),同时保存到本地Excel文件
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getDeviceCacheData(self, request, context):
-        """获取设备的缓存数据,数据按条返回
+        """Get the device's cached data, and return the data by item.
+        获取设备的缓存数据,数据按条返回
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getDeviceCacheDataPacked(self, request, context):
-        """获取设备的缓存数据,数据打包成json或protobuf一次返回
+        """Get the cache data of the device, pack the data into json or protobuf and return it at once.
+        获取设备的缓存数据,数据打包成json或protobuf一次返回
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getAppRunningProcess(self, request, context):
-        """获取设备上app正在运行的进程列表
+        """Get a list of processes running on the device for this app
+        获取设备上app正在运行的进程列表
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getAppWindowsMap(self, request, context):
-        """获取app每个进程id对应的Activity和SurfaceView,仅适用于android
+        """Get the Activity and SurfaceView corresponding to each process id of the app, only for android.
+        获取app每个进程id对应的Activity和SurfaceView,仅适用于android
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -459,126 +489,144 @@ class PerfDogServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def updateAppInfo(self, request, context):
-        """刷新app的信息,用于获取完app列表后修改了被测app(例如升级了版本)的情况
+        """Refresh app information, used to get the app list after the app modified the app under test (such as upgrading the version)
+        刷新app的信息,用于获取完app列表后修改了被测app(例如升级了版本)的情况
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def createTask(self, request, context):
-        """web上的创建任务接口
+        """Interface on the web for creating task
+        web上的创建任务接口
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def archiveCaseToTask(self, request, context):
-        """web上的把case归档到task的接口
+        """Interface on the web for archiving cases to task
+        web上的把case归档到task的接口
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def shareCase(self, request, context):
-        """web上的分享case接口
+        """Interface on the web for sharing case
+        web上的分享case接口
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def setPreferences(self, request, context):
-        """设置运行配置
+        """Set the running configuration
+        设置运行配置
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getRenderResolutionOfWindowUnderTest(self, request, context):
-        """获取测试App的渲染分辨率，仅支持Android
+        """Get the rendering resolution of the test app, supported only for Android
+        获取测试App的渲染分辨率，仅支持Android
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getCpuInfo(self, request, context):
-        """获取CPU核心数和最大频率
+        """Get CPU core count and maximum frequency
+        获取CPU核心数和最大频率
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def setMemorySamplingFrequency(self, request, context):
-        """设置内存采样频率,仅用于android
+        """Set memory sampling frequency, only for android
+        设置内存采样频率,仅用于android
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def transferFloatingWindowMessage(self, request, context):
-        """发送悬浮窗的显示内容，仅用于windows
+        """Send the display content of the hover window, only for windows
+        发送悬浮窗的显示内容，仅用于windows
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def generateUnrealMemoryReport(self, request, context):
-        """获取 unreal memory report
+        """Get unreal memory report
+        获取 unreal memory report
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def updateMemoryReportInfo(self, request, context):
-        """修改 memory report 标签名
+        """Modify tag name of memory report
+        修改 memory report 标签名
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def killServer(self, request, context):
-        """关闭PerfDogService
+        """Close PerfDogService
+        关闭PerfDogService
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def setFloatingWindowPreferences(self, request, context):
-        """设置悬浮窗位置和字体颜色，用于android和windows
+        """Set the position and font color of the hover window for android and windows
+        设置悬浮窗位置和字体颜色，用于android和windows
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def getPresetNetworkProfilingTemplate(self, request, context):
-        """拉取默认的和用户创建的网络模版
+        """Pull default and user-created web templates
+        拉取默认的和用户创建的网络模版
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def submitUserNetworkProfilingTemplate(self, request, context):
-        """提交用户的网络模板
+        """Submit user's web template
+        提交用户的网络模板
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def updateUserNetworkProfilingTemplate(self, request, context):
-        """更新用户的网络模板
+        """Update user's web template
+        更新用户的网络模板
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def deleteUserNetworkProfilingTemplate(self, request, context):
-        """删除用户的网络模板
+        """Delete user's web template
+        删除用户的网络模板
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def changeNetworkTemplate(self, request, context):
-        """用于在测试过程中修改弱网模拟参数
+        """Modify weak network simulation parameters during testing
+        用于在测试过程中修改弱网模拟参数
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
