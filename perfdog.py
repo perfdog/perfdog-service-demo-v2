@@ -412,6 +412,8 @@ class TestAppBuilder(TestTargetBuilder):
         self.__sub_window = None
         self.__profiling_mode = perfdog_pb2.DEFAULT
         self.__network_template = None
+        self.__app_restarted = True
+        self.__adaptive_delay = False
 
     def set_package_name(self, package_name):
         self.__package_name = package_name
@@ -434,6 +436,12 @@ class TestAppBuilder(TestTargetBuilder):
     def set_network_template(self, network_template):
         self.__network_template = network_template
 
+    def set_app_restarted(self, app_restarted):
+        self.__app_restarted = app_restarted
+
+    def set_adaptive_delay(self, adaptive_delay):
+        self.__adaptive_delay = adaptive_delay
+
     def build(self):
         app = self.device().get_app(self.__package_name)
         if app is None:
@@ -446,6 +454,7 @@ class TestAppBuilder(TestTargetBuilder):
                                           subWindow=self.__sub_window,
                                           profilingMode=self.__profiling_mode,
                                           networkProfilingTemplate=self.__network_template,
+                                          networkOption=perfdog_pb2.NetworkStartTestOption(False, not self.__app_restarted, self.__adaptive_delay),
                                           )
         return TestTarget(True, req)
 

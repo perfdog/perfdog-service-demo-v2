@@ -29,6 +29,11 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.Empty.SerializeToString,
                 response_deserializer=perfdog__pb2.DeviceEvent.FromString,
                 )
+        self.checkIos17AboveDriveUninstalled = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/checkIos17AboveDriveUninstalled',
+                request_serializer=perfdog__pb2.Device.SerializeToString,
+                response_deserializer=perfdog__pb2.OptionBool.FromString,
+                )
         self.initDevice = channel.unary_unary(
                 '/com.perfdog.proto.PerfDogService/initDevice',
                 request_serializer=perfdog__pb2.Device.SerializeToString,
@@ -273,6 +278,14 @@ class PerfDogServiceServicer(object):
     def startDeviceMonitor(self, request, context):
         """Start a device monitor
         启动设备监听器
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def checkIos17AboveDriveUninstalled(self, request, context):
+        """Returns true if the device is ios17 or above and no driver is installed, otherwise returns false
+        设备为ios17以上且未安装驱动返回true，否则返回false
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -650,6 +663,11 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     request_deserializer=perfdog__pb2.Empty.FromString,
                     response_serializer=perfdog__pb2.DeviceEvent.SerializeToString,
             ),
+            'checkIos17AboveDriveUninstalled': grpc.unary_unary_rpc_method_handler(
+                    servicer.checkIos17AboveDriveUninstalled,
+                    request_deserializer=perfdog__pb2.Device.FromString,
+                    response_serializer=perfdog__pb2.OptionBool.SerializeToString,
+            ),
             'initDevice': grpc.unary_unary_rpc_method_handler(
                     servicer.initDevice,
                     request_deserializer=perfdog__pb2.Device.FromString,
@@ -928,6 +946,23 @@ class PerfDogService(object):
         return grpc.experimental.unary_stream(request, target, '/com.perfdog.proto.PerfDogService/startDeviceMonitor',
             perfdog__pb2.Empty.SerializeToString,
             perfdog__pb2.DeviceEvent.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def checkIos17AboveDriveUninstalled(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/checkIos17AboveDriveUninstalled',
+            perfdog__pb2.Device.SerializeToString,
+            perfdog__pb2.OptionBool.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

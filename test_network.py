@@ -172,6 +172,12 @@ def run_test_app(device, package_name, templates):
     builder.set_package_name(package_name)
     builder.set_profiling_mode(perfdog_pb2.NETWORK)
     builder.set_network_template(templates[0])
+    # Set whether the target app should be restarted or not, default is True.
+    # 设置是否重新拉起目标App, 默认为True
+    # builder.set_app_restarted(True)
+    # Set whether the delay is adaptive or not, default is False.
+    # 设置延迟是否自适应, 默认为False
+    # builder.set_adaptive_delay(False)
     test.set_test_target(builder.build())
 
     try:
