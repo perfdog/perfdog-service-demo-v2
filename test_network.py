@@ -175,9 +175,9 @@ def run_test_app(device, package_name, templates):
     # Set whether the target app should be restarted or not, default is True.
     # 设置是否重新拉起目标App, 默认为True
     # builder.set_app_restarted(True)
-    # Set whether the delay is adaptive or not, default is False.
-    # 设置延迟是否自适应, 默认为False
-    # builder.set_adaptive_delay(False)
+    # Sets whether delays are superimposed or not, defaults to True.
+    # 设置延迟是否叠加, 默认为True
+    # builder.set_delay_overlay(True)
     test.set_test_target(builder.build())
 
     try:
