@@ -64,10 +64,13 @@ class Service(object):
         try:
             self.__login(service_token)
             logging.info('service proxy init success')
-        except:
-            self.__startup(service_path)
-            self.__try_n_login(service_token, service_wait_seconds)
-            logging.info('service proxy init success')
+            return
+        except Exception as e:
+            pass
+
+        self.__startup(service_path)
+        self.__try_n_login(service_token, service_wait_seconds)
+        logging.info('service proxy init success')
 
     def __try_n_login(self, service_token, service_wait_seconds):
         #
@@ -454,7 +457,9 @@ class TestAppBuilder(TestTargetBuilder):
                                           subWindow=self.__sub_window,
                                           profilingMode=self.__profiling_mode,
                                           networkProfilingTemplate=self.__network_template,
-                                          networkOption=perfdog_pb2.NetworkStartTestOption(enableHttpsDecrypt=False, doNotRestartTestedApp=not self.__app_restarted, enableAdaptiveDelay=not self.__delay_overlay),
+                                          networkOption=perfdog_pb2.NetworkStartTestOption(enableHttpsDecrypt=False,
+                                                                                           doNotRestartTestedApp=not self.__app_restarted,
+                                                                                           enableAdaptiveDelay=not self.__delay_overlay),
                                           )
         return TestTarget(True, req)
 
