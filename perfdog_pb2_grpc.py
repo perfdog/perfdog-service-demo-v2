@@ -254,6 +254,16 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.ChangeNetworkTemplateReq.SerializeToString,
                 response_deserializer=perfdog__pb2.ChangeNetworkTemplateRsp.FromString,
                 )
+        self.addRemoteHostDevice = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/addRemoteHostDevice',
+                request_serializer=perfdog__pb2.AddRemoteHostDeviceReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
+        self.checkDeviceOccupiedByOtherUsers = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/checkDeviceOccupiedByOtherUsers',
+                request_serializer=perfdog__pb2.CheckDeviceOccupiedByOtherUsersReq.SerializeToString,
+                response_deserializer=perfdog__pb2.CheckDeviceOccupiedByOtherUsersRsp.FromString,
+                )
 
 
 class PerfDogServiceServicer(object):
@@ -645,6 +655,22 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def addRemoteHostDevice(self, request, context):
+        """Add a remote host device
+        添加远程控制的主机设备
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def checkDeviceOccupiedByOtherUsers(self, request, context):
+        """Check whether the target is occupied by other users
+        确认主机是否被其它用户占用
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PerfDogServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -887,6 +913,16 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     servicer.changeNetworkTemplate,
                     request_deserializer=perfdog__pb2.ChangeNetworkTemplateReq.FromString,
                     response_serializer=perfdog__pb2.ChangeNetworkTemplateRsp.SerializeToString,
+            ),
+            'addRemoteHostDevice': grpc.unary_unary_rpc_method_handler(
+                    servicer.addRemoteHostDevice,
+                    request_deserializer=perfdog__pb2.AddRemoteHostDeviceReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'checkDeviceOccupiedByOtherUsers': grpc.unary_unary_rpc_method_handler(
+                    servicer.checkDeviceOccupiedByOtherUsers,
+                    request_deserializer=perfdog__pb2.CheckDeviceOccupiedByOtherUsersReq.FromString,
+                    response_serializer=perfdog__pb2.CheckDeviceOccupiedByOtherUsersRsp.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -1711,5 +1747,39 @@ class PerfDogService(object):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/changeNetworkTemplate',
             perfdog__pb2.ChangeNetworkTemplateReq.SerializeToString,
             perfdog__pb2.ChangeNetworkTemplateRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def addRemoteHostDevice(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/addRemoteHostDevice',
+            perfdog__pb2.AddRemoteHostDeviceReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def checkDeviceOccupiedByOtherUsers(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/checkDeviceOccupiedByOtherUsers',
+            perfdog__pb2.CheckDeviceOccupiedByOtherUsersReq.SerializeToString,
+            perfdog__pb2.CheckDeviceOccupiedByOtherUsersRsp.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

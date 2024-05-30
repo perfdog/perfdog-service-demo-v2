@@ -18,6 +18,12 @@ class PerfData(object):
             return True
         elif perf_data.HasField('windowsPerfData'):
             return True
+        elif perf_data.HasField('harmonyPerfData'):
+            return True
+        elif perf_data.HasField('playStationPerfData'):
+            return True
+        elif perf_data.HasField('xboxPerfData'):
+            return True
         else:
             return False
 
@@ -207,18 +213,8 @@ class Device(object):
         return self.__display_str()
 
     def __display_str(self):
-        def get_os_type(device):
-            if device.osType == perfdog_pb2.IOS:
-                return "iOS"
-            elif device.osType == perfdog_pb2.SWITCH:
-                return "Switch"
-            elif device.osType == perfdog_pb2.WINDOWS:
-                return "Windows"
-            else:
-                return "Android"
-
         conn_type = 'USB' if self.__real_device.conType == perfdog_pb2.USB else 'WIFI'
-        os_type = get_os_type(self.__real_device)
+        os_type = perfdog_pb2.DEVICE_OSTYPE.Name(self.__real_device.osType)
         return '{{uid: {}, name: {}, conn_type: {}, os_type: {}}}'.format(self.__real_device.uid,
                                                                           self.__real_device.name,
                                                                           conn_type,
