@@ -52,7 +52,7 @@ python cmds.py getpresetnetworktemplate
 python cmds.py killserver
 ```
 
-> If you need to test a Windows application later, execute the above command in a terminal started in administrator mode.
+> If you need to test a Windows or Xbox application later, execute the above command in a terminal started in administrator mode.
 
 5. Configure test parameters
 + Mobile device performance testing
@@ -108,10 +108,26 @@ run_test_app(device, package_name='-', templates=tempates)
 > See test_network.py script sample
 >
 
++ PlayStation5 & Xbox performance test
+```python
+# Add console device, mostly used for adding devices for the first time
+# Fill in the correct device ID and the package name of the test app
+# You can use cmds.py in the same directory to obtain the list of devices connected to the computer, the App list of the corresponding devices, and the supported performance indicators
+# You can fill in the type parameter according to your own needs to enable a list of performance indicator parameters. When the type value is None, use the indicator options that are enabled on the current device
+# If you need to start collecting performance data for multiple devices in a single script process, you can run the run_test function multiple times in parallel through multi-threading.
+service.add_remote_play_station_device(ip_address="192.168.0.0")
+service.add_remote_xbox_device(ip_address="192.168.0.0", password="test")
+device = service.get_wifi_device('-')
+run_test(device, package_name='-', types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME])
+```
+
+> See test_console.py script sample
+
 6. Modify and run test.py or test_windows.py or test_network.py
 + You can enable/use related performance indicator types according to your own needs, and you can also enable your own automated testing logic in this script.
 
-> test_windows.py test windows application needs to be started as administrator
+> test_windows.py test windows application and test_console.py test xbox application need to be started as administrator
+>
 
 ## Precautions
 If you no longer need to collect data, you must stop the test, which will affect billing. The service supports automatic collection of data in the background, even if the script is not running; you can use the cmds.py script to stop the running of the service, so you don't have to worry about billing issues.

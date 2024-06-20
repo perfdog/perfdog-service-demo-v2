@@ -15,7 +15,9 @@ def print_devices(service):
 def print_apps(service, device_id):
     device = service.get_usb_device(device_id)
     if device is None:
-        return
+        device = service.get_wifi_device(device_id)
+        if device is None:
+            return
 
     status = device.get_status()
     if not status.isValid:
@@ -28,7 +30,9 @@ def print_apps(service, device_id):
 def print_sys_processes(service, device_id):
     device = service.get_usb_device(device_id)
     if device is None:
-        return
+        device = service.get_wifi_device(device_id)
+        if device is None:
+            return
 
     status = device.get_status()
     if not status.isValid:
@@ -41,7 +45,9 @@ def print_sys_processes(service, device_id):
 def print_types(service, device_id):
     device = service.get_usb_device(device_id)
     if device is None:
-        return
+        device = service.get_wifi_device(device_id)
+        if device is None:
+            return
 
     status = device.get_status()
     if not status.isValid:

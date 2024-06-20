@@ -179,6 +179,14 @@ class Service(object):
         req = perfdog_pb2.SubmitUserNetworkProfilingTemplateReq(template=template)
         return self.stub().submitUserNetworkProfilingTemplate(req)
 
+    def add_remote_play_station_device(self, ip_address):
+        req = perfdog_pb2.AddRemoteHostDeviceReq(type=perfdog_pb2.PLAYSTATION, ip=ip_address)
+        self.stub().addRemoteHostDevice(req)
+
+    def add_remote_xbox_device(self, ip_address, password=None):
+        req = perfdog_pb2.AddRemoteHostDeviceReq(type=perfdog_pb2.XBOX, ip=ip_address, password=password)
+        self.stub().addRemoteHostDevice(req)
+
 
 class Device(object):
     def __init__(self, real_device, stub_factory):
@@ -372,6 +380,11 @@ class Device(object):
     def change_network_template(self, template):
         req = perfdog_pb2.ChangeNetworkTemplateReq(device=self.__real_device, template=template)
         self.stub().changeNetworkTemplate(req)
+
+    def occupied_by_other_user(self):
+        req = perfdog_pb2.CheckDeviceOccupiedByOtherUsersReq(device=self.__real_device)
+        rsp = self.stub().checkDeviceOccupiedByOtherUsers(req)
+        return rsp.otherUser
 
 
 class NotSetTestTarget(Exception):

@@ -52,7 +52,7 @@ python cmds.py getpresetnetworktemplate
 python cmds.py killserver
 ```
 
-> 如果后续需要测试的是windows应用，上面命令的执行在管理员方式启动的终端中执行
+> 如果后续需要测试的是windows或xbox应用，上面命令的执行在管理员方式启动的终端中执行
 
 5. 配置测试参数
 + 移动设备性能测试
@@ -108,10 +108,26 @@ run_test_app(device, package_name='-', templates=tempates)
 > 参见test_network.py脚本样例
 > 
 
++ PlayStation5、Xbox性能测试
+```python
+# 添加主机设备，多用于第一次添加设备
+# 填入正确的设备ID，填入测试app的包名
+# 可以使用同目录下cmds.py获取已连接到电脑的设备列表、相应设备的App列表和支持的性能指标
+# 可以根据自己需要填写types参数，来启用的性能指标参数列表，types值为None时，使用当前设备已经开启的指标选项
+# 如果单一脚本进程中需要启动针对多个设备性能数据收集，可以通过多线程的方式，并行运行多次run_test函数
+service.add_remote_play_station_device(ip_address="192.168.0.0")
+service.add_remote_xbox_device(ip_address="192.168.0.0", password="test")
+device = service.get_wifi_device('-')
+run_test(device, package_name='-', types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME])
+```
+
+> 参见test_console.py脚本样例
+
 6. 修改运行test.py 或者 test_windows.py 或者 test_network.py
 + 可以根据自己需要启用/用相关性能指标类型，同时也可在此脚本中启用自己的自动化测试逻辑
 
-> test_windows.py测试windows应用需要以管理员方式启动
+> test_windows.py测试windows应用和test_console.py测试xbox应用需要以管理员方式启动
+> 
 
 ## 注意事项
 如果不需要收集数据了，一定要停止测试，会影响计费，service是支持后台自动收集数据的，即便脚本不运行了；可以使用cmds.py脚本停止service的运行，就不用担心计费的问题了；
