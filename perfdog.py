@@ -91,7 +91,10 @@ class Service(object):
             try:
                 self.__login(service_token)
                 return
-            except Exception as e:
+            except grpc.RpcError as e:
+                if not e.code() == grpc.StatusCode.UNAVAILABLE:
+                    raise
+
                 logging.info('service proxy init failed, retry...')
                 time.sleep(1)
         #
