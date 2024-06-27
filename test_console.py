@@ -38,7 +38,7 @@ def main():
     # Check if the device is occupied
     # 确认设备是否被占用
     other_user = device.occupied_by_other_user()
-    if not other_user:
+    if other_user:
         logging.info("device occupied by %s", other_user)
 
     # TODO:
