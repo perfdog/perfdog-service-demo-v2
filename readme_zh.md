@@ -21,9 +21,10 @@ perfdog-service-demo-v2
 ├── readme_zh.md
 ├── test.py
 ├── test_windows.py
-└── test_network.py
+├── test_network.py
+└── test_console.py
 ```
-- test.py 收集性能数据脚本模板，可在此基础上修改
+- test.py 、test_windows.py、test_console.py收集性能数据脚本模板，test_network.py模拟网络场景，可在此基础上修改
 - cmds.py 获取设备列表和app列表
 - perfdog_references.py 示例代码
 
@@ -123,7 +124,7 @@ run_test(device, package_name='-', types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIM
 
 > 参见test_console.py脚本样例
 
-6. 修改运行test.py 或者 test_windows.py 或者 test_network.py
+6. 修改运行test.py 或者 test_windows.py 或者 test_network.py 或者 test_console.py
 + 可以根据自己需要启用/用相关性能指标类型，同时也可在此脚本中启用自己的自动化测试逻辑
 
 > test_windows.py测试windows应用和test_console.py测试xbox应用需要以管理员方式启动

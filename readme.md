@@ -21,9 +21,10 @@ perfdog-service-demo-v2
 ├── readme_zh.md
 ├── test.py
 ├── test_windows.py
-└── test_network.py
+├── test_network.py
+└── test_console.py
 ```
-- test.py collects performance data script template, which can be modified on this basis
+- test.py、test_windows.py、test_console.py collect performance data script template, test_network.py simulates network scenarios, which can be modified on this basis
 - cmds.py Get device list and app list
 - perfdog_references.py sample code
 
@@ -123,7 +124,7 @@ run_test(device, package_name='-', types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIM
 
 > See test_console.py script sample
 
-6. Modify and run test.py or test_windows.py or test_network.py
+6. Modify and run test.py or test_windows.py or test_network.py or test_console.py
 + You can enable/use related performance indicator types according to your own needs, and you can also enable your own automated testing logic in this script.
 
 > test_windows.py test windows application and test_console.py test xbox application need to be started as administrator
