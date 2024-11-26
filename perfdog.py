@@ -65,8 +65,8 @@ class Stream(object):
 
 
 class Service(object):
-    def __init__(self, service_token, service_path, service_wait_seconds=60):
-        self.__stub_factory = self.__create_stub_factory()
+    def __init__(self, service_token, service_path, service_wait_seconds=60, port=23456):
+        self.__stub_factory = self.__create_stub_factory(port)
         try:
             self.__login(service_token)
             logging.info('service proxy init success')
@@ -74,7 +74,7 @@ class Service(object):
         except Exception as e:
             pass
 
-        self.__startup(service_path)
+        self.__startup(service_path, port)
         self.__try_n_login(service_token, service_wait_seconds)
         logging.info('service proxy init success')
 
@@ -101,12 +101,12 @@ class Service(object):
         self.__login(service_token)
 
     @staticmethod
-    def __startup(service_path):
-        subprocess.Popen(service_path)
+    def __startup(service_path, port):
+        subprocess.Popen([service_path, str(port)])
 
     @staticmethod
-    def __create_stub_factory():
-        channel = grpc.insecure_channel('127.0.0.1:23456',
+    def __create_stub_factory(port):
+        channel = grpc.insecure_channel('127.0.0.1:{}'.format(port),
                                         options=[('grpc.max_receive_message_length', 100 * 1024 * 1024)])
         return lambda: perfdog_pb2_grpc.PerfDogServiceStub(channel)
 
