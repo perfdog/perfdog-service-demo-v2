@@ -633,6 +633,10 @@ class Test(object):
             else:
                 self.__disable_dynamic_types.append(ty)
 
+    def disable_type(self, test_type):
+        self.__disable_types.append(test_type)
+        self.__enable_types.remove(test_type)
+
     def is_start(self):
         return self.__is_start
 

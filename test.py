@@ -105,6 +105,22 @@ def run_test_app(device, package_name, types=None, dynamic_types=None, enable_al
     if dynamic_types is not None:
         test.set_dynamic_types(*dynamic_types)
 
+    # If enable_all_types is set to true, the APP_STARTUP_TIME data item will be included
+    # If APP_STARTUP_TIME is enabled, the app will be restarted for each test
+    # If you need to measure this performance, remove this method
+    # enable_all_types设置为true情况下，会包含APP_STARTUP_TIME数据项
+    # 启用该数据项的话 ，每次测试会重启app
+    # 如果需要测量该数据项，去掉该方法
+    test.disable_type(perfdog_pb2.APP_STARTUP_TIME)
+
+    # If enable_all_types is set to true, the APP_STARTUP_TIME data item will be included
+    # If SYSTEM_LOG is enabled, a large amount of system logs will be collected
+    # If you need to measure this performance, remove this method
+    # enable_all_types设置为true情况下，会包含SYSTEM_LOG数据项
+    # 启动该数据项的话，会收集大量系统日志
+    # 如果需要测量该数据项，去掉该方法
+    test.disable_type(perfdog_pb2.SYSTEM_LOG)
+
     try:
         # Start performance data collection
         # 启动性能数据采集
