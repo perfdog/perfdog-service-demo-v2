@@ -7,8 +7,8 @@ from config import SERVICE_TOKEN, SERVICE_PATH
 from perfdog import Service
 
 
-def create_service():
-    service = Service(SERVICE_TOKEN, SERVICE_PATH)
+def create_service(port=23456):
+    service = Service(SERVICE_TOKEN, SERVICE_PATH, port=port)
     service.get_device_event_stream(lambda event: print_device(event))
     return service
 
