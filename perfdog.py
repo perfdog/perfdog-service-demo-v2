@@ -1,10 +1,12 @@
 # coding: utf-8
 
 import logging
-import time
 import subprocess
 import threading
+import time
+
 import grpc
+
 import perfdog_pb2
 import perfdog_pb2_grpc
 
@@ -634,8 +636,9 @@ class Test(object):
                 self.__disable_dynamic_types.append(ty)
 
     def disable_type(self, test_type):
-        self.__disable_types.append(test_type)
-        self.__enable_types.remove(test_type)
+        if test_type in self.__enable_types:
+            self.__enable_types.remove(test_type)
+            self.__disable_types.append(test_type)
 
     def is_start(self):
         return self.__is_start
