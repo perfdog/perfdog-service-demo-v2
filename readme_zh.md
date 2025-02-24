@@ -7,7 +7,7 @@
 
 ## 项目使用条件
 1. 安装python3，从官网下载最新python3版本即可；
-2. 安装python3库，grpcio(1.43.0)和protobuf(4.25.1)，推荐使用pip安装；
+2. 安装python3库，grpcio(1.48.2)和protobuf(4.25.1)，推荐使用pip安装；
 
 ## 文件目录说明
 ```bash
