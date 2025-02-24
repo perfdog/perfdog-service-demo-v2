@@ -6,7 +6,7 @@
 + This demo helps students who want to quickly get started building performance automation.
 
 ## Project usage conditions
-1. Install python3 and download the latest python3 version from the official website;
+1. Install python3, just download it from the official website, python3.10 is recommended
 2. Install the python3 library, grpcio (1.48.2) and protobuf (4.25.1). It is recommended to use pip to install;
 
 ## File directory description
