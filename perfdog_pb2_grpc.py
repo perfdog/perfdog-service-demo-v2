@@ -29,6 +29,11 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.Empty.SerializeToString,
                 response_deserializer=perfdog__pb2.DeviceEvent.FromString,
                 )
+        self.listenGlobalEvent = channel.unary_stream(
+                '/com.perfdog.proto.PerfDogService/listenGlobalEvent',
+                request_serializer=perfdog__pb2.Empty.SerializeToString,
+                response_deserializer=perfdog__pb2.GlobalEvent.FromString,
+                )
         self.checkIos17AboveDriveUninstalled = channel.unary_unary(
                 '/com.perfdog.proto.PerfDogService/checkIos17AboveDriveUninstalled',
                 request_serializer=perfdog__pb2.Device.SerializeToString,
@@ -264,6 +269,31 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.CheckDeviceOccupiedByOtherUsersReq.SerializeToString,
                 response_deserializer=perfdog__pb2.CheckDeviceOccupiedByOtherUsersRsp.FromString,
                 )
+        self.setPairedPasswordResponse = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/setPairedPasswordResponse',
+                request_serializer=perfdog__pb2.SetPairedPasswordReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
+        self.launchAsRemoteCollector = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/launchAsRemoteCollector',
+                request_serializer=perfdog__pb2.Empty.SerializeToString,
+                response_deserializer=perfdog__pb2.LaunchAsRemoteCollectorRsp.FromString,
+                )
+        self.updateRemoteWindowsDevice = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/updateRemoteWindowsDevice',
+                request_serializer=perfdog__pb2.Empty.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
+        self.setEnableDevAppTest = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/setEnableDevAppTest',
+                request_serializer=perfdog__pb2.SetEnableDevAppTestReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
+        self.setLatencyTriggerType = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/setLatencyTriggerType',
+                request_serializer=perfdog__pb2.SetLatencyTriggerTypeReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
 
 
 class PerfDogServiceServicer(object):
@@ -289,6 +319,12 @@ class PerfDogServiceServicer(object):
         """Start a device monitor
         启动设备监听器
         """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def listenGlobalEvent(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -671,6 +707,43 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def setPairedPasswordResponse(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def launchAsRemoteCollector(self, request, context):
+        """Launch as a remote collector
+        以远端采集器方式启动
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def updateRemoteWindowsDevice(self, request, context):
+        """Refresh the remote computer list
+        刷新远程电脑列表
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def setEnableDevAppTest(self, request, context):
+        """enable test for dev apps,only for ios
+        支持dev app测试，仅用于ios
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def setLatencyTriggerType(self, request, context):
+        """仅用于windows
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PerfDogServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -688,6 +761,11 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     servicer.startDeviceMonitor,
                     request_deserializer=perfdog__pb2.Empty.FromString,
                     response_serializer=perfdog__pb2.DeviceEvent.SerializeToString,
+            ),
+            'listenGlobalEvent': grpc.unary_stream_rpc_method_handler(
+                    servicer.listenGlobalEvent,
+                    request_deserializer=perfdog__pb2.Empty.FromString,
+                    response_serializer=perfdog__pb2.GlobalEvent.SerializeToString,
             ),
             'checkIos17AboveDriveUninstalled': grpc.unary_unary_rpc_method_handler(
                     servicer.checkIos17AboveDriveUninstalled,
@@ -924,6 +1002,31 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     request_deserializer=perfdog__pb2.CheckDeviceOccupiedByOtherUsersReq.FromString,
                     response_serializer=perfdog__pb2.CheckDeviceOccupiedByOtherUsersRsp.SerializeToString,
             ),
+            'setPairedPasswordResponse': grpc.unary_unary_rpc_method_handler(
+                    servicer.setPairedPasswordResponse,
+                    request_deserializer=perfdog__pb2.SetPairedPasswordReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'launchAsRemoteCollector': grpc.unary_unary_rpc_method_handler(
+                    servicer.launchAsRemoteCollector,
+                    request_deserializer=perfdog__pb2.Empty.FromString,
+                    response_serializer=perfdog__pb2.LaunchAsRemoteCollectorRsp.SerializeToString,
+            ),
+            'updateRemoteWindowsDevice': grpc.unary_unary_rpc_method_handler(
+                    servicer.updateRemoteWindowsDevice,
+                    request_deserializer=perfdog__pb2.Empty.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'setEnableDevAppTest': grpc.unary_unary_rpc_method_handler(
+                    servicer.setEnableDevAppTest,
+                    request_deserializer=perfdog__pb2.SetEnableDevAppTestReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'setLatencyTriggerType': grpc.unary_unary_rpc_method_handler(
+                    servicer.setLatencyTriggerType,
+                    request_deserializer=perfdog__pb2.SetLatencyTriggerTypeReq.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'com.perfdog.proto.PerfDogService', rpc_method_handlers)
@@ -982,6 +1085,23 @@ class PerfDogService(object):
         return grpc.experimental.unary_stream(request, target, '/com.perfdog.proto.PerfDogService/startDeviceMonitor',
             perfdog__pb2.Empty.SerializeToString,
             perfdog__pb2.DeviceEvent.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def listenGlobalEvent(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/com.perfdog.proto.PerfDogService/listenGlobalEvent',
+            perfdog__pb2.Empty.SerializeToString,
+            perfdog__pb2.GlobalEvent.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -1781,5 +1901,90 @@ class PerfDogService(object):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/checkDeviceOccupiedByOtherUsers',
             perfdog__pb2.CheckDeviceOccupiedByOtherUsersReq.SerializeToString,
             perfdog__pb2.CheckDeviceOccupiedByOtherUsersRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def setPairedPasswordResponse(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/setPairedPasswordResponse',
+            perfdog__pb2.SetPairedPasswordReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def launchAsRemoteCollector(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/launchAsRemoteCollector',
+            perfdog__pb2.Empty.SerializeToString,
+            perfdog__pb2.LaunchAsRemoteCollectorRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def updateRemoteWindowsDevice(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/updateRemoteWindowsDevice',
+            perfdog__pb2.Empty.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def setEnableDevAppTest(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/setEnableDevAppTest',
+            perfdog__pb2.SetEnableDevAppTestReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def setLatencyTriggerType(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/setLatencyTriggerType',
+            perfdog__pb2.SetLatencyTriggerTypeReq.SerializeToString,
+            perfdog__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
