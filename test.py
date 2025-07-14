@@ -38,11 +38,13 @@ def main():
     # You can fill in the type parameter according to your own needs to enable a list of performance indicator parameters. When the type value is None, use the indicator options that are enabled on the current device
     # To enable indicators, please refer to "Indicator parameter mapping table: https://perfdog.wetest.net/article_detail?id=176&issue_id=0&plat_id=2"
     # If you need to start collecting performance data for multiple devices in a single script process, you can run the run_test_app function multiple times in parallel through multi-threading
+    # The device connected via "adb connect" needs to use service.get_wifi_device to obtain the device
     # 填入正确的设备ID，填入测试app的包名
     # 可以使用同目录下cmds.py获取已连接到电脑的设备列表及相应设备的App列表
     # 可以根据自己需要填写types参数，来启用的性能指标参数列表，types值为None时，使用当前设备已经开启的指标选项
     # 指标启用可以参考"指标参数映射表：https://perfdog.qq.com/article_detail?id=10210&issue_id=0&plat_id=2"
     # 如果单一脚本进程中需要启动针对多个设备性能数据收集，可以通过多线程的方式，并行运行多次run_test_app函数
+    # 通过adb connect连接的设备需要使用service.get_wifi_device获取设备
 
     device = service.get_usb_device('-')
     if device is None:
