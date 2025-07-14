@@ -17,6 +17,7 @@ def print_apps(service, device_id):
     if device is None:
         device = service.get_wifi_device(device_id)
         if device is None:
+            print('device not found')
             return
 
     status = device.get_status()
