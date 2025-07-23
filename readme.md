@@ -94,7 +94,7 @@ run_test(device, pid=pid, dx_version=dx_version,
 > See test_windows.py script sample
 >
 
-+ network test
++ Android network test
 ```python
 # Fill in the correct device ID and the package name of the test app
 # You can use cmds.py in the same directory to obtain the list of devices connected to the computer, the App list of the corresponding devices, presets and saved network templates
@@ -106,7 +106,21 @@ templates = create_templates()
 run_test_app(device, package_name='-', templates=tempates)
 ```
 
-> See test_network.py script sample
+> See test_network_android.py script sample
+>
+
++ Windows network test
+```python
+# Fill in the correct process PID 
+# You can use cmds.py in the same directory to obtain the list of devices connected to the computer, the process list of the corresponding devices, presets and saved network templates
+# User-defined templates can refer to the create_customized_template() method in the script. For indicator meanings, please refer to https://perfdog.wetest.net/article_detail?id=145&issue_id=0&plat_id=1
+# Fill in the network template list of the test process
+# If you need to start network testing for multiple devices in a single script process, you can run the run_tes function multiple times in parallel through multi-threading.
+templates = create_templates()
+run_test(device, pid, templates=tempates)
+```
+
+> See test_network_windows.py script sample
 >
 
 + PlayStation5 & Xbox performance test
