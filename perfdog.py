@@ -176,9 +176,13 @@ class Service(object):
         req = perfdog_pb2.Empty()
         self.stub().killServer(req)
 
-    def get_preset_network_template(self):
+    def get_preset_network_template(self, device_type=perfdog_pb2.ANDROID):
         req = perfdog_pb2.GetPresetNetworkProfilingTemplateReq()
-        return self.stub().getPresetNetworkProfilingTemplate(req).templates
+        if device_type != perfdog_pb2.WINDOWS:
+            return self.stub().getPresetNetworkProfilingTemplate(req).templates
+        else:
+            custom_templates = [t for t in self.stub().getPresetNetworkProfilingTemplate(req).templates if len(t.networkProfilingOptions) != 0]
+            return custom_templates
 
     def submit_user_network_template(self, template):
         req = perfdog_pb2.SubmitUserNetworkProfilingTemplateReq(template=template)
@@ -485,6 +489,8 @@ class TestSysProcessBuilder(TestTargetBuilder):
         self.__process_name = None
         self.__hide_floating_window = False
         self.__dx_version = perfdog_pb2.AUTO
+        self.__profiling_mode = perfdog_pb2.DEFAULT
+        self.__network_template = None
 
     def set_pid(self, pid):
         self.__pid = pid
@@ -500,6 +506,12 @@ class TestSysProcessBuilder(TestTargetBuilder):
 
     def set_dx_version(self, dx_version):
         self.__dx_version = dx_version
+
+    def set_profiling_mode(self, profiling_mode):
+        self.__profiling_mode = profiling_mode
+
+    def set_network_template(self, network_template):
+        self.__network_template = network_template
 
     def build(self):
         processes = self.device().get_sys_processes()
@@ -520,7 +532,9 @@ class TestSysProcessBuilder(TestTargetBuilder):
         req = perfdog_pb2.StartTestSysProcessReq(device=self.device().real_device(),
                                                  sysProcessInfo=process,
                                                  hideFloatingWindow=self.__hide_floating_window,
-                                                 dxVersion=self.__dx_version)
+                                                 dxVersion=self.__dx_version,
+                                                 profilingMode=self.__profiling_mode,
+                                                 networkProfilingTemplate=self.__network_template)
         return TestTarget(False, req)
 
 
