@@ -3,8 +3,8 @@
 import sys
 
 import perfdog_pb2
-from perfdog import Service
 from config import SERVICE_TOKEN, SERVICE_PATH
+from perfdog import Service
 
 
 def print_devices(service):
@@ -71,14 +71,14 @@ def print_types(service, device_id):
             pass
 
 
-def kill_server(service):
-    service.kill_server()
-
-
 def print_preset_network_template(service):
     templates = service.get_preset_network_template()
     for template in templates:
         print('id:{},name:{},description:{}'.format(template.id, template.name, template.description))
+
+
+def kill_server(service):
+    service.kill_server()
 
 
 def print_usage():
@@ -86,8 +86,8 @@ def print_usage():
     print('       python cmds.py getapps device_id')
     print('       python cmds.py getsysprocesses device_id')
     print('       python cmds.py gettypes device_id')
-    print('       python cmds.py killserver')
     print('       python cmds.py getpresetnetworktemplate')
+    print('       python cmds.py killserver')
 
 
 def get_func_and_args(args):
@@ -109,11 +109,11 @@ def get_func_and_args(args):
     if cmd == 'gettypes' and len(args) == 1:
         return print_types, args
 
-    if cmd == 'killserver' and len(args) == 0:
-        return kill_server, args
-
     if cmd == 'getpresetnetworktemplate' and len(args) == 0:
         return print_preset_network_template, args
+
+    if cmd == 'killserver' and len(args) == 0:
+        return kill_server, args
 
     return None, ()
 
