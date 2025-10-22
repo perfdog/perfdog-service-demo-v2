@@ -94,7 +94,7 @@ run_test(device, pid=pid, dx_version=dx_version,
 > 参见test_windows.py脚本样例
 >
 
-+ 安卓网络测试
++ 安卓网络测试/iOS网络测试
 ```python
 # 填入正确的设备ID，填入测试app的包名
 # 可以使用同目录下cmds.py获取已连接到电脑的设备列表、相应设备的App列表、预设和已保存的网络模板
@@ -106,7 +106,7 @@ templates = create_templates()
 run_test_app(device, package_name='-', templates=tempates)
 ```
 
-> 参见test_network_android.py脚本样例
+> 参见test_network.py脚本样例
 > 
 
 + Windows网络测试

@@ -94,7 +94,7 @@ run_test(device, pid=pid, dx_version=dx_version,
 > See test_windows.py script sample
 >
 
-+ Android network test
++ Android network test/iOS network test
 ```python
 # Fill in the correct device ID and the package name of the test app
 # You can use cmds.py in the same directory to obtain the list of devices connected to the computer, the App list of the corresponding devices, presets and saved network templates
@@ -106,7 +106,7 @@ templates = create_templates()
 run_test_app(device, package_name='-', templates=tempates)
 ```
 
-> See test_network_android.py script sample
+> See test_network.py script sample
 >
 
 + Windows network test
