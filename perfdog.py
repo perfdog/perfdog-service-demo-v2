@@ -159,6 +159,23 @@ class Service(object):
         req = perfdog_pb2.SetPreferencesReq(preferences=preferences)
         self.stub().setPreferences(req)
 
+    def update_configuration(self, do_not_install_perfdog_app=None, enable_device_logs=None, enable_upload_device_logs=None):
+        """更新运行配置
+        Args:
+            do_not_install_perfdog_app: 是否不自动安装PerfDog App（仅Android）
+            enable_device_logs: 是否启用设备日志
+            enable_upload_device_logs: 是否启用上传设备日志
+        """
+        kwargs = {}
+        if do_not_install_perfdog_app is not None:
+            kwargs['doNotInstallPerfDogApp'] = perfdog_pb2.OptionBool(value=do_not_install_perfdog_app)
+        if enable_device_logs is not None:
+            kwargs['enableDeviceLogs'] = perfdog_pb2.OptionBool(value=enable_device_logs)
+        if enable_upload_device_logs is not None:
+            kwargs['enableUploadDeviceLogs'] = perfdog_pb2.OptionBool(value=enable_upload_device_logs)
+        req = perfdog_pb2.UpdateConfigurationReq(**kwargs)
+        self.stub().updateConfiguration(req)
+
     def create_task(self, task_name):
         req = perfdog_pb2.CreateTaskReq(taskName=task_name)
         res = self.stub().createTask(req)
