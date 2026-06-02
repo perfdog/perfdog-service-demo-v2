@@ -1,0 +1,61 @@
+version = 1
+revision = 3
+requires-python = ">=3.10"
+
+[[package]]
+name = "grpcio"
+version = "1.48.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/81/9a/6b33e8d15850356772f0ee6489bc8346a7aa90f0c86733283e139740865e/grpcio-1.48.2.tar.gz", hash = "sha256:90e5da224c6b9b23658adf6f36de6f435ef7dbcc9c5c12330314d70d6f8de1f7", size = 21992949, upload-time = "2022-09-22T02:50:21.173Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e0/8d/302bed1bfafe5511f49203ad78047013642e4ef9087e626f0613f60b20c0/grpcio-1.48.2-cp310-cp310-linux_armv7l.whl", hash = "sha256:665141b3a97b7d22978c8d2ba0c0af7f67bd6d7a56889c5c0aa715d04009b518", size = 71563235, upload-time = "2022-09-22T02:44:47.537Z" },
+    { url = "https://files.pythonhosted.org/packages/d8/86/e474e8e6979a7919bfec5906c7d76816904cc78f9b12f0d1abfee618b50e/grpcio-1.48.2-cp310-cp310-macosx_10_10_x86_64.whl", hash = "sha256:199526758f6f8d35a596c610f33ea76faae65ec175dc109e8481ea3404d8527c", size = 4221975, upload-time = "2022-09-22T02:44:52.828Z" },
+    { url = "https://files.pythonhosted.org/packages/12/e9/cd3400b3feb33a793104be90be22de07e62c684853318ee73ea67e076f70/grpcio-1.48.2-cp310-cp310-manylinux_2_17_aarch64.whl", hash = "sha256:3d3225d477663c27b9051546a32551babd1ccb80192905e08340264deccc975b", size = 63860332, upload-time = "2022-09-22T02:44:59.06Z" },
+    { url = "https://files.pythonhosted.org/packages/0e/ad/1b8c470183e5ac2ab0a490f47e70b842a42d08350bb58ae417171ab97d55/grpcio-1.48.2-cp310-cp310-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:abee7dd82443b2cd128004e053b263a6d7256d570df80956a974634b8c5bc121", size = 4776949, upload-time = "2022-09-22T02:45:03.377Z" },
+    { url = "https://files.pythonhosted.org/packages/f3/6b/726214491f69937ad6a7a766380b6413554f64341d8a69f1bdadfd2fac20/grpcio-1.48.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9dc08baa1b28749e90428aaa16e038e8c389d8ccb843ddc0dc8b95231640b432", size = 4586659, upload-time = "2022-09-22T02:45:05.875Z" },
+    { url = "https://files.pythonhosted.org/packages/07/d3/89bc271fd97d93b29deb2267f65caea68571c766e1a87c7ede75396cc43a/grpcio-1.48.2-cp310-cp310-musllinux_1_1_i686.whl", hash = "sha256:110028e0b9c346230ae69b8a6d8b25d4d43bfd37bda61a8ec46486da1e781dcb", size = 5020566, upload-time = "2022-09-22T02:45:08.821Z" },
+    { url = "https://files.pythonhosted.org/packages/25/b6/a9a4df0a8e12bc80eded731421e291ed9ee122a3c51754a52b08e851f3f3/grpcio-1.48.2-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:6affa7e685edbb7421f942296eb618359362e89e641bcf46779c6ec7b944d275", size = 4808896, upload-time = "2022-09-22T02:45:11.85Z" },
+    { url = "https://files.pythonhosted.org/packages/d3/2c/e148a7fb3d15fb60e61656494a96486c04d927214d6db37be20650956f66/grpcio-1.48.2-cp310-cp310-win32.whl", hash = "sha256:f6afd1f4b5e0ec320fb2b027a646944fee8b58ba00fb43d081968f77d1a6e925", size = 3019346, upload-time = "2022-09-22T02:45:15.004Z" },
+    { url = "https://files.pythonhosted.org/packages/d2/13/d41ae198d522c6684f111030c1de4a1c3c4c75aa3de814abe9663071d9ef/grpcio-1.48.2-cp310-cp310-win_amd64.whl", hash = "sha256:b8ec07dcc1cbd77b8c09dfc0ce6274920cb7b09cc04013110971d95d8bcc0bbf", size = 3573579, upload-time = "2022-09-22T02:45:17.637Z" },
+]
+
+[[package]]
+name = "perfdog-service-demo-v2"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "grpcio" },
+    { name = "protobuf" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "grpcio", specifier = "==1.48.2" },
+    { name = "protobuf", specifier = "==4.25.1" },
+]
+
+[[package]]
+name = "protobuf"
+version = "4.25.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/59/5f/b2d00e6a08d97656a27832d4d146e03ffc46ae74b4699740674bea13a905/protobuf-4.25.1.tar.gz", hash = "sha256:57d65074b4f5baa4ab5da1605c02be90ac20c8b40fb137d6a8df9f416b0d0ce2", size = 380275, upload-time = "2023-11-15T23:30:19.811Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b2/88/dab1332a8488cacd720c145980ee4592fa70bf84f2a9a92e438868fc64bc/protobuf-4.25.1-cp310-abi3-win32.whl", hash = "sha256:193f50a6ab78a970c9b4f148e7c750cfde64f59815e86f686c22e26b4fe01ce7", size = 392412, upload-time = "2023-11-15T23:29:56.33Z" },
+    { url = "https://files.pythonhosted.org/packages/fe/6b/7f177e8d6fe4caa14f4065433af9f879d4fab84f0d17dcba7b407f6bd808/protobuf-4.25.1-cp310-abi3-win_amd64.whl", hash = "sha256:3497c1af9f2526962f09329fd61a36566305e6c72da2590ae0d7d1322818843b", size = 413407, upload-time = "2023-11-15T23:29:59.538Z" },
+    { url = "https://files.pythonhosted.org/packages/e6/db/7b2edc72807d45d72f9db42f3eb86ddaf37f9e55d923159b1dbfc9d835bc/protobuf-4.25.1-cp37-abi3-macosx_10_9_universal2.whl", hash = "sha256:0bf384e75b92c42830c0a679b0cd4d6e2b36ae0cf3dbb1e1dfdda48a244f4bcd", size = 394164, upload-time = "2023-11-15T23:30:01.945Z" },
+    { url = "https://files.pythonhosted.org/packages/f2/74/41037079732f1976616356acc13bddceacd5d0c60d77ce3b4c79ba230d27/protobuf-4.25.1-cp37-abi3-manylinux2014_aarch64.whl", hash = "sha256:0f881b589ff449bf0b931a711926e9ddaad3b35089cc039ce1af50b21a4ae8cb", size = 293702, upload-time = "2023-11-15T23:30:04.689Z" },
+    { url = "https://files.pythonhosted.org/packages/ae/5b/7ed02a9b8e752c8f7bca8661779c0275b9e3e6a903a3045e6da51f796dda/protobuf-4.25.1-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:ca37bf6a6d0046272c152eea90d2e4ef34593aaa32e8873fc14c16440f22d4b7", size = 294614, upload-time = "2023-11-15T23:30:06.609Z" },
+    { url = "https://files.pythonhosted.org/packages/57/6b/cb08c28a90375e18aa80913253135b5fb6e6b1ff5c1472ba833836540f16/protobuf-4.25.1-py3-none-any.whl", hash = "sha256:a19731d5e83ae4737bb2a089605e636077ac001d18781b3cf489b9546c7c80d6", size = 156468, upload-time = "2023-11-15T23:30:17.72Z" },
+]
+
+[[package]]
+name = "six"
+version = "1.17.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031, upload-time = "2024-12-04T17:35:28.174Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050, upload-time = "2024-12-04T17:35:26.475Z" },
+]
