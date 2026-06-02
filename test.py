@@ -32,6 +32,13 @@ def main():
     # 禁止安装,可设置不安装PerfDog APK，跑自动化时减少不必要的暂停打断
     service.disable_install_apk()
 
+    # 配置测试过程中测试应用异常时日志的采集与上报
+    # 上报日志整合在上传报告到云端时，如果没有上传报告，日志只会保存本地
+    # Configure log collection and reporting when exceptions occur in the tested application during runtime.
+    # Log uploading is integrated into the cloud report submission process; if no report is uploaded, logs will only be saved locally.
+    # service.update_configuration(enable_device_logs=True)
+    # service.update_configuration(enable_upload_device_logs=True)
+
     # TODO:
     # Fill in the correct device ID and the package name of the test app
     # You can use cmds.py in the same directory to obtain the list of devices connected to the computer and the App list of the corresponding devices
