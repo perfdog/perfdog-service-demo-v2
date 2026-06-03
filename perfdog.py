@@ -159,7 +159,8 @@ class Service(object):
         req = perfdog_pb2.SetPreferencesReq(preferences=preferences)
         self.stub().setPreferences(req)
 
-    def update_configuration(self, do_not_install_perfdog_app=None, enable_device_logs=None, enable_upload_device_logs=None):
+    def update_configuration(self, do_not_install_perfdog_app=None, enable_device_logs=None,
+                             enable_upload_device_logs=None):
         """更新运行配置
         Args:
             do_not_install_perfdog_app: 是否不自动安装PerfDog App（仅Android）
@@ -198,7 +199,8 @@ class Service(object):
         if device_type != perfdog_pb2.WINDOWS:
             return self.stub().getPresetNetworkProfilingTemplate(req).templates
         else:
-            custom_templates = [t for t in self.stub().getPresetNetworkProfilingTemplate(req).templates if len(t.networkProfilingOptions) != 0]
+            custom_templates = [t for t in self.stub().getPresetNetworkProfilingTemplate(req).templates if
+                                len(t.networkProfilingOptions) != 0]
             return custom_templates
 
     def submit_user_network_template(self, template):
@@ -216,10 +218,21 @@ class Service(object):
     def update_remote_windows_device(self):
         req = perfdog_pb2.Empty()
         self.stub().updateRemoteWindowsDevice(req)
-        
+
     def launch_as_remote_collector(self):
         req = perfdog_pb2.Empty()
         self.stub().launchAsRemoteCollector(req)
+
+    def install_app(self, device_id, package_path, timeout=None):
+        req = perfdog_pb2.InstallAppReq(deviceId=device_id, packagePath=package_path,
+                                        timeout=timeout if timeout is not None else 0)
+        self.stub().installApp(req)
+
+    def uninstall_app(self, device_id, package_name, timeout=None):
+        req = perfdog_pb2.UninstallAppReq(deviceId=device_id, packageName=package_name,
+                                          timeout=timeout if timeout is not None else 0)
+        self.stub().uninstallApp(req)
+
 
 class Device(object):
     def __init__(self, real_device, stub_factory):

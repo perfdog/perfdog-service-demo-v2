@@ -39,6 +39,11 @@ def main():
     # service.update_configuration(enable_device_logs=True)
     # service.update_configuration(enable_upload_device_logs=True)
 
+    # Uninstalling/installing the app under test; currently, only iOS devices in USB mode are supported
+    # 卸载/安装需要测试的app，目前仅支持usb模式的ios设备
+    # service.uninstall_app("00008130-001C7C61210A001C", "com.tencent.perfdog.NetworkTest")
+    # service.install_app("00008130-001C7C61210A001C", "H:\\downloads\\NetworkTest.ipa")
+
     # TODO:
     # Fill in the correct device ID and the package name of the test app
     # You can use cmds.py in the same directory to obtain the list of devices connected to the computer and the App list of the corresponding devices

@@ -314,6 +314,16 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.UpdateConfigurationReq.SerializeToString,
                 response_deserializer=perfdog__pb2.UpdateConfigurationRsp.FromString,
                 )
+        self.installApp = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/installApp',
+                request_serializer=perfdog__pb2.InstallAppReq.SerializeToString,
+                response_deserializer=perfdog__pb2.InstallAppRes.FromString,
+                )
+        self.uninstallApp = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/uninstallApp',
+                request_serializer=perfdog__pb2.UninstallAppReq.SerializeToString,
+                response_deserializer=perfdog__pb2.UninstallAppRes.FromString,
+                )
 
 
 class PerfDogServiceServicer(object):
@@ -791,6 +801,20 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def installApp(self, request, context):
+        """目前仅支持usb模式的iOS设备
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def uninstallApp(self, request, context):
+        """目前仅支持usb模式的iOS设备
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PerfDogServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -1093,6 +1117,16 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     servicer.updateConfiguration,
                     request_deserializer=perfdog__pb2.UpdateConfigurationReq.FromString,
                     response_serializer=perfdog__pb2.UpdateConfigurationRsp.SerializeToString,
+            ),
+            'installApp': grpc.unary_unary_rpc_method_handler(
+                    servicer.installApp,
+                    request_deserializer=perfdog__pb2.InstallAppReq.FromString,
+                    response_serializer=perfdog__pb2.InstallAppRes.SerializeToString,
+            ),
+            'uninstallApp': grpc.unary_unary_rpc_method_handler(
+                    servicer.uninstallApp,
+                    request_deserializer=perfdog__pb2.UninstallAppReq.FromString,
+                    response_serializer=perfdog__pb2.UninstallAppRes.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -2121,5 +2155,39 @@ class PerfDogService(object):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/updateConfiguration',
             perfdog__pb2.UpdateConfigurationReq.SerializeToString,
             perfdog__pb2.UpdateConfigurationRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def installApp(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/installApp',
+            perfdog__pb2.InstallAppReq.SerializeToString,
+            perfdog__pb2.InstallAppRes.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def uninstallApp(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/uninstallApp',
+            perfdog__pb2.UninstallAppReq.SerializeToString,
+            perfdog__pb2.UninstallAppRes.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
