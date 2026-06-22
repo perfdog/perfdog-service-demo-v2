@@ -233,6 +233,27 @@ class Service(object):
                                           timeout=timeout if timeout is not None else 0)
         self.stub().uninstallApp(req)
 
+    def sandbox_create_dir(self, device_id, package_name, dir_path, recursive=True):
+        req = perfdog_pb2.SandboxCreateDirReq(deviceId=device_id, packageName=package_name,
+                                              dirPath=dir_path, recursive=recursive)
+        self.stub().sandboxCreateDir(req)
+
+    def sandbox_remove_dir(self, device_id, package_name, dir_path, recursive=True):
+        req = perfdog_pb2.SandboxRemoveDirReq(deviceId=device_id, packageName=package_name,
+                                              dirPath=dir_path, recursive=recursive)
+        self.stub().sandboxRemoveDir(req)
+
+    def sandbox_upload_file(self, device_id, package_name, remote_path, file_path, overwrite=True):
+        req = perfdog_pb2.SandboxUploadFileReq(deviceId=device_id, packageName=package_name,
+                                               remotePath=remote_path, filePath=file_path,
+                                               overwrite=overwrite)
+        self.stub().sandboxUploadFile(req)
+
+    def sandbox_remove_file(self, device_id, package_name, file_path):
+        req = perfdog_pb2.SandboxRemoveFileReq(deviceId=device_id, packageName=package_name,
+                                               filePath=file_path)
+        self.stub().sandboxRemoveFile(req)
+
 
 class Device(object):
     def __init__(self, real_device, stub_factory):

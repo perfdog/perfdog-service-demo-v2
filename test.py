@@ -44,6 +44,29 @@ def main():
     # service.uninstall_app("00008130-001C7C61210A001C", "com.tencent.perfdog.NetworkTest")
     # service.install_app("00008130-001C7C61210A001C", "H:\\downloads\\NetworkTest.ipa")
 
+    # iOS sandbox file management; currently only supports iOS devices
+    # All sandbox paths are relative to the APP sandbox root directory (e.g., "Documents/sub/test.txt")
+    # iOS沙盒文件管理，目前仅支持iOS设备
+    # 沙盒内的路径均为基于APP沙盒根目录的相对路径（例如"Documents/sub/test.txt"）
+    # device_id = "00008130-001C7C61210A001C"
+    # package_name = "com.tencent.perfdog.demo.fpsue570"
+
+    # Create a directory in the sandbox, recursive=True creates intermediate dirs (like mkdir -p)
+    # 在沙盒中创建目录，recursive=True时会递归创建中间目录（类似mkdir -p）
+    # service.sandbox_create_dir(device_id, package_name, "Documents/sub1/sub2", recursive=True)
+
+    # Upload a local file into the sandbox, overwrite=True overwrites the file if it already exists
+    # 上传本地文件到沙盒，overwrite=True时若目标文件已存在则覆盖
+    # service.sandbox_upload_file(device_id, package_name, "Documents/sub1/sub2/FindDevice-win-x64.zip", "H:\\backup\\FindDevice-win-x64.zip", overwrite=True)
+
+    # Remove a file from the sandbox
+    # 删除沙盒中的文件
+    # service.sandbox_remove_file(device_id, package_name, "Documents/sub1/sub2/FindDevice-win-x64.zip")
+
+    # Remove a directory from the sandbox, recursive=True removes non-empty directory recursively
+    # 删除沙盒中的目录，recursive=True时会递归删除非空目录
+    # service.sandbox_remove_dir(device_id, package_name, "Documents/sub1/sub2", recursive=True)
+
     # TODO:
     # Fill in the correct device ID and the package name of the test app
     # You can use cmds.py in the same directory to obtain the list of devices connected to the computer and the App list of the corresponding devices

@@ -324,6 +324,26 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.UninstallAppReq.SerializeToString,
                 response_deserializer=perfdog__pb2.UninstallAppRes.FromString,
                 )
+        self.sandboxCreateDir = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/sandboxCreateDir',
+                request_serializer=perfdog__pb2.SandboxCreateDirReq.SerializeToString,
+                response_deserializer=perfdog__pb2.SandboxCreateDirRsp.FromString,
+                )
+        self.sandboxRemoveDir = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/sandboxRemoveDir',
+                request_serializer=perfdog__pb2.SandboxRemoveDirReq.SerializeToString,
+                response_deserializer=perfdog__pb2.SandboxRemoveDirRsp.FromString,
+                )
+        self.sandboxUploadFile = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/sandboxUploadFile',
+                request_serializer=perfdog__pb2.SandboxUploadFileReq.SerializeToString,
+                response_deserializer=perfdog__pb2.SandboxUploadFileRsp.FromString,
+                )
+        self.sandboxRemoveFile = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/sandboxRemoveFile',
+                request_serializer=perfdog__pb2.SandboxRemoveFileReq.SerializeToString,
+                response_deserializer=perfdog__pb2.SandboxRemoveFileRsp.FromString,
+                )
 
 
 class PerfDogServiceServicer(object):
@@ -815,6 +835,38 @@ class PerfDogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def sandboxCreateDir(self, request, context):
+        """Create a directory in the app's sandbox, only for iOS currently
+        在应用沙盒中创建目录，目前仅支持iOS设备
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def sandboxRemoveDir(self, request, context):
+        """Remove a directory from the app's sandbox, only for iOS currently
+        删除应用沙盒中的目录，目前仅支持iOS设备
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def sandboxUploadFile(self, request, context):
+        """Upload a file to the app's sandbox, only for iOS currently
+        上传文件到应用沙盒，目前仅支持iOS设备
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def sandboxRemoveFile(self, request, context):
+        """Remove a file from the app's sandbox, only for iOS currently
+        删除应用沙盒中的文件，目前仅支持iOS设备
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PerfDogServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -1127,6 +1179,26 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
                     servicer.uninstallApp,
                     request_deserializer=perfdog__pb2.UninstallAppReq.FromString,
                     response_serializer=perfdog__pb2.UninstallAppRes.SerializeToString,
+            ),
+            'sandboxCreateDir': grpc.unary_unary_rpc_method_handler(
+                    servicer.sandboxCreateDir,
+                    request_deserializer=perfdog__pb2.SandboxCreateDirReq.FromString,
+                    response_serializer=perfdog__pb2.SandboxCreateDirRsp.SerializeToString,
+            ),
+            'sandboxRemoveDir': grpc.unary_unary_rpc_method_handler(
+                    servicer.sandboxRemoveDir,
+                    request_deserializer=perfdog__pb2.SandboxRemoveDirReq.FromString,
+                    response_serializer=perfdog__pb2.SandboxRemoveDirRsp.SerializeToString,
+            ),
+            'sandboxUploadFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.sandboxUploadFile,
+                    request_deserializer=perfdog__pb2.SandboxUploadFileReq.FromString,
+                    response_serializer=perfdog__pb2.SandboxUploadFileRsp.SerializeToString,
+            ),
+            'sandboxRemoveFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.sandboxRemoveFile,
+                    request_deserializer=perfdog__pb2.SandboxRemoveFileReq.FromString,
+                    response_serializer=perfdog__pb2.SandboxRemoveFileRsp.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -2189,5 +2261,73 @@ class PerfDogService(object):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/uninstallApp',
             perfdog__pb2.UninstallAppReq.SerializeToString,
             perfdog__pb2.UninstallAppRes.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def sandboxCreateDir(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/sandboxCreateDir',
+            perfdog__pb2.SandboxCreateDirReq.SerializeToString,
+            perfdog__pb2.SandboxCreateDirRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def sandboxRemoveDir(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/sandboxRemoveDir',
+            perfdog__pb2.SandboxRemoveDirReq.SerializeToString,
+            perfdog__pb2.SandboxRemoveDirRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def sandboxUploadFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/sandboxUploadFile',
+            perfdog__pb2.SandboxUploadFileReq.SerializeToString,
+            perfdog__pb2.SandboxUploadFileRsp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def sandboxRemoveFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/sandboxRemoveFile',
+            perfdog__pb2.SandboxRemoveFileReq.SerializeToString,
+            perfdog__pb2.SandboxRemoveFileRsp.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
