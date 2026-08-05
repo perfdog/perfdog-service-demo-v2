@@ -254,6 +254,19 @@ class Service(object):
                                                filePath=file_path)
         self.stub().sandboxRemoveFile(req)
 
+    def update_setEnableNewFps(self, device, enable):
+        req = perfdog_pb2.SetEnableNewFpsReq(device=device, enableNewFps=enable)
+        self.stub().setEnableNewFps(req)
+
+    def get_window_pid_at_cursor(self, device, x, y):
+        # Windows 多进程模式：「选窗口」瞄准镜，屏幕坐标反查窗口所属进程 PID
+        req = perfdog_pb2.GetWindowPidAtCursorReq(device=device, x=x, y=y)
+        return self.stub().getWindowPidAtCursor(req)
+
+    def set_screenshot_pid(self, device, pid):
+        # Windows 多进程模式：保持多进程整体测试不变，仅把截图采集目标切到指定 PID 的窗口
+        req = perfdog_pb2.SetScreenshotPidReq(device=device, pid=pid)
+        self.stub().setScreenshotPid(req)
 
 class Device(object):
     def __init__(self, real_device, stub_factory):
@@ -549,6 +562,7 @@ class TestSysProcessBuilder(TestTargetBuilder):
         self.__dx_version = perfdog_pb2.AUTO
         self.__profiling_mode = perfdog_pb2.DEFAULT
         self.__network_template = None
+        self.__multi_process_mode = False
 
     def set_pid(self, pid):
         self.__pid = pid
@@ -571,6 +585,11 @@ class TestSysProcessBuilder(TestTargetBuilder):
     def set_network_template(self, network_template):
         self.__network_template = network_template
 
+    def set_multi_process_mode(self, multi_process_mode=True):
+        # Windows 专用：True 时采集 sysProcessInfo.pid 整棵进程树，False 时仅采集目标进程
+        # 多进程采集时建议同时启用 WINDOWS_CPU / WINDOWS_MEMORY 等指标
+        self.__multi_process_mode = multi_process_mode
+
     def build(self):
         processes = self.device().get_sys_processes()
         process = None
@@ -592,7 +611,8 @@ class TestSysProcessBuilder(TestTargetBuilder):
                                                  hideFloatingWindow=self.__hide_floating_window,
                                                  dxVersion=self.__dx_version,
                                                  profilingMode=self.__profiling_mode,
-                                                 networkProfilingTemplate=self.__network_template)
+                                                 networkProfilingTemplate=self.__network_template,
+                                                 multiProcessMode=self.__multi_process_mode)
         return TestTarget(False, req)
 
 

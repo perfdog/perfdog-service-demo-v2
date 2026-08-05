@@ -84,6 +84,16 @@ class PerfDogServiceStub(object):
                 request_serializer=perfdog__pb2.ScreenShotInterval.SerializeToString,
                 response_deserializer=perfdog__pb2.Empty.FromString,
                 )
+        self.getWindowPidAtCursor = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/getWindowPidAtCursor',
+                request_serializer=perfdog__pb2.GetWindowPidAtCursorReq.SerializeToString,
+                response_deserializer=perfdog__pb2.WindowPidInfo.FromString,
+                )
+        self.setScreenshotPid = channel.unary_unary(
+                '/com.perfdog.proto.PerfDogService/setScreenshotPid',
+                request_serializer=perfdog__pb2.SetScreenshotPidReq.SerializeToString,
+                response_deserializer=perfdog__pb2.Empty.FromString,
+                )
         self.StartTestAppInternal = channel.unary_stream(
                 '/com.perfdog.proto.PerfDogService/StartTestAppInternal',
                 request_serializer=perfdog__pb2.StartTestAppReq.SerializeToString,
@@ -454,6 +464,20 @@ class PerfDogServiceServicer(object):
     def setScreenShotInterval(self, request, context):
         """Set the screenshot interval
         设置截屏时间间隔
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def getWindowPidAtCursor(self, request, context):
+        """「选窗口」瞄准镜：根据屏幕坐标反查窗口所属进程 PID（仅 Windows 多进程模式）
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def setScreenshotPid(self, request, context):
+        """切换截图源进程（多进程整体测试不变，仅截图目标切换到指定 PID 的窗口）
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -938,6 +962,16 @@ def add_PerfDogServiceServicer_to_server(servicer, server):
             'setScreenShotInterval': grpc.unary_unary_rpc_method_handler(
                     servicer.setScreenShotInterval,
                     request_deserializer=perfdog__pb2.ScreenShotInterval.FromString,
+                    response_serializer=perfdog__pb2.Empty.SerializeToString,
+            ),
+            'getWindowPidAtCursor': grpc.unary_unary_rpc_method_handler(
+                    servicer.getWindowPidAtCursor,
+                    request_deserializer=perfdog__pb2.GetWindowPidAtCursorReq.FromString,
+                    response_serializer=perfdog__pb2.WindowPidInfo.SerializeToString,
+            ),
+            'setScreenshotPid': grpc.unary_unary_rpc_method_handler(
+                    servicer.setScreenshotPid,
+                    request_deserializer=perfdog__pb2.SetScreenshotPidReq.FromString,
                     response_serializer=perfdog__pb2.Empty.SerializeToString,
             ),
             'StartTestAppInternal': grpc.unary_stream_rpc_method_handler(
@@ -1444,6 +1478,40 @@ class PerfDogService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/setScreenShotInterval',
             perfdog__pb2.ScreenShotInterval.SerializeToString,
+            perfdog__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def getWindowPidAtCursor(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/getWindowPidAtCursor',
+            perfdog__pb2.GetWindowPidAtCursorReq.SerializeToString,
+            perfdog__pb2.WindowPidInfo.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def setScreenshotPid(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/com.perfdog.proto.PerfDogService/setScreenshotPid',
+            perfdog__pb2.SetScreenshotPidReq.SerializeToString,
             perfdog__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

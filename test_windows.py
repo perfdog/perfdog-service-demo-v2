@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import logging
+from math import e
 import threading
 import time
 
@@ -43,14 +44,21 @@ def main():
     # 可以根据自己需要填写types参数，来启用的性能指标参数列表，types值为None时，使用当前设备已经开启的指标选项
     # 指标启用可以参考"指标参数映射表：https://perfdog.qq.com/article_detail?id=10210&issue_id=0&plat_id=2"
     # 如果单一脚本进程中需要启动针对多个设备性能数据收集，可以通过多线程的方式，并行运行多次run_test函数
-    pid = 30120
+    # TODO: 填入目标进程 PID，可用同目录 cmds.py getsysprocesses 获取 Windows 进程列表
+    pid = 0  # 占位值，运行前必须修改为目标进程 PID
     dx_version = perfdog_pb2.AUTO
     run_test(device, pid=pid, dx_version=dx_version,
-             types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.WINDOWS_CPU, perfdog_pb2.WINDOWS_MEMORY],
+             types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.WINDOWS_CPU, perfdog_pb2.SCREEN_SHOT],
              )
 
+    # 多进程测试全流程示例（取消注释即可运行）：
+    # 采集 pid 整棵进程树的 CPU / 内存等指标，结束后自动 save_data 上传云端并导出 Excel
+    # 注意：多进程模式下 SDK 会移除 WINDOWS_CPU/MEMORY/GPU 等单进程 dataType，请显式指定进程级 types
+    # run_test(device, pid=pid, dx_version=dx_version, multi_process_mode=True,
+    #          types=[perfdog_pb2.WINDOWS_CPU, perfdog_pb2.WINDOWS_MEMORY])
 
-def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all_types=False):
+
+def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all_types=False, multi_process_mode=False):
     # Create test object
     # 创建测试对象
     test = Test(device)
@@ -78,9 +86,10 @@ def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all
     builder = test.create_test_target_builder(TestSysProcessBuilder)
     builder.set_pid(pid)
     builder.set_dx_version(dx_version)
+    builder.set_multi_process_mode(multi_process_mode)
     test.set_test_target(builder.build())
 
-    # Enable and disable related performance indicator types
+    # Enable and disable related performance https://waytoagi.feishu.cn/wiki/UouHwQZXJiISENkkvP0cOnvJnhb1indicator types
     # 启用和禁用相关性能指标类型
     if enable_all_types:
         types, dynamic_types = get_all_types(device)
@@ -111,7 +120,9 @@ def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all
         test.add_note('n1', 12 * 1000)
         time.sleep(2)
         test.stop()
-        test.save_data()
+
+        # TODO: 替换为实际导出目录；如需跳过导出可设 is_export=False（默认已上传云端）
+        test.save_data(is_export=True, export_directory='<EXPORT_DIRECTORY>')
 
     finally:
         # Release necessary resources
