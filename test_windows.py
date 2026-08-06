@@ -53,9 +53,9 @@ def main():
 
     # 多进程测试全流程示例（取消注释即可运行）：
     # 采集 pid 整棵进程树的 CPU / 内存等指标，结束后自动 save_data 上传云端并导出 Excel
-    # 注意：多进程模式下 SDK 会移除 WINDOWS_CPU/MEMORY/GPU 等单进程 dataType，请显式指定进程级 types
+    # 注意：多进程模式必须启用 WINDOWS_MULTI_PROCESS dataType（自动映射 multiCpu/multiMemory/multiGpu 等全部进程级指标）
     # run_test(device, pid=pid, dx_version=dx_version, multi_process_mode=True,
-    #          types=[perfdog_pb2.WINDOWS_CPU, perfdog_pb2.WINDOWS_MEMORY])
+    #          types=[perfdog_pb2.WINDOWS_MULTI_PROCESS])
 
 
 def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all_types=False, multi_process_mode=False):
@@ -121,8 +121,8 @@ def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all
         time.sleep(2)
         test.stop()
 
-        # TODO: 替换为实际导出目录；如需跳过导出可设 is_export=False（默认已上传云端）
-        test.save_data(is_export=True, export_directory='<EXPORT_DIRECTORY>')
+        # 本次测试只上传云端，不做本地导出
+        test.save_data(is_export=False)
 
     finally:
         # Release necessary resources
