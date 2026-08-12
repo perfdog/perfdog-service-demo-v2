@@ -89,7 +89,7 @@ def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all
     builder.set_multi_process_mode(multi_process_mode)
     test.set_test_target(builder.build())
 
-    # Enable and disable related performance https://waytoagi.feishu.cn/wiki/UouHwQZXJiISENkkvP0cOnvJnhb1indicator types
+    # Enable and disable related performance types
     # 启用和禁用相关性能指标类型
     if enable_all_types:
         types, dynamic_types = get_all_types(device)

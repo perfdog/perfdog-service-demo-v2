@@ -744,6 +744,17 @@ class Test(object):
         if self.__test_target is None:
             raise NotSetTestTarget()
 
+        # 单进程测试不支持 WINDOWS_MULTI_PROCESS：
+        # 采集端 TestCommon::__enable 对非多进程测试返回 parameterError(-20023)，
+        # 在 SDK 统一过滤，避免每个调用方重复处理
+        # 注意：multiProcessMode 是 sysProcess 请求专有字段，App 请求无此字段
+        if not self.__test_target.is_app() and not self.__test_target.req().multiProcessMode:
+            if perfdog_pb2.WINDOWS_MULTI_PROCESS in self.__enable_types:
+                self.__enable_types.remove(perfdog_pb2.WINDOWS_MULTI_PROCESS)
+            if perfdog_pb2.WINDOWS_MULTI_PROCESS in self.__disable_types:
+                self.__disable_types.remove(perfdog_pb2.WINDOWS_MULTI_PROCESS)
+            logging.warning("single-process mode: WINDOWS_MULTI_PROCESS is not supported, filtered out")
+
         # Enabling and disabling related performance measures
         # 启用和禁用相关性能指标
         self.__device.enable_types(*self.__enable_types)
