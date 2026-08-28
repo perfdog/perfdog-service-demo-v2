@@ -97,12 +97,11 @@ run_test(device, pid=pid, dx_version=dx_version,
 + PC multi-process test (Windows only, collect the whole process tree of the target process)
 ```python
 # Set multi_process_mode=True to collect metrics of the whole process tree of the target pid (including all child processes)
-# It is recommended to enable per-process metrics such as WINDOWS_CPU / WINDOWS_MEMORY in multi-process mode
+# Multi-process mode requires the WINDOWS_MULTI_PROCESS dataType (automatically maps to multiCpu/multiMemory/multiGpu etc.)
 pid=30876
 dx_version = perfdog_pb2.AUTO
 run_test(device, pid=pid, dx_version=dx_version, multi_process_mode=True,
-             types=[perfdog_pb2.WINDOWS_CPU, perfdog_pb2.WINDOWS_MEMORY],
-             enable_all_types=True,
+             types=[perfdog_pb2.WINDOWS_MULTI_PROCESS],
              )
 ```
 

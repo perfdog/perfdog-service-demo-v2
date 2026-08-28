@@ -97,12 +97,11 @@ run_test(device, pid=pid, dx_version=dx_version,
 + PC多进程测试（Windows专用，采集目标进程整棵进程树）
 ```python
 # 设置 multi_process_mode=True 后，将采集 pid 对应进程的整棵进程树（含所有子进程）的指标
-# 多进程模式下建议启用 WINDOWS_CPU / WINDOWS_MEMORY 等每进程指标
+# 多进程模式必须启用 WINDOWS_MULTI_PROCESS dataType（自动映射 multiCpu/multiMemory/multiGpu 等全部进程级指标）
 pid = 30876
 dx_version = perfdog_pb2.AUTO
 run_test(device, pid=pid, dx_version=dx_version, multi_process_mode=True,
-            types=[perfdog_pb2.WINDOWS_CPU, perfdog_pb2.WINDOWS_MEMORY],
-            enable_all_types=True,
+            types=[perfdog_pb2.WINDOWS_MULTI_PROCESS],
             )
 ```
 
