@@ -45,17 +45,23 @@ def main():
     # 指标启用可以参考"指标参数映射表：https://perfdog.qq.com/article_detail?id=10210&issue_id=0&plat_id=2"
     # 如果单一脚本进程中需要启动针对多个设备性能数据收集，可以通过多线程的方式，并行运行多次run_test函数
     # TODO: 填入目标进程 PID，可用同目录 cmds.py getsysprocesses 获取 Windows 进程列表
-    pid = 0  # 占位值，运行前必须修改为目标进程 PID
-    dx_version = perfdog_pb2.AUTO
-    run_test(device, pid=pid, dx_version=dx_version,
-             types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.WINDOWS_CPU, perfdog_pb2.SCREEN_SHOT],
-             )
+    # 运行前必须修改为目标进程的真实 PID
+    target_pid = 0
 
-    # 多进程测试全流程示例（取消注释即可运行）：
-    # 采集 pid 整棵进程树的 CPU / 内存等指标，结束后自动 save_data 上传云端并导出 Excel
+    # Single/Multi-process mode switch / 单/多进程模式开关
+    # False: single-process mode, only collect metrics of the target_pid process / 单进程模式，仅采集 target_pid 目标进程指标
+    # True: multi-process mode, collect metrics of the whole process tree (rooted at target_pid) / 多进程模式，采集 target_pid 整棵进程树（含所有子进程）指标
+    # Note: multi-process mode requires WINDOWS_MULTI_PROCESS dataType (automatically maps to multiCpu/multiMemory/multiGpu etc.)
     # 注意：多进程模式必须启用 WINDOWS_MULTI_PROCESS dataType（自动映射 multiCpu/multiMemory/multiGpu 等全部进程级指标）
-    # run_test(device, pid=pid, dx_version=dx_version, multi_process_mode=True,
-    #          types=[perfdog_pb2.WINDOWS_MULTI_PROCESS])
+    multi_process_mode = False
+
+    dx_version = perfdog_pb2.AUTO
+    if multi_process_mode:
+        run_test(device, pid=target_pid, dx_version=dx_version, multi_process_mode=True,
+                 types=[perfdog_pb2.WINDOWS_MULTI_PROCESS])
+    else:
+        run_test(device, pid=target_pid, dx_version=dx_version,
+                 types=[perfdog_pb2.FPS, perfdog_pb2.FRAME_TIME, perfdog_pb2.WINDOWS_CPU, perfdog_pb2.SCREEN_SHOT])
 
 
 def run_test(device, pid, dx_version, types=None, dynamic_types=None, enable_all_types=False, multi_process_mode=False):
