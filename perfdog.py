@@ -751,8 +751,11 @@ class Test(object):
         if not self.__test_target.is_app() and not self.__test_target.req().multiProcessMode:
             if perfdog_pb2.WINDOWS_MULTI_PROCESS in self.__enable_types:
                 self.__enable_types.remove(perfdog_pb2.WINDOWS_MULTI_PROCESS)
-            if perfdog_pb2.WINDOWS_MULTI_PROCESS in self.__disable_types:
-                self.__disable_types.remove(perfdog_pb2.WINDOWS_MULTI_PROCESS)
+            # 必须显式 disable：Service 侧设备开启列表是持久的，
+            # 上一次多进程测试留下的 WINDOWS_MULTI_PROCESS 不清理的话，
+            # SDK 会把 multi* dataType 带进单进程 startTest，采集端返回 parameterError(-20023)
+            if perfdog_pb2.WINDOWS_MULTI_PROCESS not in self.__disable_types:
+                self.__disable_types.append(perfdog_pb2.WINDOWS_MULTI_PROCESS)
             logging.warning("single-process mode: WINDOWS_MULTI_PROCESS is not supported, filtered out")
 
         # Enabling and disabling related performance measures
